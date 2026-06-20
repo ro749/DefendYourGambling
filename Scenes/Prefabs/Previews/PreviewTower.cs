@@ -4,6 +4,8 @@ using System;
 public partial class PreviewTower : Node2D
 {
     [Export] public PackedScene TowerScene;
+    [Export] public Sprite2D sprite;
+    [Export] public Area2D area;
     private Path2D path;
     public override void _Ready()
     {
@@ -14,7 +16,13 @@ public partial class PreviewTower : Node2D
     public override void _Process(double delta)
     {
         var closest = path.Curve.GetClosestPoint(GlobalPosition);
-        GetChild<Sprite2D>(0).Modulate = GlobalPosition.DistanceSquaredTo(closest) > 1296 ? Colors.Green : Colors.Red;
+        sprite.Modulate = canPlace() ? Colors.Green : Colors.Red;
+    }
+
+    public bool canPlace()
+    {
+        var closest = path.Curve.GetClosestPoint(GlobalPosition);
+        return GlobalPosition.DistanceSquaredTo(closest) > 1296 && area.GetOverlappingAreas().Count == 0;
     }
 
     public override void _Input(InputEvent @event)
@@ -26,8 +34,7 @@ public partial class PreviewTower : Node2D
         
         if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && !mb.Pressed)
         {
-            var closest = path.Curve.GetClosestPoint(GlobalPosition);
-            if (GlobalPosition.DistanceSquaredTo(closest) > 1296 && TowerScene.Instantiate() is Node2D towerInstance)
+            if (canPlace() && TowerScene.Instantiate() is Node2D towerInstance)
             {
                 towerInstance.GlobalPosition = GlobalPosition;
                 GetTree().Root.AddChild(towerInstance);
