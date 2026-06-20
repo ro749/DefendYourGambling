@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=5 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_n4a11"]
+[ext_resource type="PackedScene" uid="uid://dw18mhg5te0d0" path="res://Scenes/Prefabs/Towers/tower_heavy.tscn" id="3_ekms1"]
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
@@ -19,5 +20,11 @@ curve = SubResource("Curve2D_276sc")
 
 [node name="TowerBasic" parent="Towers" instance=ExtResource("2_n4a11")]
 position = Vector2(256, 448)
+
+[node name="TowerHeavy" parent="Towers" instance=ExtResource("3_ekms1")]
+position = Vector2(648, 832)
+
+[node name="TowerBasic2" parent="Towers" instance=ExtResource("2_n4a11")]
+position = Vector2(1104, 448)
 
 [node name="Bullets" type="Node2D" parent="."]

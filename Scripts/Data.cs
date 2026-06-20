@@ -1,17 +1,19 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+
+public struct BulletStats
+{
+	public float damage;
+}
 
 public partial class Data : Node
 {
-	public enum Bullet { SINGLE, FIRE, MORTAL_EXPLOSION };
+	public enum Bullet { SINGLE, HEAVY };
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public static Dictionary<Bullet, BulletStats> bulletStats = new Dictionary<Bullet, BulletStats>()
 	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+		{ Bullet.SINGLE, new BulletStats { damage = 20 } },
+		{ Bullet.HEAVY, new BulletStats { damage = 30 } }
+	};
 }

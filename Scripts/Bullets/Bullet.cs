@@ -1,0 +1,35 @@
+using Godot;
+using System;
+
+public partial class Bullet : Area2D
+{
+	private Vector2 _direction;
+	private float _speed = 1000;
+	public Data.Bullet bulletEnum;
+
+	private float _lifetime = 2.0f;
+	private float _currentLifetime = 0.0f;
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		GlobalPosition += _direction * _speed * (float)delta;
+		_currentLifetime += (float)delta;
+		if (_currentLifetime >= _lifetime)
+		{
+			QueueFree();
+		}
+	}
+
+	public void Setup(Vector2 pos, float direction, Data.Bullet bulletEnum)
+	{
+		GlobalPosition = pos;
+		_direction = Vector2.FromAngle(direction);
+		this.bulletEnum = bulletEnum;
+	}
+}
