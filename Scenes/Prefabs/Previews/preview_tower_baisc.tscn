@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw8hgvhgtydsq"]
+
+[ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="1_380vm"]
+[ext_resource type="Script" uid="uid://bq5nntqdlkymo" path="res://Scenes/Prefabs/Previews/PreviewTower.cs" id="2_mqqm4"]
+[ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_o3vij"]
+
+[node name="PreviewTowerBaisc" type="Node2D"]
+script = ExtResource("2_mqqm4")
+TowerScene = ExtResource("2_o3vij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_380vm")
