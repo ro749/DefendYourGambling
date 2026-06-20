@@ -10,10 +10,18 @@ public partial class TestLevel : Node
 	private double currentEnemyTime = 1.0;
 	
 	private PackedScene enemyScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_1.tscn");
+	private PackedScene bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet.tscn");
 	
 	public override void _Ready()
 	{
-		//(GetNode<Area2D>("TowerBasic") as TowerParent).Shoot += _CreateBullet;
+		Godot.Collections.Array<Node> foundNodes = GetNode<Node2D>("Towers").FindChildren("*", typeof(Tower).Name);
+		foreach (Node node in foundNodes)
+		{
+			if (node is Tower towerNode)
+			{
+				towerNode.Shoot += _CreateBullet;
+			}
+		}
 	}
 	
 	public override void _Process(double delta)
@@ -39,15 +47,19 @@ public partial class TestLevel : Node
 
 		if (prefab.Instantiate() is Enemy1 enemyInstance)
 		{
-			enemyInstance.Setup(pathFollow, 100);
+			enemyInstance.Setup(pathFollow, 50, 100);
 			pathFollow.AddChild(enemyInstance);
 		}
 
 		GetNode<Path2D>("Path2D").AddChild(pathFollow);
 	}
 	
-	private void _CreateBullet(Vector2 pos, float direction, Data.Bullet bulletEnum)
+	private void _CreateBullet(Vector2 pos, float direction, int bulletEnum)
 	{
-		
+		if (bulletScene.Instantiate() is Bullet bulletInstance)
+		{
+			bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, (Data.Bullet)bulletEnum);
+			GetNode<Node2D>("Bullets").AddChild(bulletInstance);
+		}
 	}
 }

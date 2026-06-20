@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw18mhg5te0d0"]
+
+[ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_dvdqr"]
+[ext_resource type="Texture2D" uid="uid://c6davne0alody" path="res://Assets/TowerBase2.png" id="2_ymoln"]
+[ext_resource type="Texture2D" uid="uid://bhc1y5iasihia" path="res://Assets/TowerTurret2.png" id="3_2hvim"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvdqr"]
+radius = 32.0
+
+[node name="TowerHeavy" instance=ExtResource("1_dvdqr")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_dvdqr")
+
+[node name="Base" parent="." index="1"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ymoln")
+
+[node name="Turret" parent="." index="2"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_2hvim")
