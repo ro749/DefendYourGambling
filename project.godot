@@ -11,9 +11,23 @@ config_version=5
 [application]
 
 config/name="Sirius gay jam"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://4b8q2g1mu0iw"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="Sirius gay jam"
+
+[layer_names]
+
+2d_physics/layer_1="Enemies"
+2d_physics/layer_2="Bullets"

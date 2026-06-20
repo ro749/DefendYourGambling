@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://4b8q2g1mu0iw"]
+
+[ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
+[ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_n4a11"]
+
+[sub_resource type="Curve2D" id="Curve2D_276sc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 832, 960, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 384, 704, 0, 0, 0, 0, 384, 128, 0, 0, 0, 0, 1792, 128, 0, 0, 0, 0, 960, 384, 0, 0, 0, 0, 1216, 896, 0, 0, 0, 0, 1792, 896)
+}
+point_count = 10
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1wegt")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_276sc")
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="TowerBasic" parent="Towers" instance=ExtResource("2_n4a11")]
+position = Vector2(256, 448)
+
+[node name="Bullets" type="Node2D" parent="."]

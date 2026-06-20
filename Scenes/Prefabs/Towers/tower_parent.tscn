@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://4gaxs83nxodc"]
+
+[ext_resource type="Script" uid="uid://caa8yy2uyxqak" path="res://Scripts/Towers/TowerParent.cs" id="1_p5clq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5clq"]
+radius = 256.0
+
+[node name="TowerParent" type="Area2D"]
+script = ExtResource("1_p5clq")
+
+[node name="Base" type="Sprite2D" parent="."]
+
+[node name="Turret" type="Sprite2D" parent="."]
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_p5clq")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_onEnemyDetectionAreaAreaEntered"]
+[connection signal="area_exited" from="EnemyDetectionArea" to="." method="_onEnemyDetectionAreaAreaExited"]
