@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw8hgvhgtydsq"]
+[gd_scene load_steps=5 format=3 uid="uid://dw8hgvhgtydsq"]
 
 [ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="1_380vm"]
 [ext_resource type="Script" uid="uid://bq5nntqdlkymo" path="res://Scenes/Prefabs/Previews/PreviewTower.cs" id="2_mqqm4"]
 [ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_o3vij"]
 
-[node name="PreviewTowerBaisc" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3vij"]
+radius = 33.734257
+
+[node name="PreviewTowerBaisc" type="Node2D" node_paths=PackedStringArray("sprite", "area")]
 script = ExtResource("2_mqqm4")
 TowerScene = ExtResource("2_o3vij")
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = ExtResource("1_380vm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o3vij")
