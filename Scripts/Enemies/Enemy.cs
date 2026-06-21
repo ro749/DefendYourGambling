@@ -1,15 +1,15 @@
 using Godot;
 using System;
 
-public partial class Enemy1 : Area2D
+public partial class Enemy : Area2D
 {
 	[Signal]
-	public delegate void DiedEventHandler(Enemy1 enemy);
+	public delegate void DiedEventHandler(Enemy enemy);
 
-	private PathFollow2D _pathFollow;
+	public PathFollow2D PathFollow{ get; private set; }
 
 	private double _maxHealth = 50.0;
-	private double _health = 50.0;
+	public double Health { get; private set; } = 50.0;
 	
 	private double _moveSpeed = 100.0;
 	
@@ -23,31 +23,31 @@ public partial class Enemy1 : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		_pathFollow.Progress += (float)(_moveSpeed * delta);
-		if (_pathFollow.ProgressRatio < _lastProgressRatio)  
+		PathFollow.Progress += (float)(_moveSpeed * delta);
+		if (PathFollow.ProgressRatio < _lastProgressRatio)  
 		{
+			DoDamageToPlayer();
 			QueueFree();
-			GD.Print("Damage");
 		}
-		_lastProgressRatio = _pathFollow.ProgressRatio;
+		_lastProgressRatio = PathFollow.ProgressRatio;
 	}
 	
 	public void Setup(PathFollow2D newPathFollow, float newMaxHealth = 50, double newMoveSpeed = 100)
 	{
-		_pathFollow = newPathFollow;
+		PathFollow = newPathFollow;
 		_moveSpeed = newMoveSpeed;
 		_maxHealth = newMaxHealth;
-		_health = newMaxHealth;
+		Health = newMaxHealth;
 	}
 
 	public void _OnAreaEntered(Area2D area)
 	{
 		if (area is Bullet bullet)
 		{
-			_health -= Data.bulletStats[bullet.bulletEnum].damage;
+			Health -= Data.bulletStats[bullet.bulletEnum].damage;
 			bullet.QueueFree();
-			GD.Print("Current health: " + _health);
-			if (_health <= 0)
+			
+			if (Health <= 0)
 			{
 				Die();
 			}
@@ -58,5 +58,11 @@ public partial class Enemy1 : Area2D
 	{
 		EmitSignal("Died", this);
 		QueueFree();
+	}
+
+	public void DoDamageToPlayer()
+	{
+		PlayerState playerState = GetNode<PlayerState>("/root/PlayerState");
+		playerState.LoseLife();
 	}
 }

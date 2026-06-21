@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw18mhg5te0d0"]
+[gd_scene load_steps=6 format=3 uid="uid://dw18mhg5te0d0"]
 
 [ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_dvdqr"]
 [ext_resource type="Texture2D" uid="uid://c6davne0alody" path="res://Assets/TowerBase2.png" id="2_ymoln"]
@@ -7,7 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvdqr"]
 radius = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymoln"]
+radius = 256.12497
+
 [node name="TowerHeavy" instance=ExtResource("1_dvdqr")]
+bulletType = 1
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_dvdqr")
@@ -19,3 +23,9 @@ texture = ExtResource("2_ymoln")
 [node name="Turret" parent="." index="2"]
 scale = Vector2(2, 2)
 texture = ExtResource("3_2hvim")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_ymoln")
+
+[node name="ReloadTimer" parent="." index="4"]
+wait_time = 0.5

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=8 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_n4a11"]
 [ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="3_ekms1"]
+[ext_resource type="PackedScene" uid="uid://dw18mhg5te0d0" path="res://Scenes/Prefabs/Towers/tower_heavy.tscn" id="3_kukki"]
 [ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="4_h1i30"]
 [ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower_baisc.tscn" id="5_h1i30"]
 
@@ -12,8 +13,10 @@ _data = {
 }
 point_count = 10
 
-[node name="Node2D" type="Node2D"]
+[node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
+enemyCount = 100
+enemyTimeInterval = 0.2
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_276sc")
@@ -21,6 +24,9 @@ curve = SubResource("Curve2D_276sc")
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="TowerBasic" parent="Towers" instance=ExtResource("2_n4a11")]
+position = Vector2(704, 832)
+
+[node name="TowerHeavy" parent="Towers" instance=ExtResource("3_kukki")]
 position = Vector2(256, 448)
 
 [node name="Bullets" type="Node2D" parent="."]

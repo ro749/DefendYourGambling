@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl7annbng7ngm"]
+[gd_scene load_steps=6 format=3 uid="uid://cl7annbng7ngm"]
 
 [ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_4hsau"]
 [ext_resource type="Texture2D" uid="uid://6ycrtqpum6qr" path="res://Assets/TowerBase.png" id="2_7jhwg"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7jhwg"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjawl"]
+radius = 192.0
 
 [node name="TowerBasic" instance=ExtResource("1_4hsau")]
 
@@ -22,3 +25,6 @@ texture = ExtResource("2_7jhwg")
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_fjawl")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_fjawl")

@@ -6,13 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_necoa"]
 radius = 8.0
 
-[node name="Bullet" type="Area2D"]
+[node name="BulletSingle" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_wm6av")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("1_8k71x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.75, 0.75)
 shape = SubResource("CircleShape2D_necoa")
