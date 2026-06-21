@@ -10,7 +10,7 @@ public partial class PreviewTower : Node2D
     public override void _Ready()
     {
         GlobalPosition = GetViewport().GetMousePosition();
-        path = GetTree().Root.GetNode<Path2D>("Node2D/Path2D");
+        path = GetTree().Root.GetNode<Path2D>("Map/Path2D");
     }
 
     public override void _Process(double delta)

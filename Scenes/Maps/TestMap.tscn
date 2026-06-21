@@ -16,7 +16,7 @@ point_count = 10
 [node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
 enemyCount = 100
-enemyTimeInterval = 0.2
+enemyTimeInterval = 0.5
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_276sc")
