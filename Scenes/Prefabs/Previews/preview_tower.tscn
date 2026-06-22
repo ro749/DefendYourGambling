@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw8hgvhgtydsq"]
+
+[ext_resource type="Script" uid="uid://bq5nntqdlkymo" path="res://Scripts/PreviewTower.cs" id="1_wl057"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3vij"]
+radius = 33.734257
+
+[node name="PreviewTowerBaisc" type="Node2D" node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("1_wl057")
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o3vij")

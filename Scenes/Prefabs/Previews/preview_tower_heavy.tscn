@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ft825ufce6tt"]
+
+[ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_dgh12"]
+[ext_resource type="Texture2D" uid="uid://bhc1y5iasihia" path="res://Assets/TowerTurret2.png" id="2_nddkb"]
+
+[node name="PreviewTowerBaisc" instance=ExtResource("1_dgh12")]
+towerType = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_nddkb")

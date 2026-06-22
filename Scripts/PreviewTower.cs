@@ -3,9 +3,9 @@ using System;
 
 public partial class PreviewTower : Node2D
 {
-    [Export] public PackedScene TowerScene;
     [Export] public Sprite2D sprite;
     [Export] public Area2D area;
+	[Export] public Data.Tower towerType;
     private Path2D path;
     public override void _Ready()
     {
@@ -34,10 +34,9 @@ public partial class PreviewTower : Node2D
         
         if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && !mb.Pressed)
         {
-            if (canPlace() && TowerScene.Instantiate() is Node2D towerInstance)
+            if (canPlace())
             {
-                towerInstance.GlobalPosition = GlobalPosition;
-                GetTree().Root.AddChild(towerInstance);
+                GetTree().Root.GetNode<TestLevel>("Map").CreateTower(towerType, GlobalPosition);
                 QueueFree();
             }
         }

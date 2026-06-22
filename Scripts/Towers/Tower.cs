@@ -16,9 +16,12 @@ public partial class Tower : Area2D
 	
 	[Export]
     public Data.TowerSeekFnc towerSeekFunction = Data.TowerSeekFnc.FURTHEST;
+
+	[Export] public bool debug = false;
 	
 	public override void _Process(double delta)
 	{
+		
 		if (_nearbyEnemies.Count == 0) return;
 		Enemy? selectedEnemy = Data.SelectEnemy(_nearbyEnemies, towerSeekFunction);
 		if (selectedEnemy == null) return;
