@@ -23,6 +23,8 @@ public partial class TestLevel : Node
                 towerNode.Shoot += _CreateBullet;
             }
         }
+
+        currentEnemyTime = enemyTimeInterval; // Start spawning immediately
     }
     
     public override void _Process(double delta)
@@ -36,8 +38,6 @@ public partial class TestLevel : Node
                 currentEnemyTime -= enemyTimeInterval;
                 
                 CreateEnemy(enemyScene);
-                
-                ++currentEnemyCount;
             }
         }
     }
@@ -54,15 +54,18 @@ public partial class TestLevel : Node
     
     public void CreateEnemy(PackedScene prefab)
     {
-        PathFollow2D pathFollow = new PathFollow2D();
-
         if (prefab.Instantiate() is Enemy enemyInstance)
         {
-            enemyInstance.Setup(pathFollow, 50, 100);
-            pathFollow.AddChild(enemyInstance);
-        }
+            PathFollow2D pathFollow = new PathFollow2D();
 
-        GetNode<Path2D>("Path2D").AddChild(pathFollow);
+            enemyInstance.Setup(pathFollow, 50, 100);
+            enemyInstance.Name = $"Enemy{currentEnemyCount}";
+            pathFollow.AddChild(enemyInstance);
+                
+            ++currentEnemyCount;
+
+            GetNode<Path2D>("Path2D").AddChild(pathFollow);
+        }
     }
     
     private void _CreateBullet(Vector2 pos, float direction, int bulletEnum)

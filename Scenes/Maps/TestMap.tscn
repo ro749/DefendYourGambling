@@ -1,34 +1,881 @@
 [gd_scene load_steps=10 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
-[ext_resource type="PackedScene" uid="uid://cl7annbng7ngm" path="res://Scenes/Prefabs/Towers/tower_basic.tscn" id="2_n4a11"]
 [ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="3_ekms1"]
-[ext_resource type="PackedScene" uid="uid://dw18mhg5te0d0" path="res://Scenes/Prefabs/Towers/tower_heavy.tscn" id="3_kukki"]
 [ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="4_h1i30"]
 [ext_resource type="PackedScene" uid="uid://dr77uwspjtd0n" path="res://Scenes/Prefabs/Previews/preview_tower_basic.tscn" id="6_j28jb"]
+[ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="7_j28jb"]
 [ext_resource type="Texture2D" uid="uid://bhc1y5iasihia" path="res://Assets/TowerTurret2.png" id="7_kxphi"]
+[ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="8_nd5sh"]
 [ext_resource type="PackedScene" uid="uid://ft825ufce6tt" path="res://Scenes/Prefabs/Previews/preview_tower_heavy.tscn" id="8_xj7ls"]
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 832, 960, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 384, 704, 0, 0, 0, 0, 384, 128, 0, 0, 0, 0, 1792, 128, 0, 0, 0, 0, 960, 384, 0, 0, 0, 0, 1216, 896, 0, 0, 0, 0, 1792, 896)
+"points": PackedVector2Array(0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 832, 960, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 384, 704, 0, 0, 0, 0, 384, 128, 0, 0, 0, 0, 1792, 128, 0, 0, 0, 0, 1792, 384, 0, 0, 0, 0, 1152, 384, 0, 0, 0, 0, 1152, 960, 0, 0, 0, 0, 1792, 960)
 }
-point_count = 10
+point_count = 11
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
+enemyCount = 100
+enemyTimeInterval = 0.2
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="Floor" type="Node2D" parent="TileMap"]
+
+[node name="CasinoFloor" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor2" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(48, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor3" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(80, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor4" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(112, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor5" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(144, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor6" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(176, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="CasinoFloor7" type="Sprite2D" parent="TileMap/Floor"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(208, 16)
+texture = ExtResource("7_j28jb")
+
+[node name="Path" type="Node2D" parent="TileMap"]
+
+[node name="CasinoPath" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath2" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 160)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath3" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 192)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath4" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 224)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath5" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 256)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath6" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 288)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath7" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 320)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath8" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 352)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath9" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath10" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 416)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath11" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 448)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath12" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 480)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath13" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 512)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath14" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 544)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath15" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 576)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath16" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 608)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath17" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 640)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath18" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 672)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath19" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath20" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 736)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath21" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 768)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath22" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 800)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath23" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 832)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath24" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 864)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath25" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 896)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath26" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 928)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath27" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(128, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath28" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(160, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath29" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(192, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath30" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(224, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath31" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(256, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath32" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(288, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath33" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(320, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath34" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(352, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath35" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath36" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(416, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath37" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(448, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath38" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(480, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath39" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(512, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath40" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(544, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath41" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(576, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath42" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(608, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath43" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(640, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath44" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(672, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath45" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(704, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath46" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(736, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath47" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(768, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath48" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(800, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath49" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath50" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 928)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath51" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 896)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath52" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 864)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath53" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 832)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath54" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 800)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath55" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 768)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath56" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 736)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath57" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath58" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(800, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath59" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(768, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath60" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(736, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath61" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(704, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath62" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(672, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath63" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(640, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath64" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(608, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath65" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(576, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath66" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(544, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath67" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(512, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath68" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(480, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath69" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(448, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath70" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(416, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath71" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath72" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 672)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath73" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 640)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath74" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 608)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath75" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 576)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath76" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 544)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath77" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 512)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath78" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 480)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath79" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 448)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath80" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 416)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath81" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath82" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 352)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath83" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 320)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath84" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 288)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath85" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 256)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath86" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 224)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath87" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 192)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath88" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 160)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath89" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(384, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath90" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(416, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath91" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(448, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath92" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(480, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath93" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(512, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath94" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(544, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath95" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(576, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath96" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(608, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath97" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(640, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath98" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(672, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath99" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(704, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath100" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(736, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath101" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(768, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath102" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(800, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath103" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(832, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath104" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(864, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath105" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(896, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath106" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(928, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath107" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(960, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath108" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(992, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath109" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1024, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath110" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1056, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath111" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1088, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath112" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1120, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath113" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath114" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1184, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath115" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1216, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath116" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1248, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath117" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1280, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath118" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1312, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath119" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1344, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath120" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1376, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath121" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1408, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath122" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1440, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath123" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1472, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath124" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1504, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath125" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1536, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath126" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1568, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath127" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1600, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath128" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1632, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath129" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1664, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath130" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1696, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath131" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1728, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath132" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1760, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath133" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath134" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 128)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath135" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 160)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath136" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 192)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath137" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 224)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath138" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 256)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath139" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 288)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath140" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 320)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath141" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 352)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath142" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath143" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath144" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1760, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath145" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1728, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath146" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1696, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath147" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1664, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath148" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1632, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath149" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1600, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath150" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1568, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath151" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1536, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath152" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1504, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath153" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1472, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath154" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1440, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath155" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1408, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath156" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1376, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath157" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1344, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath158" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1312, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath159" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1280, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath160" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1248, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath161" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1216, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath162" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1184, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath163" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 384)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath164" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 416)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath165" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 448)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath166" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 480)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath167" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 512)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath168" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 544)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath169" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 576)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath170" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 608)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath171" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 640)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath172" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 672)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath173" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 704)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath174" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 736)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath175" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 768)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath176" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 800)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath177" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 832)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath178" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 864)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath179" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 896)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath180" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 928)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath181" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1152, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath182" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1184, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath183" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1216, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath184" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1248, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath185" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1280, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath186" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1312, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath187" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1344, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath188" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1376, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath189" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1408, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath190" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1440, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath191" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1472, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath192" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1504, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath193" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1536, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath194" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1568, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath195" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1600, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath196" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1632, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath197" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1664, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath198" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1696, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath199" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1728, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath200" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1760, 960)
+texture = ExtResource("8_nd5sh")
+
+[node name="CasinoPath201" type="Sprite2D" parent="TileMap/Path"]
+position = Vector2(1792, 960)
+texture = ExtResource("8_nd5sh")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_276sc")
 
 [node name="Towers" type="Node2D" parent="."]
-
-[node name="TowerBasic" parent="Towers" instance=ExtResource("2_n4a11")]
-position = Vector2(704, 832)
-
-[node name="TowerHeavy" parent="Towers" instance=ExtResource("3_kukki")]
-position = Vector2(256, 448)
-bulletType = 0
 
 [node name="Bullets" type="Node2D" parent="."]
 

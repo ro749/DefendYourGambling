@@ -44,9 +44,14 @@ public partial class Enemy : Area2D
 	{
 		if (area is Bullet bullet)
 		{
+			if (bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= Data.bulletStats[bullet.bulletEnum].maxPenetration)
+			{
+				GD.Print($"Bullet already hit this enemy {Name} or reached max penetration, ignoring.");
+				return; // This bullet has already hit max enemies, ignore it.
+			}
 			Health -= Data.bulletStats[bullet.bulletEnum].damage;
-			bullet.QueueFree();
-			
+			GD.Print($"Enemy {Name} hit! Remaining health: {Health}");
+			bullet.HitEnemy(this);
 			if (Health <= 0)
 			{
 				Die();
