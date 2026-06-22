@@ -9,5 +9,6 @@ public partial class TowerButton : TextureButton
     {
         _towerPreviewInstance = towerPreview.Instantiate<Node2D>();
         GetTree().Root.AddChild(_towerPreviewInstance);
+        QueueFree();
     }
 }

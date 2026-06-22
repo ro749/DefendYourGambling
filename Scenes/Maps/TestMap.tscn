@@ -1,13 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=6 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
-[ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="3_ekms1"]
-[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="4_h1i30"]
-[ext_resource type="PackedScene" uid="uid://dr77uwspjtd0n" path="res://Scenes/Prefabs/Previews/preview_tower_basic.tscn" id="6_j28jb"]
+[ext_resource type="PackedScene" uid="uid://m43hp7ilnxuk" path="res://Scenes/Prefabs/panel.tscn" id="4_tf83h"]
 [ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="7_j28jb"]
-[ext_resource type="Texture2D" uid="uid://bhc1y5iasihia" path="res://Assets/TowerTurret2.png" id="7_kxphi"]
 [ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="8_nd5sh"]
-[ext_resource type="PackedScene" uid="uid://ft825ufce6tt" path="res://Scenes/Prefabs/Previews/preview_tower_heavy.tscn" id="8_xj7ls"]
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
@@ -881,29 +877,4 @@ curve = SubResource("Curve2D_276sc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(150, 64)
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(2, 2)
-
-[node name="SimpleTowerButton" type="TextureButton" parent="CanvasLayer/Panel/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_ekms1")
-script = ExtResource("4_h1i30")
-towerPreview = ExtResource("6_j28jb")
-
-[node name="HeavyTowerButton" type="TextureButton" parent="CanvasLayer/Panel/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("7_kxphi")
-script = ExtResource("4_h1i30")
-towerPreview = ExtResource("8_xj7ls")
-
-[connection signal="button_down" from="CanvasLayer/Panel/HBoxContainer/SimpleTowerButton" to="CanvasLayer/Panel/HBoxContainer/SimpleTowerButton" method="_on_button_down"]
-[connection signal="button_down" from="CanvasLayer/Panel/HBoxContainer/HeavyTowerButton" to="CanvasLayer/Panel/HBoxContainer/HeavyTowerButton" method="_on_button_down"]
+[node name="Panel" parent="CanvasLayer" instance=ExtResource("4_tf83h")]

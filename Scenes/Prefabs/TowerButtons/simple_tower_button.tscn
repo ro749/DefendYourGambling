@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://da11jlst5otdr"]
+
+[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="1_mr7e0"]
+[ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="1_tnati"]
+[ext_resource type="PackedScene" uid="uid://dr77uwspjtd0n" path="res://Scenes/Prefabs/Previews/preview_tower_basic.tscn" id="2_gfbxb"]
+
+[node name="SimpleTowerButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+texture_normal = ExtResource("1_tnati")
+script = ExtResource("1_mr7e0")
+towerPreview = ExtResource("2_gfbxb")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
