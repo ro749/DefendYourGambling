@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://cl7annbng7ngm"]
 
 [ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_4hsau"]
-[ext_resource type="Texture2D" uid="uid://6ycrtqpum6qr" path="res://Assets/TowerBase.png" id="2_7jhwg"]
-[ext_resource type="Texture2D" uid="uid://cs3odrj7lyvih" path="res://Assets/TowerTurret.png" id="3_fjawl"]
+[ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/BasicTowerBase.png" id="2_7jhwg"]
+[ext_resource type="Texture2D" uid="uid://dhlj0ma3gbamu" path="res://Assets/BasicTowerTurret.png" id="3_7jhwg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7jhwg"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jhwg"]
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjawl"]
 radius = 192.0
@@ -13,18 +13,21 @@ radius = 192.0
 [node name="TowerBasic" instance=ExtResource("1_4hsau")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("CircleShape2D_7jhwg")
+shape = SubResource("RectangleShape2D_7jhwg")
 
 [node name="Base" parent="." index="1"]
 texture_filter = 1
 position = Vector2(1.7881393e-07, 1.7881393e-07)
-scale = Vector2(2, 2)
+scale = Vector2(0.241, 0.241)
 texture = ExtResource("2_7jhwg")
 
 [node name="Turret" parent="." index="2"]
 texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("3_fjawl")
+
+[node name="Turret" parent="Turret" index="0"]
+position = Vector2(32, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_7jhwg")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_fjawl")

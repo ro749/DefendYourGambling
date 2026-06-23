@@ -6,11 +6,9 @@ public partial class PlayerState : Node
 {
     public int Gold { get; private set; } = 100;
     public int Lives { get; private set; } = 20;
-    public int CurrentWave { get; private set; } = 0;
 
     public event Action<int>? GoldChanged;
     public event Action<int>? LivesChanged;
-    public event Action<int>? WaveChanged;
 
     public bool SpendGold(int amount)
     {
@@ -41,20 +39,12 @@ public partial class PlayerState : Node
         }
     }
 
-    public void StartNextWave()
-    {
-        CurrentWave++;
-        WaveChanged?.Invoke(CurrentWave);
-    }
-
     public void Reset()
     {
         Gold = 100;
         Lives = 20;
-        CurrentWave = 0;
 
         GoldChanged?.Invoke(Gold);
         LivesChanged?.Invoke(Lives);
-        WaveChanged?.Invoke(CurrentWave);
     }
 }

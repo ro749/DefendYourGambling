@@ -5,7 +5,7 @@ public partial class PreviewTower : Node2D
 {
     [Export] public Sprite2D sprite;
     [Export] public Area2D area;
-	[Export] public Data.Tower towerType;
+	[Export] public Data.TowerType towerType;
     private Path2D path;
     public override void _Ready()
     {

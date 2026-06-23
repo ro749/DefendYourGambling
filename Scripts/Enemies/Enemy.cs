@@ -8,9 +8,11 @@ public partial class Enemy : Area2D
 
 	public PathFollow2D PathFollow{ get; private set; }
 
+	[Export]
 	private double _maxHealth = 50.0;
 	public double Health { get; private set; } = 50.0;
 	
+	[Export]
 	private double _moveSpeed = 100.0;
 	
 	private float _lastProgressRatio = 0.0f;
@@ -18,6 +20,7 @@ public partial class Enemy : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Health = _maxHealth;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,12 +35,10 @@ public partial class Enemy : Area2D
 		_lastProgressRatio = PathFollow.ProgressRatio;
 	}
 	
-	public void Setup(PathFollow2D newPathFollow, float newMaxHealth = 50, double newMoveSpeed = 100)
+	public void Setup(PathFollow2D newPathFollow)
 	{
 		PathFollow = newPathFollow;
-		_moveSpeed = newMoveSpeed;
-		_maxHealth = newMaxHealth;
-		Health = newMaxHealth;
+		Health = _maxHealth;
 	}
 
 	public void _OnAreaEntered(Area2D area)
@@ -46,11 +47,9 @@ public partial class Enemy : Area2D
 		{
 			if (bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= Data.bulletStats[bullet.bulletEnum].maxPenetration)
 			{
-				GD.Print($"Bullet already hit this enemy {Name} or reached max penetration, ignoring.");
 				return; // This bullet has already hit max enemies, ignore it.
 			}
 			Health -= Data.bulletStats[bullet.bulletEnum].damage;
-			GD.Print($"Enemy {Name} hit! Remaining health: {Health}");
 			bullet.HitEnemy(this);
 			if (Health <= 0)
 			{

@@ -9,7 +9,9 @@ script = ExtResource("1_p5clq")
 
 [node name="Base" type="Sprite2D" parent="."]
 
-[node name="Turret" type="Sprite2D" parent="."]
+[node name="Turret" type="Node2D" parent="."]
+
+[node name="Turret" type="Sprite2D" parent="Turret"]
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 collision_layer = 0

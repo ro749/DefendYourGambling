@@ -1,0 +1,28 @@
+[
+	{
+		"enemies": [
+			{
+				"count": 10,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 10,
+				"spawnInterval": 0.5,
+				"spawnDelay": 0,
+				"enemyType": "BASIC"
+			},
+			{
+				"count": 5,
+				"spawnInterval": 1.0,
+				"spawnDelay": 6.0,
+				"enemyType": "TANK"
+			}
+		]
+	}
+]

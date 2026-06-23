@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr3b0x6yspaaw"]
+
+[ext_resource type="PackedScene" uid="uid://pnnh7g1h2yb1" path="res://Scenes/Prefabs/Enemies/enemy.tscn" id="1_v5ntw"]
+[ext_resource type="Texture2D" uid="uid://ck6omc1p6l56a" path="res://Assets/token.png" id="2_l2u82"]
+
+[node name="EnemyBasic" instance=ExtResource("1_v5ntw")]
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5707964
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("2_l2u82")

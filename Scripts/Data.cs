@@ -17,22 +17,42 @@ public struct TowerStats
 #nullable enable
 public partial class Data : Node
 {
-	public enum Bullet { SINGLE, HEAVY };
+	public enum BulletType { SINGLE, HEAVY };
 
-	public enum Tower { BASIC, HEAVY };
+	public enum TowerType { BASIC, HEAVY, PIERCING,
+	                        MULTI_4, MULTI_8,
+							SNIPER, SNIPER_HEAVY,
+							EXPLOSIVE };
+
+	public enum EnemyType { BASIC, TANK, FAST, FLYING, BOSS };
 
 	public enum TowerSeekFnc { FURTHEST, STRONGEST, WEAKEST };
 	
-	public static Dictionary<Bullet, BulletStats> bulletStats = new Dictionary<Bullet, BulletStats>()
+	public static Dictionary<BulletType, BulletStats> bulletStats = new Dictionary<BulletType, BulletStats>()
 	{
-		{ Bullet.SINGLE, new BulletStats { damage = 20, maxPenetration = 1, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_single.tscn") } },
-		{ Bullet.HEAVY, new BulletStats { damage = 30, maxPenetration = 3, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_heavy.tscn") } }
+		{ BulletType.SINGLE, new BulletStats { damage = 20, maxPenetration = 1, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_single.tscn") } },
+		{ BulletType.HEAVY, new BulletStats { damage = 30, maxPenetration = 3, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_heavy.tscn") } },
 	};
 
-	public static Dictionary<Tower, TowerStats> towerStats = new Dictionary<Tower, TowerStats>()
+	public static Dictionary<TowerType, TowerStats> towerStats = new Dictionary<TowerType, TowerStats>()
 	{
-		{ Tower.BASIC, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_basic.tscn") } },
-		{ Tower.HEAVY, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_heavy.tscn") } }
+		{ TowerType.BASIC, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_basic.tscn") } },
+		{ TowerType.HEAVY, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_heavy.tscn") } },
+		{ TowerType.PIERCING, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_piercing.tscn") } },
+		{ TowerType.MULTI_4, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_multi_4.tscn") } },
+		{ TowerType.MULTI_8, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_multi_8.tscn") } },
+		{ TowerType.SNIPER, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_sniper.tscn") } },
+		{ TowerType.SNIPER_HEAVY, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_sniper_heavy.tscn") } },
+		{ TowerType.EXPLOSIVE, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_explosive.tscn") } },
+	};
+
+	public static Dictionary<EnemyType, PackedScene> enemyScenes = new Dictionary<EnemyType, PackedScene>()
+	{
+		{ EnemyType.BASIC, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_basic.tscn") },
+		{ EnemyType.TANK, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_tank.tscn") },
+		{ EnemyType.FAST, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_fast.tscn") },
+		{ EnemyType.FLYING, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_flying.tscn") },
+		{ EnemyType.BOSS, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_boss.tscn") },
 	};
 
 	public static Enemy? SelectEnemy(List<Enemy> enemies, TowerSeekFnc seekFnc)

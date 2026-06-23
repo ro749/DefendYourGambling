@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1n1v0lwnlfuj"]
+
+[ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
+[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="2_ruwid"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_cxitb")
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartGame" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 300.0
+offset_right = 1110.0
+offset_bottom = 400.0
+text = "Start Game"
+
+[node name="Options" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 420.0
+offset_right = 1110.0
+offset_bottom = 520.0
+text = "Options"
+
+[node name="CloseGame" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 810.0
+offset_top = 540.0
+offset_right = 1110.0
+offset_bottom = 640.0
+text = "Close Game"
+
+[node name="FadeTransition" parent="." instance=ExtResource("2_ruwid")]
+visible = false
+
+[connection signal="pressed" from="ButtonManager/StartGame" to="." method="_onStartGamePressed"]
+[connection signal="pressed" from="ButtonManager/Options" to="." method="_onOptionsPressed"]
+[connection signal="pressed" from="ButtonManager/CloseGame" to="." method="_onCloseGamePressed"]

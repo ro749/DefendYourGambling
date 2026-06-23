@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=7 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="PackedScene" uid="uid://m43hp7ilnxuk" path="res://Scenes/Prefabs/panel.tscn" id="4_tf83h"]
+[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="5_h1i30"]
 [ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="7_j28jb"]
 [ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="8_nd5sh"]
 
@@ -13,8 +14,6 @@ point_count = 11
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
-enemyCount = 100
-enemyTimeInterval = 0.2
 
 [node name="TileMap" type="Node2D" parent="."]
 
@@ -878,3 +877,8 @@ curve = SubResource("Curve2D_276sc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel" parent="CanvasLayer" instance=ExtResource("4_tf83h")]
+
+[node name="WaveTimer" type="Timer" parent="."]
+
+[node name="FadeTransition" parent="." instance=ExtResource("5_h1i30")]
+visible = false
