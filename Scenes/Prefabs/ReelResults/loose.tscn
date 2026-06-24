@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ij5f70mxx38t"]
+
+[ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_voipj"]
+
+[node name="Loose" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_voipj")
+result = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "L"

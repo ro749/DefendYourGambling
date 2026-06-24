@@ -6,16 +6,20 @@ public partial class Reel : Node
 {
     [Export] public Array<PackedScene> TowerButtons;
 
-    public TowerButton SelectedTowerButton;
+    public ReelResult SelectedTowerButton;
 
-    public void roll()
+    public int roll()
     {
-        if(GodotObject.IsInstanceValid(SelectedTowerButton))
+        if(IsInstanceValid(SelectedTowerButton))
         {
             SelectedTowerButton.QueueFree();
         }
-        SelectedTowerButton = (TowerButton)TowerButtons[(int)(GD.Randi() % TowerButtons.Count)].Instantiate();
+        
+        var v = (int)(GD.Randi() % TowerButtons.Count);
+        
+        SelectedTowerButton = (ReelResult)TowerButtons[v].Instantiate();
         AddChild(SelectedTowerButton);
+        return SelectedTowerButton.getResult();
     }
 
 }
