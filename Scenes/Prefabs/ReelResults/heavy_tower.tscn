@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://vlgn6jwnw4di"]
 
 [ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_7rj7n"]
-[ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/HeavyTowerBase.png" id="2_4n0we"]
+[ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="2_4n0we"]
 [ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="3_4n0we"]
 [ext_resource type="PackedScene" uid="uid://ft825ufce6tt" path="res://Scenes/Prefabs/Previews/preview_tower_heavy.tscn" id="4_xl4gx"]
 

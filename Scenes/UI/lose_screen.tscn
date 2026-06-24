@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx8x304erh4mv"]
+
+[ext_resource type="Script" uid="uid://dt5q2lv3cgger" path="res://Scripts/LoseScreen.cs" id="1_yu2df"]
+[ext_resource type="FontFile" uid="uid://7e11ih1qjei3" path="res://Assets/Fonts/CasinoShadow.ttf" id="2_pif53"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq5wo"]
+font = ExtResource("2_pif53")
+font_size = 128
+
+[node name="LoseScreen" type="CenterContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yu2df")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "You Lose"
+label_settings = SubResource("LabelSettings_mq5wo")
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Score: 0000"
+horizontal_alignment = 1
+
+[node name="Container2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_onMainMenuPressed"]

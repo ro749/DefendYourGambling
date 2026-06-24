@@ -39,7 +39,7 @@ public partial class SpinToWin : Button
                 }
                 break;
             case (int)TowerState.WIN_MONEY:
-                GetTree().Root.GetNode<PlayerState>("PlayerState").AddGold(1000);
+                GetTree().Root.GetNode<PlayerState>("PlayerState").AddMoney(1000);
                 break;
             case (int)TowerState.MORE_ENEMIES:
                 GD.Print("More Enemies");

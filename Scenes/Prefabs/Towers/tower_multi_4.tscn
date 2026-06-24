@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cicbhxfxhix1t"]
+
+[ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_1gmp1"]
+[ext_resource type="Texture2D" uid="uid://b2dnlj73sk3qm" path="res://Assets/Images/Towers/Multi4TowerBase.png" id="2_qlueb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_od38q"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gmp1"]
+radius = 96.0
+
+[node name="TowerMulti4" instance=ExtResource("1_1gmp1")]
+
+[node name="Base" parent="." index="0"]
+scale = Vector2(0.16216214, 0.2)
+texture = ExtResource("2_qlueb")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_od38q")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_1gmp1")

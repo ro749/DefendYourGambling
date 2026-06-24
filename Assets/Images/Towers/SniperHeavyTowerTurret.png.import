@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bir3ab14bvwhv"
-path="res://.godot/imported/HeavyTowerBase.png-fde5a4eee7f0520279d9404144b07ddd.ctex"
+uid="uid://c0w7y54ridspb"
+path="res://.godot/imported/SniperHeavyTowerTurret.png-82d415ae8f4b19c4688206463f877730.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HeavyTowerBase.png"
-dest_files=["res://.godot/imported/HeavyTowerBase.png-fde5a4eee7f0520279d9404144b07ddd.ctex"]
+source_file="res://Assets/Images/Towers/SniperHeavyTowerTurret.png"
+dest_files=["res://.godot/imported/SniperHeavyTowerTurret.png-82d415ae8f4b19c4688206463f877730.ctex"]
 
 [params]
 

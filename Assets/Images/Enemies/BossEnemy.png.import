@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bypa7u6ptlxj4"
-path="res://.godot/imported/BasicTowerBase.png-cf501e95eafabd9d383edd772eec276b.ctex"
+uid="uid://b0wo6nh6jej87"
+path="res://.godot/imported/BossEnemy.png-e93cb5623c09c58b4cb43f554f480230.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BasicTowerBase.png"
-dest_files=["res://.godot/imported/BasicTowerBase.png-cf501e95eafabd9d383edd772eec276b.ctex"]
+source_file="res://Assets/Images/Enemies/BossEnemy.png"
+dest_files=["res://.godot/imported/BossEnemy.png-e93cb5623c09c58b4cb43f554f480230.ctex"]
 
 [params]
 

@@ -1,44 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1n1v0lwnlfuj"]
+[gd_scene load_steps=5 format=3 uid="uid://b1n1v0lwnlfuj"]
 
 [ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="2_ruwid"]
+[ext_resource type="FontFile" uid="uid://7e11ih1qjei3" path="res://Assets/Fonts/CasinoShadow.ttf" id="3_hsqbg"]
 
-[node name="MainMenu" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_duwsb"]
+font = ExtResource("3_hsqbg")
+font_size = 128
+
+[node name="MainMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cxitb")
 
-[node name="ButtonManager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
 
-[node name="StartGame" type="Button" parent="ButtonManager"]
-layout_mode = 0
-offset_left = 810.0
-offset_top = 300.0
-offset_right = 1110.0
-offset_bottom = 400.0
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Lets Go TD!"
+label_settings = SubResource("LabelSettings_duwsb")
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="StartGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Start Game"
 
-[node name="Options" type="Button" parent="ButtonManager"]
-layout_mode = 0
-offset_left = 810.0
-offset_top = 420.0
-offset_right = 1110.0
-offset_bottom = 520.0
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Options"
 
-[node name="CloseGame" type="Button" parent="ButtonManager"]
-layout_mode = 0
-offset_left = 810.0
-offset_top = 540.0
-offset_right = 1110.0
-offset_bottom = 640.0
+[node name="Control3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CloseGame" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
 text = "Close Game"
 
 [node name="FadeTransition" parent="." instance=ExtResource("2_ruwid")]
 visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
 
-[connection signal="pressed" from="ButtonManager/StartGame" to="." method="_onStartGamePressed"]
-[connection signal="pressed" from="ButtonManager/Options" to="." method="_onOptionsPressed"]
-[connection signal="pressed" from="ButtonManager/CloseGame" to="." method="_onCloseGamePressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_onStartGamePressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_onOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/CloseGame" to="." method="_onCloseGamePressed"]

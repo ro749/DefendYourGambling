@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdjnvi4qy0cr3"]
+
+[ext_resource type="PackedScene" uid="uid://4gaxs83nxodc" path="res://Scenes/Prefabs/Towers/tower_parent.tscn" id="1_xp0n7"]
+[ext_resource type="Texture2D" uid="uid://cbmikt7t4pfwd" path="res://Assets/Images/Towers/SniperHeavyTowerBase.png" id="2_2p2cl"]
+[ext_resource type="Texture2D" uid="uid://c0w7y54ridspb" path="res://Assets/Images/Towers/SniperHeavyTowerTurret.png" id="3_r6adl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp0n7"]
+size = Vector2(64, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xp0n7"]
+radius = 1024.0
+
+[node name="TowerSniperHeavy" instance=ExtResource("1_xp0n7")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_xp0n7")
+
+[node name="Base" parent="." index="1"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_2p2cl")
+
+[node name="Turret" parent="Turret" index="0"]
+position = Vector2(48, 0)
+scale = Vector2(-0.15, -0.15)
+texture = ExtResource("3_r6adl")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
+shape = SubResource("CircleShape2D_xp0n7")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjsbhhp1yg3gu"]
+
+[ext_resource type="Script" uid="uid://cbmjky18ekpxd" path="res://Scripts/PauseScreen.cs" id="1_qngpd"]
+[ext_resource type="FontFile" uid="uid://7e11ih1qjei3" path="res://Assets/Fonts/CasinoShadow.ttf" id="2_yb6qg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq5wo"]
+font = ExtResource("2_yb6qg")
+font_size = 128
+
+[node name="PauseScreen" type="CenterContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qngpd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_mq5wo")
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+
+[node name="Container2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_onResumePressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_onMainMenuPressed"]

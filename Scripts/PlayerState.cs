@@ -4,47 +4,46 @@ using System;
 #nullable enable
 public partial class PlayerState : Node
 {
-    public int Gold { get; private set; } = 100;
+    public int Money { get; private set; } = 100;
     public int Lives { get; private set; } = 20;
 
-    public event Action<int>? GoldChanged;
+    public event Action<int>? MoneyChanged;
     public event Action<int>? LivesChanged;
 
-    public bool SpendGold(int amount)
+    public bool SpendMoney(int amount)
     {
-        if (Gold < amount)
+        if (Money < amount)
             return false;
 
-        Gold -= amount;
-        GoldChanged?.Invoke(Gold);
+        Money -= amount;
+        MoneyChanged?.Invoke(Money);
         return true;
     }
 
-    public void AddGold(int amount)
+    public void AddMoney(int amount)
     {
-        Gold += amount;
-        GoldChanged?.Invoke(Gold);
+        Money += amount;
+        MoneyChanged?.Invoke(Money);
+    }
+
+    public void SetMoney(int amount)
+    {
+        Money = amount;
+        MoneyChanged?.Invoke(Money);
     }
 
     public void LoseLife(int amount = 1)
     {
         Lives -= amount;
         LivesChanged?.Invoke(Lives);
-
-        GD.Print($"Player lost a life. Remaining lives: {Lives}"); // Debug print
-
-        if (Lives <= 0)
-        {
-            GD.Print("Game Over");
-        }
     }
 
     public void Reset()
     {
-        Gold = 100;
+        Money = 100;
         Lives = 20;
 
-        GoldChanged?.Invoke(Gold);
+        MoneyChanged?.Invoke(Money);
         LivesChanged?.Invoke(Lives);
     }
 }

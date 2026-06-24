@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctc1ylplkj422"]
+
+[ext_resource type="Script" uid="uid://bu1htugng5t52" path="res://Scripts/GameInterface.cs" id="1_bdgme"]
+[ext_resource type="Texture2D" uid="uid://b78ab0aqe2xyk" path="res://Assets/Images/UI/LifeIcon.png" id="1_evw3v"]
+[ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="1_nb44b"]
+[ext_resource type="Texture2D" uid="uid://dluptftu0b8hb" path="res://Assets/Images/UI/MoneyIcon.png" id="3_h34i5"]
+[ext_resource type="Texture2D" uid="uid://cygufxs83qe08" path="res://Assets/Images/Enemies/BasicEnemy.png" id="5_bdgme"]
+
+[node name="GameInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bdgme")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_nb44b")
+
+[node name="LifesIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1776.0
+offset_top = 56.0
+offset_right = 1907.0
+offset_bottom = 237.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_evw3v")
+
+[node name="LifesLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1688.0
+offset_top = 64.0
+offset_right = 1832.0
+offset_bottom = 208.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 128
+text = "99"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MoneyIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1584.0
+offset_top = 56.0
+offset_right = 1760.0
+offset_bottom = 237.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_h34i5")
+
+[node name="MoneyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1432.0
+offset_top = 64.0
+offset_right = 1720.0
+offset_bottom = 208.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 128
+text = "9999"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WaveIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1336.0
+offset_top = 56.0
+offset_right = 1554.0
+offset_bottom = 264.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_bdgme")
+
+[node name="WaveLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 64.0
+offset_right = 1488.0
+offset_bottom = 194.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 128
+text = "99/99"
+horizontal_alignment = 2
+vertical_alignment = 1

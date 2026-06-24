@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr77uwspjtd0n"]
 
 [ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_qfqwj"]
-[ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/BasicTowerBase.png" id="2_kiuke"]
+[ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/Images/Towers/BasicTowerBase.png" id="2_kiuke"]
 
 [node name="PreviewTowerBaisc" instance=ExtResource("1_qfqwj")]
 

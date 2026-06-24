@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq060qpotl7wx"
-path="res://.godot/imported/HeavyTowerTurret.png-7e68513709d6c4c6ea0944c14aa88866.ctex"
+uid="uid://cygufxs83qe08"
+path="res://.godot/imported/BasicEnemy.png-acd262a0a3a762b6c9e09160de4d03e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HeavyTowerTurret.png"
-dest_files=["res://.godot/imported/HeavyTowerTurret.png-7e68513709d6c4c6ea0944c14aa88866.ctex"]
+source_file="res://Assets/Images/Enemies/BasicEnemy.png"
+dest_files=["res://.godot/imported/BasicEnemy.png-acd262a0a3a762b6c9e09160de4d03e6.ctex"]
 
 [params]
 

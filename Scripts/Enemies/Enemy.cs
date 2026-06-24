@@ -1,12 +1,15 @@
 using Godot;
 using System;
 
+#nullable enable
 public partial class Enemy : Area2D
 {
 	[Signal]
 	public delegate void DiedEventHandler(Enemy enemy);
 
-	public PathFollow2D PathFollow{ get; private set; }
+	public Action<int>? DoDamageToPlayer;
+
+	public PathFollow2D? PathFollow{ get; private set; }
 
 	[Export]
 	private double _maxHealth = 50.0;
@@ -14,6 +17,12 @@ public partial class Enemy : Area2D
 	
 	[Export]
 	private double _moveSpeed = 100.0;
+
+	[Export]
+	private int _damage = 1;
+
+	[Export]
+	public int Reward { get; private set; } = 10;
 	
 	private float _lastProgressRatio = 0.0f;
 	
@@ -26,10 +35,12 @@ public partial class Enemy : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (PathFollow == null) return;
+
 		PathFollow.Progress += (float)(_moveSpeed * delta);
 		if (PathFollow.ProgressRatio < _lastProgressRatio)  
 		{
-			DoDamageToPlayer();
+			DoDamageToPlayer?.Invoke(_damage);
 			QueueFree();
 		}
 		_lastProgressRatio = PathFollow.ProgressRatio;
@@ -62,11 +73,5 @@ public partial class Enemy : Area2D
 	{
 		EmitSignal("Died", this);
 		QueueFree();
-	}
-
-	public void DoDamageToPlayer()
-	{
-		PlayerState playerState = GetNode<PlayerState>("/root/PlayerState");
-		playerState.LoseLife();
 	}
 }

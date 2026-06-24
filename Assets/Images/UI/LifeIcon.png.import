@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhlj0ma3gbamu"
-path="res://.godot/imported/BasicTowerTurret.png-d860001a55f347a79f6c8a7019ff20f4.ctex"
+uid="uid://b78ab0aqe2xyk"
+path="res://.godot/imported/LifeIcon.png-9e1b47d0a2f4a40f1da9bbdc84616151.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BasicTowerTurret.png"
-dest_files=["res://.godot/imported/BasicTowerTurret.png-d860001a55f347a79f6c8a7019ff20f4.ctex"]
+source_file="res://Assets/Images/UI/LifeIcon.png"
+dest_files=["res://.godot/imported/LifeIcon.png-9e1b47d0a2f4a40f1da9bbdc84616151.ctex"]
 
 [params]
 

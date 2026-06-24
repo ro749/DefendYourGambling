@@ -38,12 +38,12 @@ public partial class Data : Node
 	{
 		{ TowerType.BASIC, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_basic.tscn") } },
 		{ TowerType.HEAVY, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_heavy.tscn") } },
-		{ TowerType.PIERCING, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_piercing.tscn") } },
+		//{ TowerType.PIERCING, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_piercing.tscn") } },
 		{ TowerType.MULTI_4, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_multi_4.tscn") } },
 		{ TowerType.MULTI_8, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_multi_8.tscn") } },
 		{ TowerType.SNIPER, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_sniper.tscn") } },
 		{ TowerType.SNIPER_HEAVY, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_sniper_heavy.tscn") } },
-		{ TowerType.EXPLOSIVE, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_explosive.tscn") } },
+		//{ TowerType.EXPLOSIVE, new TowerStats { towerScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Towers/tower_explosive.tscn") } },
 	};
 
 	public static Dictionary<EnemyType, PackedScene> enemyScenes = new Dictionary<EnemyType, PackedScene>()
@@ -51,7 +51,7 @@ public partial class Data : Node
 		{ EnemyType.BASIC, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_basic.tscn") },
 		{ EnemyType.TANK, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_tank.tscn") },
 		{ EnemyType.FAST, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_fast.tscn") },
-		{ EnemyType.FLYING, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_flying.tscn") },
+		//{ EnemyType.FLYING, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_flying.tscn") },
 		{ EnemyType.BOSS, GD.Load<PackedScene>("res://Scenes/Prefabs/Enemies/enemy_boss.tscn") },
 	};
 

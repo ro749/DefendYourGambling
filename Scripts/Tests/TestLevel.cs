@@ -6,6 +6,13 @@ public partial class TestLevel : Node
     ColorRect fadeTransition;
     AnimationPlayer fadeAnimation;
 
+    PlayerState playerState;
+
+    VictoryScreen victoryScreen;
+    LoseScreen loseScreen;
+    PauseScreen pauseScreen;
+    GameInterface gameInterface;
+
     private WaveManager waveManager;
     private Timer waveTimer;
 
@@ -25,15 +32,68 @@ public partial class TestLevel : Node
             }
         };
 
+        victoryScreen = GetNode<VictoryScreen>("CanvasLayer/Menus/VictoryScreen");
+        loseScreen = GetNode<LoseScreen>("CanvasLayer/Menus/LoseScreen");
+        pauseScreen = GetNode<PauseScreen>("CanvasLayer/Menus/PauseScreen");
+        pauseScreen.OnResume += OnResume;
+        gameInterface = GetNode<GameInterface>("CanvasLayer/GameInterface");
 
-        waveManager = GetNode<WaveManager>("/root/WaveManager");
+        waveManager = GetNode<WaveManager>("WaveManager");
         waveManager.CreateEnemy += CreateEnemy;
+        waveManager.WaveChanged += (int currentWave) =>
+        {
+            gameInterface.ChangeWaveText(currentWave + 1, waveManager.TotalWaves);
+        };
 
         waveTimer = GetNode<Timer>("WaveTimer");
         waveTimer.Timeout += _onWaveTimerTimeout;
 
+        playerState = GetNode<PlayerState>("PlayerState");
+        playerState.LivesChanged += (int currentLives) =>
+        {
+            gameInterface.ChangeLifesText(currentLives);
+            if (currentLives <= 0)
+            {
+                GetTree().Paused = true;
+                loseScreen.Show();
+            }
+        };
+        playerState.MoneyChanged += (int currentMoney) =>
+        {
+            gameInterface.ChangeMoneyText(currentMoney);
+        };
+        gameInterface.ChangeLifesText(playerState.Lives);
+        playerState.SetMoney(1000);
+
         // Start the first wave for testing
         waveManager.StartWaves();
+    }
+
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustPressed("pause") && GetTree().Paused)
+        {
+            GetTree().Paused = false;
+            pauseScreen.Hide();
+        }
+        else if (Input.IsActionJustPressed("pause") && !GetTree().Paused)
+        {
+            GetTree().Paused = true;
+            pauseScreen.Show();
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        pauseScreen.OnResume -= OnResume;
+        waveManager.CreateEnemy -= CreateEnemy;
+        waveTimer.Timeout -= _onWaveTimerTimeout;
+    }
+
+    private void OnResume()
+    {
+        GetTree().Paused = false;
+        pauseScreen.Hide();
     }
 
     public void _onWaveTimerTimeout()
@@ -69,17 +129,21 @@ public partial class TestLevel : Node
 
                 enemyInstance.Setup(pathFollow);
                 pathFollow.AddChild(enemyInstance);
+                pathFollow.Rotates = false;
 
                 GetNode<Path2D>("Path2D").AddChild(pathFollow);
 
                 activeEnemies.Add(enemyInstance);
                 enemyInstance.Died += _onEnemyDied;
+                enemyInstance.DoDamageToPlayer += DamagePlayer;
             }
         }
     }
 
     private void _onEnemyDied(Enemy enemy)
     {
+        playerState.AddMoney(enemy.Reward);
+
         if (activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy);
@@ -89,12 +153,12 @@ public partial class TestLevel : Node
         {
             if (waveManager.HasMoreWaves())
             {
-                GD.Print("All enemies defeated. Starting next wave in 5 seconds.");
                 waveTimer.Start(5.0f); // Start a timer to trigger the next wave after 2 seconds
             }
             else
             {
-                GD.Print("All enemies defeated. No more waves to start.");
+                GetTree().Paused = true;
+                victoryScreen.Show();
             }
         }
     }
@@ -106,5 +170,10 @@ public partial class TestLevel : Node
             bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, (Data.BulletType)bulletEnum);
             GetNode<Node2D>("Bullets").AddChild(bulletInstance);
         }
+    }
+
+    private void DamagePlayer(int damage)
+    {
+        playerState.LoseLife(damage);
     }
 }

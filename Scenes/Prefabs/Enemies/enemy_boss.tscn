@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://buqjosov53255"]
+
+[ext_resource type="PackedScene" uid="uid://pnnh7g1h2yb1" path="res://Scenes/Prefabs/Enemies/enemy.tscn" id="1_c5bd8"]
+[ext_resource type="Texture2D" uid="uid://b0wo6nh6jej87" path="res://Assets/Images/Enemies/BossEnemy.png" id="2_c2kqw"]
+
+[node name="EnemyBoss" instance=ExtResource("1_c5bd8")]
+_maxHealth = 1000.0
+_moveSpeed = 50.0
+_damage = 100
+Reward = 1000
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-14, -26)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_c2kqw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2(80, 80)

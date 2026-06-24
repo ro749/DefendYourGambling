@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0vpq771pqjhm"]
+
+[ext_resource type="PackedScene" uid="uid://pnnh7g1h2yb1" path="res://Scenes/Prefabs/Enemies/enemy.tscn" id="1_xsg1w"]
+[ext_resource type="Texture2D" uid="uid://um1ypv2edww8" path="res://Assets/Images/Enemies/FastEnemy.png" id="2_qjodd"]
+
+[node name="EnemyFast" instance=ExtResource("1_xsg1w")]
+_maxHealth = 40.0
+_moveSpeed = 150.0
+Reward = 25
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_qjodd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+scale = Vector2(30, 30)
