@@ -1,12 +1,17 @@
 using Godot;
-using Godot.Collections;
 using System;
+using Godot.Collections;
 
 public partial class Reel : Node
 {
-    [Export] public Array<PackedScene> TowerButtons;
-
     public ReelResult SelectedTowerButton;
+
+    private Array<PackedScene> TowerButtons;
+
+    public override void _Ready()
+    {
+        TowerButtons = GetParent<SlotMachine>().TowerButtons;
+    }
 
     public int roll()
     {

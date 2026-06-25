@@ -18,6 +18,9 @@ public partial class Tower : Area2D
     
     [Export]
     public Data.TowerSeekFnc towerSeekFunction = Data.TowerSeekFnc.FURTHEST;
+    
+    [Export]
+    public Data.TowerType towerType = Data.TowerType.NONE;
 
     [Export] public bool debug = false;
 

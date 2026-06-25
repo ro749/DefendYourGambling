@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://7uojn6q34e2a"]
+
+[ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_emdvi"]
+[ext_resource type="Texture2D" uid="uid://csa46d5ss83ab" path="res://Assets/Images/Towers/SniperTowerBase.png" id="2_emdvi"]
+[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="3_2fi2p"]
+[ext_resource type="PackedScene" uid="uid://v7smm7idust5" path="res://Scenes/Prefabs/Previews/preview_sniper_basic.tscn" id="4_expvx"]
+
+[node name="SniperBasicResult" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_emdvi")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.083, 0.083)
+texture_normal = ExtResource("2_emdvi")
+script = ExtResource("3_2fi2p")
+towerPreview = ExtResource("4_expvx")
+
+[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]

@@ -11,7 +11,7 @@ sprite = NodePath("Sprite2D")
 area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+scale = Vector2(0.167, 0.167)
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -22,7 +22,7 @@ public partial class Data : Node
 	public enum TowerType { BASIC, HEAVY, PIERCING,
 	                        MULTI_4, MULTI_8,
 							SNIPER, SNIPER_HEAVY,
-							EXPLOSIVE };
+							EXPLOSIVE, NONE };
 
 	public enum EnemyType { BASIC, TANK, FAST, FLYING, BOSS };
 
@@ -100,5 +100,20 @@ public partial class Data : Node
 		}
 
 		return selectedEnemy;
+	}
+
+	public static TowerType SpawnOver(TowerType towerType)
+	{
+		switch (towerType)
+		{
+			case TowerType.HEAVY:
+				return TowerType.BASIC;
+			case TowerType.MULTI_8:
+				return TowerType.MULTI_4;
+			case TowerType.SNIPER_HEAVY:
+				return TowerType.SNIPER;
+			default:
+				return TowerType.NONE;
+		}
 	}
 }

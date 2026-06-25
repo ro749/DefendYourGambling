@@ -12,6 +12,7 @@ radius = 256.12497
 
 [node name="TowerHeavy" instance=ExtResource("1_dvdqr")]
 bulletType = 1
+towerType = 1
 
 [node name="Base" parent="." index="0"]
 scale = Vector2(0.23, 0.23)

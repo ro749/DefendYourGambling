@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="3_js7cd"]
 [ext_resource type="PackedScene" uid="uid://dr77uwspjtd0n" path="res://Scenes/Prefabs/Previews/preview_tower_basic.tscn" id="4_fmdcg"]
 
-[node name="BasicTower" type="Control"]
+[node name="BasicTowerResult" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_sw6yl")

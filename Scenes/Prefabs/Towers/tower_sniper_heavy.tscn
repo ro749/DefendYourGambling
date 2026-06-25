@@ -11,13 +11,14 @@ size = Vector2(64, 96)
 radius = 1024.0
 
 [node name="TowerSniperHeavy" instance=ExtResource("1_xp0n7")]
+towerType = 6
 
-[node name="CollisionShape2D" parent="." index="0"]
-shape = SubResource("RectangleShape2D_xp0n7")
-
-[node name="Base" parent="." index="1"]
+[node name="Base" parent="." index="0"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_2p2cl")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_xp0n7")
 
 [node name="Turret" parent="Turret" index="0"]
 position = Vector2(48, 0)

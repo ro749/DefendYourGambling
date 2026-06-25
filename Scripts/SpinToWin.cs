@@ -12,8 +12,15 @@ public partial class SpinToWin : Button
     [Export] public BoxContainer slotMachine;
 
     private bool IsFirstRoll = true;
+    private PlayerState playerState;
+    public override void _Ready()
+    {
+        playerState = GetTree().Root.GetNode<PlayerState>("Map/PlayerState");
+    }
     public void _on_pressed()
     {
+        if (playerState.SpendMoney(167) == false)
+            return;
         var v = 1;
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
             v *= child.roll();
@@ -39,7 +46,7 @@ public partial class SpinToWin : Button
                 }
                 break;
             case (int)TowerState.WIN_MONEY:
-                GetTree().Root.GetNode<PlayerState>("PlayerState").AddMoney(1000);
+                playerState.AddMoney(1000);
                 break;
             case (int)TowerState.MORE_ENEMIES:
                 GD.Print("More Enemies");
