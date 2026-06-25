@@ -21,3 +21,6 @@ shape = SubResource("CircleShape2D_od38q")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_1gmp1")
+
+[node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
+scale = Vector2(192, 192)

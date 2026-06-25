@@ -32,3 +32,7 @@ texture = ExtResource("3_7jhwg")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_fjawl")
+
+[node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
+rotation = 0.0030629074
+scale = Vector2(384, 384)

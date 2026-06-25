@@ -14,7 +14,6 @@ public partial class GameInterface : Control
         _waveLable = GetNode<Label>("WaveLabel");
     }
 
-
     public void ChangeMoneyText(int money)
     {
         _moneyLable.Text = Mathf.Max(money, 0).ToString();

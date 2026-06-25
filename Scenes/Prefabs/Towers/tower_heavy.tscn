@@ -19,6 +19,7 @@ scale = Vector2(0.23, 0.23)
 texture = ExtResource("2_u4ri3")
 
 [node name="CollisionShape2D" parent="." index="1"]
+rotation = -0.00031525007
 shape = SubResource("RectangleShape2D_u4ri3")
 
 [node name="Turret" parent="Turret" index="0"]
@@ -28,6 +29,9 @@ texture = ExtResource("3_dvdqr")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_ymoln")
+
+[node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
+scale = Vector2(512, 512)
 
 [node name="ReloadTimer" parent="." index="4"]
 wait_time = 0.5

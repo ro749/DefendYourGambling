@@ -21,6 +21,7 @@ _data = {
 point_count = 11
 
 [node name="Map" type="Node2D"]
+rotation = -0.0021944386
 script = ExtResource("1_1wegt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -341,12 +342,18 @@ curve = SubResource("Curve2D_276sc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameInterface" parent="CanvasLayer" instance=ExtResource("9_v3b54")]
+rotation = -0.0021944386
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" parent="CanvasLayer" instance=ExtResource("4_tf83h")]
+rotation = -0.0021944386
+metadata/_edit_use_anchors_ = true
 
 [node name="Menus" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
+rotation = -0.0021944386
+metadata/_edit_use_anchors_ = true
 
 [node name="VictoryScreen" parent="CanvasLayer/Menus" instance=ExtResource("5_j28jb")]
 visible = false
@@ -365,14 +372,18 @@ offset_left = 1424.0
 offset_top = 672.0
 offset_right = 2261.0
 offset_bottom = 1512.0
+rotation = -0.0021944386
 scale = Vector2(0.45, 0.45)
+metadata/_edit_use_anchors_ = true
 
 [node name="TowerSlotMachine2" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
 offset_left = 1424.0
 offset_top = 248.0
 offset_right = 2261.0
 offset_bottom = 1088.0
+rotation = -0.0021944386
 scale = Vector2(0.45, 0.45)
+metadata/_edit_use_anchors_ = true
 
 [node name="WaveTimer" type="Timer" parent="."]
 

@@ -27,3 +27,6 @@ texture = ExtResource("3_r6adl")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_xp0n7")
+
+[node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
+scale = Vector2(2048, 2048)

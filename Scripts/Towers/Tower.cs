@@ -9,7 +9,12 @@ public partial class Tower : Area2D
     [Signal]
     public delegate void ShootEventHandler(Vector2 pos, float direction, int bulletEnum);
 
-    private Node2D turretNode;
+    public Action<Tower>? Clicked;
+    public bool Selected;
+
+    private Node2D? DetectionVisibleArea;
+
+    private Node2D? turretNode;
     
     protected List<Enemy> _nearbyEnemies = new List<Enemy>();
 
@@ -34,13 +39,15 @@ public partial class Tower : Area2D
         if (_nearbyEnemies.Count == 0) return;
         Enemy? selectedEnemy = Data.SelectEnemy(_nearbyEnemies, towerSeekFunction);
         if (selectedEnemy == null) return;
-        turretNode.LookAt(selectedEnemy.GlobalPosition);
+        turretNode?.LookAt(selectedEnemy.GlobalPosition);
+
+        DetectionVisibleArea = GetNode<Node2D>("EnemyDetectionArea/VisibleArea");
     }
     
     private void _OnReloadTimerTimeout()
     {
         if (_nearbyEnemies.Count == 0) return;
-        EmitSignal("Shoot", GlobalPosition, turretNode.Rotation, (int)bulletType);
+        EmitSignal("Shoot", GlobalPosition, turretNode?.Rotation?? 0.0f, (int)bulletType);
     }
 
     private void _onEnemyDetectionAreaAreaEntered(Area2D area)
@@ -63,5 +70,24 @@ public partial class Tower : Area2D
         {
             _nearbyEnemies.Remove(enemy);
         }
+    }
+
+    private void _onInputEvent(Node viewport, InputEvent inputEvent, int shapeIndex)
+    {
+        if (inputEvent is InputEventMouseButton mouseEvent)
+        {
+            if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
+            {
+                Clicked?.Invoke(this);
+            }
+        }
+    }
+
+    public void SetSelected(bool selected)
+    {
+        Selected = selected;
+
+        if (selected) DetectionVisibleArea?.Show();
+        else DetectionVisibleArea?.Hide();
     }
 }
