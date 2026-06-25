@@ -24,19 +24,19 @@ texture = ExtResource("1_nb44b")
 
 [node name="LifesIcon" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1776.0
-offset_top = 56.0
-offset_right = 1907.0
-offset_bottom = 237.0
+offset_left = 1824.0
+offset_top = 32.0
+offset_right = 1955.0
+offset_bottom = 213.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_evw3v")
 
 [node name="LifesLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1688.0
-offset_top = 64.0
-offset_right = 1832.0
-offset_bottom = 208.0
+offset_left = 1736.0
+offset_top = 40.0
+offset_right = 1880.0
+offset_bottom = 184.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 128
 text = "99"
@@ -45,19 +45,19 @@ vertical_alignment = 1
 
 [node name="MoneyIcon" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1584.0
-offset_top = 56.0
-offset_right = 1760.0
-offset_bottom = 237.0
+offset_left = 1816.0
+offset_top = 136.0
+offset_right = 1992.0
+offset_bottom = 317.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_h34i5")
 
 [node name="MoneyLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1432.0
-offset_top = 64.0
-offset_right = 1720.0
-offset_bottom = 208.0
+offset_left = 1664.0
+offset_top = 144.0
+offset_right = 1952.0
+offset_bottom = 288.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 128
 text = "9999"
@@ -66,19 +66,19 @@ vertical_alignment = 1
 
 [node name="WaveIcon" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1336.0
-offset_top = 56.0
-offset_right = 1554.0
-offset_bottom = 264.0
+offset_left = 1640.0
+offset_top = 32.0
+offset_right = 1858.0
+offset_bottom = 240.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_bdgme")
 
 [node name="WaveLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1168.0
-offset_top = 64.0
-offset_right = 1488.0
-offset_bottom = 194.0
+offset_left = 1472.0
+offset_top = 40.0
+offset_right = 1792.0
+offset_bottom = 170.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 128
 text = "99/99"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=15 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
@@ -12,10 +12,11 @@
 [ext_resource type="Script" uid="uid://dl1bxdjhlbxjp" path="res://Scripts/PlayerState.cs" id="9_nd5sh"]
 [ext_resource type="PackedScene" uid="uid://ctc1ylplkj422" path="res://Scenes/UI/game_interface.tscn" id="9_v3b54"]
 [ext_resource type="Script" uid="uid://cve012pe3krt3" path="res://Scripts/WaveManager.cs" id="10_r4ehd"]
+[ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 832, 960, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 384, 704, 0, 0, 0, 0, 384, 192, 0, 0, 0, 0, 1792, 192, 0, 0, 0, 0, 1792, 384, 0, 0, 0, 0, 1152, 384, 0, 0, 0, 0, 1152, 960, 0, 0, 0, 0, 1792, 960)
+"points": PackedVector2Array(0, 0, 0, 0, 128, 96, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 832, 960, 0, 0, 0, 0, 832, 704, 0, 0, 0, 0, 384, 704, 0, 0, 0, 0, 384, 128, 0, 0, 0, 0, 1280, 128, 0, 0, 0, 0, 1280, 384, 0, 0, 0, 0, 1024, 384, 0, 0, 0, 0, 1024, 960, 0, 0, 0, 0, 1344, 960)
 }
 point_count = 11
 
@@ -23,7 +24,8 @@ point_count = 11
 script = ExtResource("1_1wegt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(960, 544)
+position = Vector2(700, 541.99994)
+scale = Vector2(0.7291667, 1)
 texture = ExtResource("2_r4ehd")
 
 [node name="TileMap" type="Node2D" parent="."]
@@ -886,6 +888,20 @@ layout_mode = 2
 [node name="PauseScreen" parent="CanvasLayer/Menus" instance=ExtResource("5_kukki")]
 visible = false
 layout_mode = 2
+
+[node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
+offset_left = 1424.0
+offset_top = 672.0
+offset_right = 2261.0
+offset_bottom = 1512.0
+scale = Vector2(0.45, 0.45)
+
+[node name="TowerSlotMachine2" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
+offset_left = 1424.0
+offset_top = 248.0
+offset_right = 2261.0
+offset_bottom = 1088.0
+scale = Vector2(0.45, 0.45)
 
 [node name="WaveTimer" type="Timer" parent="."]
 
