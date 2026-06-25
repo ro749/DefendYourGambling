@@ -3,9 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_dgh12"]
 [ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="2_nddkb"]
 
-[node name="PreviewTowerBaisc" instance=ExtResource("1_dgh12")]
+[node name="PreviewTowerHeavy" instance=ExtResource("1_dgh12")]
 towerType = 1
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.167, 0.167)
 texture = ExtResource("2_nddkb")

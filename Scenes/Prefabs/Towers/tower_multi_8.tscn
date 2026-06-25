@@ -10,6 +10,7 @@ radius = 32.0
 radius = 128.0
 
 [node name="TowerMulti8" instance=ExtResource("1_mxkea")]
+towerType = 4
 
 [node name="Base" parent="." index="0"]
 scale = Vector2(0.16216214, 0.2)

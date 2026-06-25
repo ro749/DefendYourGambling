@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://x2c3os8ogkm7"]
+
+[ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_lt787"]
+[ext_resource type="Texture2D" uid="uid://cbmikt7t4pfwd" path="res://Assets/Images/Towers/SniperHeavyTowerBase.png" id="2_aj4kq"]
+
+[node name="PreviewSniperHeavy" instance=ExtResource("1_lt787")]
+towerType = 6
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("2_aj4kq")

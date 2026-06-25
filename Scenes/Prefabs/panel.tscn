@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://m43hp7ilnxuk"]
+[gd_scene load_steps=6 format=3 uid="uid://m43hp7ilnxuk"]
 
+[ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="1_ib4yc"]
 [ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="1_v2dk3"]
-[ext_resource type="PackedScene" uid="uid://r248dw53iwe" path="res://Scenes/Prefabs/ReelResults/basic_tower.tscn" id="2_jncab"]
-[ext_resource type="PackedScene" uid="uid://vlgn6jwnw4di" path="res://Scenes/Prefabs/ReelResults/heavy_tower.tscn" id="3_d43nk"]
+[ext_resource type="PackedScene" uid="uid://vlgn6jwnw4di" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="3_81cem"]
 [ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_fk81o"]
-[ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="4_l1dhq"]
-[ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="5_rcn76"]
-[ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="6_w28p3"]
+[ext_resource type="PackedScene" uid="uid://r248dw53iwe" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="5_n1nly"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(150, 64)
@@ -19,24 +17,23 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+script = ExtResource("1_ib4yc")
+TowerButtons = Array[PackedScene]([ExtResource("5_n1nly"), ExtResource("3_81cem")])
 
 [node name="Container" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("1_v2dk3")
-TowerButtons = Array[PackedScene]([ExtResource("2_jncab"), ExtResource("3_d43nk"), ExtResource("4_l1dhq"), ExtResource("5_rcn76"), ExtResource("6_w28p3")])
 
 [node name="Container2" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("1_v2dk3")
-TowerButtons = Array[PackedScene]([ExtResource("2_jncab"), ExtResource("3_d43nk"), ExtResource("4_l1dhq"), ExtResource("5_rcn76"), ExtResource("6_w28p3")])
 
 [node name="Container3" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("1_v2dk3")
-TowerButtons = Array[PackedScene]([ExtResource("2_jncab"), ExtResource("3_d43nk"), ExtResource("4_l1dhq"), ExtResource("5_rcn76"), ExtResource("6_w28p3")])
 
 [node name="SpinToWin" type="Button" parent="." node_paths=PackedStringArray("slotMachine")]
 layout_mode = 0

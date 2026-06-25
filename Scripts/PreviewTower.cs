@@ -22,7 +22,21 @@ public partial class PreviewTower : Node2D
     public bool canPlace()
     {
         var closest = path.Curve.GetClosestPoint(GlobalPosition);
-        return GlobalPosition.DistanceSquaredTo(closest) > 1296 && area.GetOverlappingAreas().Count == 0;
+        var not_in_path = GlobalPosition.DistanceSquaredTo(closest) > 1296;
+        if (!not_in_path) return false;
+        var spawnOver = Data.SpawnOver(towerType);
+        if(spawnOver == Data.TowerType.NONE)
+        {
+            return area.GetOverlappingAreas().Count == 0;
+        }
+        foreach(var area in area.GetOverlappingAreas())
+        {
+            if(area is Tower tower && tower.towerType == spawnOver)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public override void _Input(InputEvent @event)
@@ -36,9 +50,27 @@ public partial class PreviewTower : Node2D
         {
             if (canPlace())
             {
-                GetTree().Root.GetNode<TestLevel>("Map").CreateTower(towerType, GlobalPosition);
-                QueueFree();
+                Place();
             }
         }
+    }
+
+    public void Place()
+    {
+        var spawnOver = Data.SpawnOver(towerType);
+        if(spawnOver == Data.TowerType.NONE)
+        {
+            GetTree().Root.GetNode<TestLevel>("Map").CreateTower(towerType, GlobalPosition);
+        }
+        foreach(var area in area.GetOverlappingAreas())
+        {
+            if(area is Tower tower && tower.towerType == spawnOver)
+            {
+                GetTree().Root.GetNode<TestLevel>("Map").CreateTower(towerType, tower.GlobalPosition);
+                tower.QueueFree();
+                break;
+            }
+        }
+        QueueFree();
     }
 }

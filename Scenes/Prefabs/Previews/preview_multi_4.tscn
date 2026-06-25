@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxca0vnlhhf"]
+
+[ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_vhpvg"]
+[ext_resource type="Texture2D" uid="uid://b2dnlj73sk3qm" path="res://Assets/Images/Towers/Multi4TowerBase.png" id="2_06yoc"]
+
+[node name="PreviewMulti4" instance=ExtResource("1_vhpvg")]
+towerType = 3
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("2_06yoc")

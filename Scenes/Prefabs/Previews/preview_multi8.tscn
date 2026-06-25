@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://elsymppiysim"]
+
+[ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_qaha6"]
+[ext_resource type="Texture2D" uid="uid://cieo553df8ml1" path="res://Assets/Images/Towers/Multi8TowerBase.png" id="2_ict8r"]
+
+[node name="PreviewMulti8" instance=ExtResource("1_qaha6")]
+towerType = 4
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.083, 0.083)
+texture = ExtResource("2_ict8r")

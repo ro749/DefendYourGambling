@@ -10,6 +10,7 @@ radius = 32.0
 radius = 96.0
 
 [node name="TowerMulti4" instance=ExtResource("1_1gmp1")]
+towerType = 3
 
 [node name="Base" parent="." index="0"]
 scale = Vector2(0.16216214, 0.2)

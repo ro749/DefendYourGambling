@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bua4adxgsbx2u"]
+
+[ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_vo6wj"]
+[ext_resource type="Texture2D" uid="uid://b2dnlj73sk3qm" path="res://Assets/Images/Towers/Multi4TowerBase.png" id="2_xtdux"]
+[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="3_84f64"]
+[ext_resource type="PackedScene" uid="uid://drxca0vnlhhf" path="res://Scenes/Prefabs/Previews/preview_multi_4.tscn" id="4_1ku3c"]
+
+[node name="Multi4Result" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vo6wj")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.083, 0.083)
+texture_normal = ExtResource("2_xtdux")
+script = ExtResource("3_84f64")
+towerPreview = ExtResource("4_1ku3c")
+
+[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]
