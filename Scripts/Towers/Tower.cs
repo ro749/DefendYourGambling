@@ -13,6 +13,7 @@ public partial class Tower : Area2D
     public bool Selected;
 
     private Node2D? DetectionVisibleArea;
+    private ColorRect? SelectedMenu;
 
     private Node2D? turretNode;
     
@@ -32,6 +33,7 @@ public partial class Tower : Area2D
     public override void _Ready()
     {
         turretNode = GetNode<Node2D>("Turret");
+        SelectedMenu = GetNode<ColorRect>("SelectedMenu");
     }
     
     public override void _Process(double delta)
@@ -87,7 +89,13 @@ public partial class Tower : Area2D
     {
         Selected = selected;
 
-        if (selected) DetectionVisibleArea?.Show();
-        else DetectionVisibleArea?.Hide();
+        if (selected) {
+            DetectionVisibleArea?.Show();
+            SelectedMenu?.Show();
+        }
+        else {
+            DetectionVisibleArea?.Hide();
+            SelectedMenu?.Hide();
+        }
     }
 }

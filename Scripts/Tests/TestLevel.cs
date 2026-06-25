@@ -122,11 +122,11 @@ public partial class TestLevel : Node
 
     private void _TowerSelected(Tower tower)
     {
-        Node2D towersParent = GetNode<Node2D>("/root/Map/Towers");
+        Node2D towersParent = GetNode<Node2D>("Towers");
         Godot.Collections.Array<Node> foundNodes = towersParent.GetChildren();
         foreach (Node node in foundNodes)
         {
-            if (node is Tower towerNode)
+            if (node is Tower towerNode && towerNode != tower)
             {
                 towerNode.SetSelected(false);
             }

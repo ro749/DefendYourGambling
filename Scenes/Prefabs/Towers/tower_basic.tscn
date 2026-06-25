@@ -36,3 +36,9 @@ shape = SubResource("CircleShape2D_fjawl")
 [node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
 rotation = 0.0030629074
 scale = Vector2(384, 384)
+
+[node name="SelectedMenu" parent="." index="5"]
+offset_left = -44.0
+offset_top = -104.0
+offset_right = 44.0
+offset_bottom = -40.0
