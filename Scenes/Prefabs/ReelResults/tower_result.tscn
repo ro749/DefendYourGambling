@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://r248dw53iwe"]
+
+[ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_2cs0v"]
+[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="2_i0mv7"]
+
+[node name="TowerResult" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.333, 0.333)
+script = ExtResource("1_2cs0v")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -123.0
+offset_right = 133.0
+offset_bottom = 123.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_i0mv7")
+
+[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]

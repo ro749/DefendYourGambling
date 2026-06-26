@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="1_v2dk3"]
 [ext_resource type="PackedScene" uid="uid://vlgn6jwnw4di" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="3_81cem"]
 [ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_fk81o"]
-[ext_resource type="PackedScene" uid="uid://r248dw53iwe" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="5_n1nly"]
+[ext_resource type="PackedScene" uid="uid://r248dw53iwe" path="res://Scenes/Prefabs/ReelResults/tower_result.tscn" id="5_n1nly"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(150, 64)

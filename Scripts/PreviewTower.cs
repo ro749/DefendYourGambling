@@ -7,6 +7,8 @@ public partial class PreviewTower : Node2D
     [Export] public Area2D area;
 	[Export] public Data.TowerType towerType;
     private Path2D path;
+
+    public TowerButton towerButton;
     public override void _Ready()
     {
         GlobalPosition = GetViewport().GetMousePosition();
@@ -52,6 +54,11 @@ public partial class PreviewTower : Node2D
             {
                 Place();
             }
+            else
+            {
+                towerButton.Modulate = new Color(1, 1, 1, 1f);
+            }
+            QueueFree();
         }
     }
 
@@ -71,6 +78,6 @@ public partial class PreviewTower : Node2D
                 break;
             }
         }
-        QueueFree();
+        towerButton.QueueFree();
     }
 }

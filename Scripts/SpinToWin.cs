@@ -1,7 +1,8 @@
 using Godot;
 using System;
 using System.Linq;
-public partial class SpinToWin : Button
+//fixed
+public partial class SpinToWin : TextureButton
 {
     public enum TowerState
     {

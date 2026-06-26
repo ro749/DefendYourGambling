@@ -9,3 +9,6 @@ towerType = 3
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.083, 0.083)
 texture = ExtResource("2_06yoc")
+
+[node name="Node2D" parent="." index="2"]
+Radius = 96.0

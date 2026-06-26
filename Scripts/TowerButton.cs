@@ -4,11 +4,13 @@ using System;
 public partial class TowerButton : TextureButton
 {
     [Export] public PackedScene towerPreview;
-    private Node2D _towerPreviewInstance;
+    private PreviewTower _towerPreviewInstance;
     public void _on_button_down()
     {
-        _towerPreviewInstance = towerPreview.Instantiate<Node2D>();
+        _towerPreviewInstance = towerPreview.Instantiate<PreviewTower>();
         GetTree().Root.AddChild(_towerPreviewInstance);
-        QueueFree();
+        Modulate = new Color(1, 1, 1, 0f);
+        _towerPreviewInstance.towerButton = this;
+        //QueueFree();
     }
 }

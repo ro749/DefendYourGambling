@@ -1,22 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://vlgn6jwnw4di"]
+[gd_scene load_steps=4 format=3 uid="uid://b4t2w330ari5o"]
 
-[ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_7rj7n"]
+[ext_resource type="PackedScene" uid="uid://r248dw53iwe" path="res://Scenes/Prefabs/ReelResults/tower_result.tscn" id="1_i3w0g"]
 [ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="2_4n0we"]
-[ext_resource type="Script" uid="uid://bbup0go1ovyaa" path="res://Scripts/TowerButton.cs" id="3_4n0we"]
 [ext_resource type="PackedScene" uid="uid://ft825ufce6tt" path="res://Scenes/Prefabs/Previews/preview_tower_heavy.tscn" id="4_xl4gx"]
 
-[node name="HeavyTowerResult" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_7rj7n")
+[node name="HeavyTowerResult" instance=ExtResource("1_i3w0g")]
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.167, 0.167)
+[node name="TextureButton" parent="." index="0"]
 texture_normal = ExtResource("2_4n0we")
-script = ExtResource("3_4n0we")
 towerPreview = ExtResource("4_xl4gx")
-
-[connection signal="button_down" from="TextureButton" to="TextureButton" method="_on_button_down"]

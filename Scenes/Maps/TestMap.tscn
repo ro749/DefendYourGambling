@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=14 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
-[ext_resource type="PackedScene" uid="uid://m43hp7ilnxuk" path="res://Scenes/Prefabs/panel.tscn" id="4_tf83h"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="5_h1i30"]
 [ext_resource type="PackedScene" uid="uid://3p10dff762oj" path="res://Scenes/UI/victory_screen.tscn" id="5_j28jb"]
 [ext_resource type="PackedScene" uid="uid://cjsbhhp1yg3gu" path="res://Scenes/UI/pause_screen.tscn" id="5_kukki"]
@@ -341,8 +340,6 @@ curve = SubResource("Curve2D_276sc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameInterface" parent="CanvasLayer" instance=ExtResource("9_v3b54")]
-
-[node name="Panel" parent="CanvasLayer" instance=ExtResource("4_tf83h")]
 
 [node name="Menus" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 40.0

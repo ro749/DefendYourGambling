@@ -1,8 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://1y6gy11c0w3p"]
+[gd_scene load_steps=16 format=3 uid="uid://1y6gy11c0w3p"]
 
 [ext_resource type="Texture2D" uid="uid://dsjdtqe01s0vx" path="res://Assets/Images/UI/TowerMachineBase.png" id="1_gonk0"]
 [ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="2_5a7ln"]
 [ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_p2isk"]
+[ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_p2isk"]
+[ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="5_7v8bt"]
+[ext_resource type="PackedScene" uid="uid://b6q5vy6p6n4to" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="6_dgawg"]
+[ext_resource type="PackedScene" uid="uid://b4t2w330ari5o" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="7_1ucto"]
+[ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="8_gs4bg"]
+[ext_resource type="PackedScene" uid="uid://ccik0wxs2ivya" path="res://Scenes/Prefabs/ReelResults/multi_4_result.tscn" id="8_lgi34"]
+[ext_resource type="PackedScene" uid="uid://ckyuknndxxm78" path="res://Scenes/Prefabs/ReelResults/multi_8_result.tscn" id="9_7vfxc"]
+[ext_resource type="PackedScene" uid="uid://8u0y82bd6vmk" path="res://Scenes/Prefabs/ReelResults/sinper_result.tscn" id="10_h81tp"]
+[ext_resource type="PackedScene" uid="uid://2jhl3eswnob0" path="res://Scenes/Prefabs/ReelResults/sniper_heavy_result.tscn" id="11_sljhw"]
+
+[sub_resource type="Animation" id="Animation_01hbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.80808747]
+}
 
 [sub_resource type="Animation" id="Animation_70iir"]
 resource_name = "pull_lever"
@@ -19,20 +55,17 @@ tracks/0/keys = {
 "update": 0,
 "values": [128.0, 576.0, 128.0]
 }
-
-[sub_resource type="Animation" id="Animation_01hbv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [128.0]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.80808747, 0.80808747, -0.80808747]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhs2e"]
@@ -45,17 +78,73 @@ _data = {
 texture = ExtResource("1_gonk0")
 script = ExtResource("2_p2isk")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="TextureButton" type="TextureButton" parent="." node_paths=PackedStringArray("slotMachine")]
 layout_mode = 0
 offset_left = 864.0
 offset_top = 128.0
 offset_right = 1078.0
-offset_bottom = 316.00177
+offset_bottom = 316.0018
 texture_normal = ExtResource("2_5a7ln")
+script = ExtResource("4_p2isk")
+slotMachine = NodePath("../SlotMachine")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_bhs2e")
 }
 
+[node name="Control" type="Control" parent="."]
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 761.0
+offset_top = 440.0
+offset_right = 801.0
+offset_bottom = 480.0
+rotation = -0.80808747
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 278.20227
+offset_bottom = 17.0
+color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+
+[node name="SlotMachine" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 55.985
+offset_top = 551.76
+offset_right = 652.0
+offset_bottom = 680.0
+script = ExtResource("5_7v8bt")
+Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw")])
+Probabilities = Array[int]([2, 1, 2, 1, 2, 1])
+
+[node name="Container" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("8_gs4bg")
+
+[node name="Container2" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("8_gs4bg")
+
+[node name="Container3" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("8_gs4bg")
+
+[node name="Container4" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("8_gs4bg")
+
+[node name="Container5" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("8_gs4bg")
+
 [connection signal="pressed" from="TextureButton" to="." method="_onTextureButtonPressed"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
