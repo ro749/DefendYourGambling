@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://1y6gy11c0w3p"]
+[gd_scene load_steps=19 format=3 uid="uid://1y6gy11c0w3p"]
 
 [ext_resource type="Texture2D" uid="uid://dsjdtqe01s0vx" path="res://Assets/Images/UI/TowerMachineBase.png" id="1_gonk0"]
 [ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="2_5a7ln"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ckyuknndxxm78" path="res://Scenes/Prefabs/ReelResults/multi_8_result.tscn" id="9_7vfxc"]
 [ext_resource type="PackedScene" uid="uid://8u0y82bd6vmk" path="res://Scenes/Prefabs/ReelResults/sinper_result.tscn" id="10_h81tp"]
 [ext_resource type="PackedScene" uid="uid://2jhl3eswnob0" path="res://Scenes/Prefabs/ReelResults/sniper_heavy_result.tscn" id="11_sljhw"]
+[ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="12_sljhw"]
+[ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="13_tt0ev"]
+[ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="14_kq454"]
 
 [sub_resource type="Animation" id="Animation_01hbv"]
 length = 0.001
@@ -118,8 +121,8 @@ offset_top = 551.76
 offset_right = 652.0
 offset_bottom = 680.0
 script = ExtResource("5_7v8bt")
-Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw")])
-Probabilities = Array[int]([2, 1, 2, 1, 2, 1])
+Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw"), ExtResource("12_sljhw"), ExtResource("13_tt0ev"), ExtResource("14_kq454")])
+Probabilities = Array[int]([2, 1, 2, 1, 2, 1, 4, 4, 4])
 
 [node name="Container" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)

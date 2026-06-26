@@ -1,16 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjrf815xo42o1"]
+[gd_scene load_steps=3 format=3 uid="uid://bjrf815xo42o1"]
 
 [ext_resource type="Script" uid="uid://d74th2tbsmlo" path="res://Scripts/ReelResult.cs" id="1_7te53"]
+[ext_resource type="Texture2D" uid="uid://dae8xcxlvqk3" path="res://Assets/Images/Results/moneyRoulletteIcon.png" id="2_d82gi"]
 
 [node name="Jackpot" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_7te53")
 result = 5
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(2, 2)
-text = "J"
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -117.0
+offset_right = 62.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d82gi")
