@@ -116,7 +116,22 @@ public partial class TestLevel : Node
             towerInstance.GlobalPosition = position;
             GetNode<Node2D>("Towers").AddChild(towerInstance);
             towerInstance.Shoot += _CreateBullet;
+            towerInstance.Clicked += _TowerSelected;
         }
+    }
+
+    private void _TowerSelected(Tower tower)
+    {
+        Node2D towersParent = GetNode<Node2D>("Towers");
+        Godot.Collections.Array<Node> foundNodes = towersParent.GetChildren();
+        foreach (Node node in foundNodes)
+        {
+            if (node is Tower towerNode && towerNode != tower)
+            {
+                towerNode.SetSelected(false);
+            }
+        }
+        tower.SetSelected(!tower.Selected);
     }
     
     public void CreateEnemy(Data.EnemyType enemyEnum)

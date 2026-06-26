@@ -31,6 +31,7 @@ public partial class PreviewTower : Node2D
         {
             return area.GetOverlappingAreas().Count == 0;
         }
+
         foreach(var area in area.GetOverlappingAreas())
         {
             if(area is Tower tower && tower.towerType == spawnOver)

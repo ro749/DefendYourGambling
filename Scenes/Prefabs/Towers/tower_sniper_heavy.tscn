@@ -27,3 +27,12 @@ texture = ExtResource("3_r6adl")
 
 [node name="CollisionShape2D" parent="EnemyDetectionArea" index="0"]
 shape = SubResource("CircleShape2D_xp0n7")
+
+[node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
+scale = Vector2(2048, 2048)
+
+[node name="SelectedMenu" parent="." index="5"]
+offset_left = -44.0
+offset_top = -120.0
+offset_right = 44.0
+offset_bottom = -56.0
