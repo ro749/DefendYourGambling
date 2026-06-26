@@ -26,7 +26,7 @@ public partial class Data : Node
 
 	public enum EnemyType { BASIC, TANK, FAST, FLYING, BOSS };
 
-	public enum TowerSeekFnc { FURTHEST, STRONGEST, WEAKEST };
+	public enum TowerSeekFnc { NONE, FURTHEST, STRONGEST, WEAKEST };
 	
 	public static Dictionary<BulletType, BulletStats> bulletStats = new Dictionary<BulletType, BulletStats>()
 	{
@@ -66,7 +66,7 @@ public partial class Data : Node
 				float maxProgress = -1f;
 				foreach (var enemy in enemies)
 				{
-					if (enemy.PathFollow.Progress > maxProgress)
+					if (enemy.PathFollow?.Progress > maxProgress)
 					{
 						maxProgress = enemy.PathFollow.Progress;
 						selectedEnemy = enemy;

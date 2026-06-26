@@ -7,7 +7,7 @@ public partial class Enemy : Area2D
 	[Signal]
 	public delegate void DiedEventHandler(Enemy enemy);
 
-	public Action<int>? DoDamageToPlayer;
+	public Action<Enemy, int>? DoDamageToPlayer;
 
 	public PathFollow2D? PathFollow{ get; private set; }
 
@@ -40,7 +40,7 @@ public partial class Enemy : Area2D
 		PathFollow.Progress += (float)(_moveSpeed * delta);
 		if (PathFollow.ProgressRatio < _lastProgressRatio)  
 		{
-			DoDamageToPlayer?.Invoke(_damage);
+			DoDamageToPlayer?.Invoke(this, _damage);
 			QueueFree();
 		}
 		_lastProgressRatio = PathFollow.ProgressRatio;
@@ -56,7 +56,7 @@ public partial class Enemy : Area2D
 	{
 		if (area is Bullet bullet)
 		{
-			if (bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= Data.bulletStats[bullet.bulletEnum].maxPenetration)
+			if (Health <= 0 || bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= Data.bulletStats[bullet.bulletEnum].maxPenetration)
 			{
 				return; // This bullet has already hit max enemies, ignore it.
 			}

@@ -7,9 +7,14 @@
 radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3nvx"]
-radius = 128.0
+radius = 192.0
 
 [node name="TowerMulti8" instance=ExtResource("1_mxkea")]
+bulletsCount = 8
+bulletsAngle = 45.0
+bulletsAngleOffset = 22.5
+bulletSpeed = 500.0
+towerSeekFunction = 0
 towerType = 4
 
 [node name="Base" parent="." index="0"]
@@ -23,7 +28,7 @@ shape = SubResource("CircleShape2D_wmm5e")
 shape = SubResource("CircleShape2D_c3nvx")
 
 [node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
-scale = Vector2(256, 256)
+scale = Vector2(384, 384)
 
 [node name="SelectedMenu" parent="." index="5"]
 offset_left = -44.0

@@ -29,10 +29,11 @@ public partial class Bullet : Area2D
         }
     }
 
-    public void Setup(Vector2 pos, float direction, Data.BulletType bulletEnum)
+    public void Setup(Vector2 pos, float direction, float newSpeed, Data.BulletType bulletEnum)
     {
         GlobalPosition = pos;
         _direction = Vector2.FromAngle(direction);
+        _speed = newSpeed;
         this.bulletEnum = bulletEnum;
     }
 

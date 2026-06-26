@@ -64,4 +64,4 @@ texture_hover = ExtResource("3_3403j")
 [connection signal="mouse_entered" from="." to="." method="_onMouseEntered"]
 [connection signal="area_entered" from="EnemyDetectionArea" to="." method="_onEnemyDetectionAreaAreaEntered"]
 [connection signal="area_exited" from="EnemyDetectionArea" to="." method="_onEnemyDetectionAreaAreaExited"]
-[connection signal="timeout" from="ReloadTimer" to="." method="_OnReloadTimerTimeout"]
+[connection signal="pressed" from="SelectedMenu/SellButton" to="." method="_onSellButtonPressed"]

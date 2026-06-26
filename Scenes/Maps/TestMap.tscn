@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=15 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dl1bxdjhlbxjp" path="res://Scripts/PlayerState.cs" id="9_nd5sh"]
 [ext_resource type="PackedScene" uid="uid://ctc1ylplkj422" path="res://Scenes/UI/game_interface.tscn" id="9_v3b54"]
 [ext_resource type="Script" uid="uid://cve012pe3krt3" path="res://Scripts/WaveManager.cs" id="10_r4ehd"]
+[ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="10_snl3g"]
 [ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
@@ -369,12 +370,14 @@ offset_left = 1424.0
 offset_top = 248.0
 offset_right = 2261.0
 offset_bottom = 1088.0
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.45, 0.456)
+texture = ExtResource("10_snl3g")
+
+[node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("5_h1i30")]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
 
 [node name="WaveTimer" type="Timer" parent="."]
-
-[node name="FadeTransition" parent="." instance=ExtResource("5_h1i30")]
-visible = false
 
 [node name="PlayerState" type="Node2D" parent="."]
 script = ExtResource("9_nd5sh")

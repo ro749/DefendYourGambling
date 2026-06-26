@@ -11,6 +11,7 @@ size = Vector2(64, 96)
 radius = 768.0
 
 [node name="TowerSniper" instance=ExtResource("1_hdp0i")]
+bulletSpeed = 2500.0
 towerType = 5
 
 [node name="Base" parent="." index="0"]

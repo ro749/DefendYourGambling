@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://3p10dff762oj"]
+[gd_scene load_steps=5 format=3 uid="uid://3p10dff762oj"]
 
 [ext_resource type="Script" uid="uid://dxgyq5rjo6bx8" path="res://Scripts/VictoryScreen.cs" id="1_mq5wo"]
 [ext_resource type="FontFile" uid="uid://7e11ih1qjei3" path="res://Assets/Fonts/CasinoShadow.ttf" id="1_wb3u5"]
+[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="3_84oix"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mq5wo"]
 font = ExtResource("1_wb3u5")
@@ -49,6 +50,11 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
+
+[node name="FadeTransition" parent="." instance=ExtResource("3_84oix")]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/InfiniteMode" to="." method="_onInfiniteModePressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_onMainMenuPressed"]

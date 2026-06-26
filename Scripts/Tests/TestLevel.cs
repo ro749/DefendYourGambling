@@ -20,8 +20,8 @@ public partial class TestLevel : Node
 
     public override void _Ready()
     {
-        fadeTransition = GetNode<ColorRect>("FadeTransition");
-        fadeAnimation = GetNode<AnimationPlayer>("FadeTransition/AnimationPlayer");
+        fadeTransition = GetNode<ColorRect>("CanvasLayer/FadeTransition");
+        fadeAnimation = GetNode<AnimationPlayer>("CanvasLayer/FadeTransition/AnimationPlayer");
         fadeTransition.Show();
         fadeAnimation.Play("fade_out");
         fadeAnimation.AnimationFinished += (StringName animName) =>
@@ -116,7 +116,8 @@ public partial class TestLevel : Node
             towerInstance.GlobalPosition = position;
             GetNode<Node2D>("Towers").AddChild(towerInstance);
             towerInstance.Shoot += _CreateBullet;
-            towerInstance.Clicked += _TowerSelected;
+            towerInstance.OnClicked += _TowerSelected;
+            towerInstance.OnSelled += _TowerSelled;
         }
     }
 
@@ -133,7 +134,13 @@ public partial class TestLevel : Node
         }
         tower.SetSelected(!tower.Selected);
     }
-    
+
+    private void _TowerSelled(Tower tower)
+    {
+        playerState.AddMoney(tower.SellValue);
+        tower.QueueFree();
+    }
+
     public void CreateEnemy(Data.EnemyType enemyEnum)
     {
         if (Data.enemyScenes.TryGetValue(enemyEnum, out var prefab))
@@ -150,7 +157,7 @@ public partial class TestLevel : Node
 
                 activeEnemies.Add(enemyInstance);
                 enemyInstance.Died += _onEnemyDied;
-                enemyInstance.DoDamageToPlayer += DamagePlayer;
+                enemyInstance.DoDamageToPlayer += EnemyDamagePlayer;
             }
         }
     }
@@ -164,6 +171,38 @@ public partial class TestLevel : Node
             activeEnemies.Remove(enemy);
         }
 
+        CheckForNewWave();
+    }
+    
+    private void _CreateBullet(Vector2 pos, float direction, float speed, int bulletEnum)
+    {
+        if (Data.bulletStats.TryGetValue((Data.BulletType)bulletEnum, out var bulletStats) && bulletStats.bulletScene.Instantiate() is Bullet bulletInstance)
+        {
+            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, speed, (Data.BulletType)bulletEnum);
+            GetNode<Node2D>("Bullets").AddChild(bulletInstance);
+        }
+    }
+
+    private void EnemyDamagePlayer(Enemy enemy, int damage)
+    {
+        DamagePlayer(damage);
+
+        if (activeEnemies.Contains(enemy))
+        {
+            activeEnemies.Remove(enemy);
+        }
+
+        if (playerState.Lives <= 0) return;
+
+        CheckForNewWave();
+    }
+    private void DamagePlayer(int damage)
+    {
+        playerState.LoseLife(damage);
+    }
+
+    private void CheckForNewWave()
+    {
         if (activeEnemies.Count == 0 && waveManager.IsWaveActive == false)
         {
             if (waveManager.HasMoreWaves())
@@ -176,19 +215,5 @@ public partial class TestLevel : Node
                 victoryScreen.Show();
             }
         }
-    }
-    
-    private void _CreateBullet(Vector2 pos, float direction, int bulletEnum)
-    {
-        if (Data.bulletStats.TryGetValue((Data.BulletType)bulletEnum, out var bulletStats) && bulletStats.bulletScene.Instantiate() is Bullet bulletInstance)
-        {
-            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, (Data.BulletType)bulletEnum);
-            GetNode<Node2D>("Bullets").AddChild(bulletInstance);
-        }
-    }
-
-    private void DamagePlayer(int damage)
-    {
-        playerState.LoseLife(damage);
     }
 }

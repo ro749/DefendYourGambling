@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1n1v0lwnlfuj"]
+[gd_scene load_steps=6 format=3 uid="uid://b1n1v0lwnlfuj"]
 
 [ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="2_ruwid"]
+[ext_resource type="Texture2D" uid="uid://c0pycmpjsyh5" path="res://Assets/Images/UI/title.png" id="3_duwsb"]
 [ext_resource type="FontFile" uid="uid://7e11ih1qjei3" path="res://Assets/Fonts/CasinoShadow.ttf" id="3_hsqbg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_duwsb"]
@@ -16,13 +17,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxitb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "Lets Go TD!"
 label_settings = SubResource("LabelSettings_duwsb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(823.5, 426)
+layout_mode = 2
+texture = ExtResource("3_duwsb")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
