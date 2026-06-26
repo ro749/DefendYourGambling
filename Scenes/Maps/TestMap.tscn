@@ -334,6 +334,13 @@ texture = ExtResource("8_nd5sh")
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_276sc")
 
+[node name="Collision" type="Area2D" parent="Path2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/Collision"]
+polygon = PackedVector2Array(80, 136, 80, 1000, 848, 1000, 848, 712, 464, 712, 464, 232, 1216, 232, 1216, 328, 928, 328, 928, 1000, 1312, 1000, 1312, 1024, 1368, 1024, 1368, 872, 1312, 872, 1312, 904, 1024, 904, 1024, 424, 1312, 424, 1312, 136, 368, 136, 368, 808, 752, 808, 752, 904, 176, 904, 176, 136, 208, 136, 208, 40, 56, 40, 56, 136)
+
 [node name="Towers" type="Node2D" parent="."]
 
 [node name="Bullets" type="Node2D" parent="."]

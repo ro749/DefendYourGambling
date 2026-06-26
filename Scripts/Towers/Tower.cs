@@ -45,6 +45,12 @@ public partial class Tower : Area2D
 
     [Export] public bool debug = false;
 
+    Vector2 draggedInitialPos;
+    Vector2 draggedInitialMousePos;
+    private bool startedDrag = false;
+    private bool dragged = false;
+
+
     public override void _Ready()
     {
         turretNode = GetNode<Node2D>("Turret");
@@ -54,9 +60,29 @@ public partial class Tower : Area2D
         _reloadTimer = GetNode<Timer>("ReloadTimer");
         _reloadTimer.Timeout += _OnReloadTimerTimeout;
     }
-    
+
     public override void _Process(double delta)
     {
+        if (startedDrag)
+        {
+            float movedDistance = (GetGlobalMousePosition() - draggedInitialMousePos).Length();
+            if (movedDistance > 25)
+            {
+                dragged = true;
+                startedDrag = false;
+                draggedInitialPos = Position;
+                if (Selected)
+                {
+                    OnClicked?.Invoke(this);
+                }
+            }
+        }
+        if (dragged)
+        {
+            Position = GetGlobalMousePosition();
+            return;
+        }
+
         if (_nearbyEnemies.Count == 0) return;
         if (towerSeekFunction != Data.TowerSeekFnc.NONE)
         {
@@ -108,7 +134,24 @@ public partial class Tower : Area2D
         {
             if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
             {
-                OnClicked?.Invoke(this);
+                startedDrag = true;
+                draggedInitialMousePos = GetGlobalMousePosition();
+            }
+            if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.IsReleased())
+            {
+                startedDrag = false;
+                if (dragged)
+                {
+                    if (GetOverlappingAreas().Count > 0)
+                    {
+                        Position = draggedInitialPos;
+                    }
+                    dragged = false;
+                }
+                else
+                {
+                    OnClicked?.Invoke(this);
+                }
             }
         }
     }
