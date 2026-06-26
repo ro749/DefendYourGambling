@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=16 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="10_snl3g"]
 [ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcfig"]
+size = Vector2(1675.8857, 942.0005)
+
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 128, 96, 0, 0, 0, 0, 128, 952, 0, 0, 0, 0, 800, 952, 0, 0, 0, 0, 800, 760, 0, 0, 0, 0, 416, 760, 0, 0, 0, 0, 416, 184, 0, 0, 0, 0, 1264, 184, 0, 0, 0, 0, 1264, 376, 0, 0, 0, 0, 976, 376, 0, 0, 0, 0, 976, 952, 0, 0, 0, 0, 1344, 952)
@@ -27,6 +30,15 @@ script = ExtResource("1_1wegt")
 position = Vector2(700, 541.99994)
 scale = Vector2(0.7291667, 1)
 texture = ExtResource("2_r4ehd")
+
+[node name="MapArea" type="Area2D" parent="Sprite2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MapArea"]
+position = Vector2(-5.4856567, -15.999878)
+scale = Vector2(0.9999999, 0.99999934)
+shape = SubResource("RectangleShape2D_xcfig")
 
 [node name="TileMap" type="Node2D" parent="."]
 

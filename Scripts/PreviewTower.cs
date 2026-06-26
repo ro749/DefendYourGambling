@@ -29,7 +29,7 @@ public partial class PreviewTower : Node2D
         var spawnOver = Data.SpawnOver(towerType);
         if(spawnOver == Data.TowerType.NONE)
         {
-            return area.GetOverlappingAreas().Count == 0;
+            return area.GetOverlappingAreas().Count == 1 && area.GetOverlappingAreas()[0].Name == "MapArea";
         }
 
         foreach(var area in area.GetOverlappingAreas())
