@@ -18,6 +18,8 @@ public partial class TestLevel : Node
 
     private List<Enemy> activeEnemies = new List<Enemy>();
 
+    public PreviewTower towerPreview = null;
+
     public override void _Ready()
     {
         fadeTransition = GetNode<ColorRect>("CanvasLayer/FadeTransition");
@@ -68,7 +70,7 @@ public partial class TestLevel : Node
         // Start the first wave for testing
         waveManager.StartWaves();
     }
-
+    
     public override void _Process(double delta)
     {
         if (Input.IsActionJustPressed("pause") && GetTree().Paused)
@@ -80,7 +82,12 @@ public partial class TestLevel : Node
         {
             GetTree().Paused = true;
             pauseScreen.Show();
+            if (towerPreview != null)
+            {
+                towerPreview.Cancel();
+            }
         }
+        
     }
 
     public override void _ExitTree()

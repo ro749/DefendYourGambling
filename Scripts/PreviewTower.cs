@@ -13,12 +13,17 @@ public partial class PreviewTower : Node2D
     {
         GlobalPosition = GetViewport().GetMousePosition();
         path = GetTree().Root.GetNode<Path2D>("Map/Path2D");
+        GetTree().Root.GetNode<TestLevel>("Map").towerPreview = this;
     }
 
     public override void _Process(double delta)
     {
-        var closest = path.Curve.GetClosestPoint(GlobalPosition);
         sprite.Modulate = canPlace() ? Colors.Green : Colors.Red;
+        if (Input.IsActionJustPressed("pause"))
+        {
+            towerButton.Modulate = new Color(1, 1, 1, 1f);
+            QueueFree();
+        }
     }
 
     public bool canPlace()
@@ -57,9 +62,9 @@ public partial class PreviewTower : Node2D
             }
             else
             {
-                towerButton.Modulate = new Color(1, 1, 1, 1f);
+                Cancel();
             }
-            QueueFree();
+            
         }
     }
 
@@ -80,5 +85,12 @@ public partial class PreviewTower : Node2D
             }
         }
         towerButton.QueueFree();
+        QueueFree();
+    }
+
+    public void Cancel()
+    {
+        towerButton.Modulate = new Color(1, 1, 1, 1f);
+        QueueFree();
     }
 }
