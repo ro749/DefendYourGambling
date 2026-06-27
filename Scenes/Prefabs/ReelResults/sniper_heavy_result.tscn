@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://x2c3os8ogkm7" path="res://Scenes/Prefabs/Previews/preview_sniper_heavy.tscn" id="3_q2cxa"]
 
 [node name="SniperHeavyResult" instance=ExtResource("1_sqnkt")]
-scale = Vector2(0.167, 0.167)
 type = 8
 
 [node name="TextureButton" parent="." index="0"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("2_j44mm")
+ignore_texture_size = true
+stretch_mode = 0
 towerPreview = ExtResource("3_q2cxa")

@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://v7smm7idust5" path="res://Scenes/Prefabs/Previews/preview_sniper_basic.tscn" id="3_7c18k"]
 
 [node name="SinperResult" instance=ExtResource("1_f6eha")]
-scale = Vector2(0.167, 0.167)
 type = 7
 
 [node name="TextureButton" parent="." index="0"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("2_jb4no")
+ignore_texture_size = true
+stretch_mode = 0
 towerPreview = ExtResource("3_7c18k")

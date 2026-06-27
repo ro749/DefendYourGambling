@@ -8,5 +8,11 @@
 type = 3
 
 [node name="TextureButton" parent="." index="0"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("2_js7cd")
+ignore_texture_size = true
+stretch_mode = 0
 towerPreview = ExtResource("4_fmdcg")

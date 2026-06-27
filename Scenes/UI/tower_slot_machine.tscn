@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="5_7v8bt"]
 [ext_resource type="PackedScene" uid="uid://b6q5vy6p6n4to" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="6_dgawg"]
 [ext_resource type="PackedScene" uid="uid://b4t2w330ari5o" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="7_1ucto"]
-[ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="8_gs4bg"]
 [ext_resource type="PackedScene" uid="uid://ccik0wxs2ivya" path="res://Scenes/Prefabs/ReelResults/multi_4_result.tscn" id="8_lgi34"]
 [ext_resource type="PackedScene" uid="uid://ckyuknndxxm78" path="res://Scenes/Prefabs/ReelResults/multi_8_result.tscn" id="9_7vfxc"]
 [ext_resource type="PackedScene" uid="uid://8u0y82bd6vmk" path="res://Scenes/Prefabs/ReelResults/sinper_result.tscn" id="10_h81tp"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="12_sljhw"]
 [ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="13_tt0ev"]
 [ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="14_kq454"]
+[ext_resource type="PackedScene" uid="uid://wndk3yvnp31l" path="res://Scenes/UI/Reel.tscn" id="15_sljhw"]
 
 [sub_resource type="Animation" id="Animation_01hbv"]
 length = 0.001
@@ -90,6 +90,7 @@ offset_bottom = 316.0018
 texture_normal = ExtResource("2_5a7ln")
 script = ExtResource("4_p2isk")
 slotMachine = NodePath("../SlotMachine")
+SecondsBetweenRolls = 0.167
 moneyCost = 60
 
 [node name="Label" type="Label" parent="TextureButton"]
@@ -124,40 +125,31 @@ offset_bottom = 17.0
 color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 
 [node name="SlotMachine" type="HBoxContainer" parent="."]
+clip_contents = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 55.985
-offset_top = 551.76
-offset_right = 652.0
-offset_bottom = 680.0
+offset_top = 441.55
+offset_right = 671.985
+offset_bottom = 810.55
 script = ExtResource("5_7v8bt")
 Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw"), ExtResource("12_sljhw"), ExtResource("13_tt0ev"), ExtResource("14_kq454")])
 Probabilities = Array[int]([11, 1, 9, 1, 7, 1, 35, 35, 35])
 
-[node name="Container" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control" parent="SlotMachine" instance=ExtResource("15_sljhw")]
 layout_mode = 2
-script = ExtResource("8_gs4bg")
 
-[node name="Container2" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control2" parent="SlotMachine" instance=ExtResource("15_sljhw")]
 layout_mode = 2
-script = ExtResource("8_gs4bg")
 
-[node name="Container3" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control3" parent="SlotMachine" instance=ExtResource("15_sljhw")]
 layout_mode = 2
-script = ExtResource("8_gs4bg")
 
-[node name="Container4" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control4" parent="SlotMachine" instance=ExtResource("15_sljhw")]
 layout_mode = 2
-script = ExtResource("8_gs4bg")
 
-[node name="Container5" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control5" parent="SlotMachine" instance=ExtResource("15_sljhw")]
 layout_mode = 2
-script = ExtResource("8_gs4bg")
 
 [connection signal="pressed" from="TextureButton" to="." method="_onTextureButtonPressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

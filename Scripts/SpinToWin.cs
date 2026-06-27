@@ -29,8 +29,12 @@ public partial class SpinToWin : TextureButton
             return;
         var v = 1;
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
-            v *= child.roll();
+            v *= child.Roll();
             await ToSignal(GetTree().CreateTimer(SecondsBetweenRolls), "timeout");
+        }
+        foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
+            child.canStop = true;
+            await ToSignal(child, "Stoped");
         }
         if (IsFirstRoll)
         {
@@ -39,7 +43,7 @@ public partial class SpinToWin : TextureButton
                 v = 1;
                 foreach (Reel child in slotMachine.GetChildren().OfType<Reel>())
                 {
-                    v *= child.roll();
+                    v *= child.Roll();
                 }
             }
             IsFirstRoll = false;

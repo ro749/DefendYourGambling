@@ -5,9 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://elsymppiysim" path="res://Scenes/Prefabs/Previews/preview_multi8.tscn" id="3_b4ajt"]
 
 [node name="Multi8Result" instance=ExtResource("1_ui71u")]
-scale = Vector2(0.167, 0.167)
 type = 6
 
 [node name="TextureButton" parent="." index="0"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 texture_normal = ExtResource("2_kfj2t")
+ignore_texture_size = true
+stretch_mode = 0
 towerPreview = ExtResource("3_b4ajt")

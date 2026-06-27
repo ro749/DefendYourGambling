@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnovox0sidh8f"]
+[gd_scene load_steps=19 format=3 uid="uid://dcsr3oqsifvff"]
 
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="1_138dk"]
 [ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_wwrry"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="12_m5eoq"]
 [ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="13_atyry"]
 [ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="14_gx7qj"]
-[ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="15_ly32d"]
+[ext_resource type="PackedScene" uid="uid://wndk3yvnp31l" path="res://Scenes/UI/Reel.tscn" id="15_138dk"]
 
 [sub_resource type="Animation" id="Animation_01hbv"]
 length = 0.001
@@ -90,6 +90,7 @@ offset_bottom = 316.0018
 texture_normal = ExtResource("3_u2t5e")
 script = ExtResource("4_7pshy")
 slotMachine = NodePath("../SlotMachine")
+SecondsBetweenRolls = 0.167
 moneyCost = 150
 
 [node name="Label" type="Label" parent="TextureButton"]
@@ -124,40 +125,31 @@ offset_bottom = 17.0
 color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 
 [node name="SlotMachine" type="HBoxContainer" parent="."]
+clip_contents = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 55.985
-offset_top = 551.76
-offset_right = 652.0
-offset_bottom = 680.0
+offset_top = 441.55
+offset_right = 671.985
+offset_bottom = 810.55
 script = ExtResource("5_s2j8n")
 Results = Array[Object]([ExtResource("6_wkgam"), ExtResource("7_wisaq"), ExtResource("8_8qiy3"), ExtResource("9_egtrv"), ExtResource("10_j7mpl"), ExtResource("11_d3rhh"), ExtResource("12_m5eoq"), ExtResource("13_atyry"), ExtResource("14_gx7qj")])
 Probabilities = Array[int]([1, 6, 1, 5, 1, 4, 13, 13, 13])
 
-[node name="Container" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2
-script = ExtResource("15_ly32d")
 
-[node name="Container2" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control2" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2
-script = ExtResource("15_ly32d")
 
-[node name="Container3" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control3" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2
-script = ExtResource("15_ly32d")
 
-[node name="Container4" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control4" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2
-script = ExtResource("15_ly32d")
 
-[node name="Container5" type="Container" parent="SlotMachine"]
-custom_minimum_size = Vector2(120, 0)
+[node name="Control5" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2
-script = ExtResource("15_ly32d")
 
 [connection signal="pressed" from="TextureButton" to="." method="_onTextureButtonPressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
