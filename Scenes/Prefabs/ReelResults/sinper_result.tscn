@@ -6,6 +6,7 @@
 
 [node name="SinperResult" instance=ExtResource("1_f6eha")]
 scale = Vector2(0.167, 0.167)
+type = 7
 
 [node name="TextureButton" parent="." index="0"]
 texture_normal = ExtResource("2_jb4no")

@@ -65,7 +65,7 @@ public partial class TestLevel : Node
             gameInterface.ChangeMoneyText(currentMoney);
         };
         gameInterface.ChangeLifesText(playerState.Lives);
-        playerState.SetMoney(1000);
+        playerState.SetMoney(100000);
 
         // Start the first wave for testing
         waveManager.StartWaves();

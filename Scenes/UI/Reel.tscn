@@ -1,0 +1,29 @@
+[gd_scene load_steps=12 format=3 uid="uid://wndk3yvnp31l"]
+
+[ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="1_vgg7n"]
+[ext_resource type="Texture2D" uid="uid://drr0omxqlfi51" path="res://Assets/Images/Results/killEnemiesRoulletteIcon.png" id="1_x6xoq"]
+[ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/Images/Towers/BasicTowerBase.png" id="2_rkulq"]
+[ext_resource type="Texture2D" uid="uid://dae8xcxlvqk3" path="res://Assets/Images/Results/moneyRoulletteIcon.png" id="2_vgg7n"]
+[ext_resource type="Texture2D" uid="uid://f2f241vtswx6" path="res://Assets/Images/Results/moreEnemiesRoulletteIcon.png" id="3_rkulq"]
+[ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="6_ms3p7"]
+[ext_resource type="Texture2D" uid="uid://b2dnlj73sk3qm" path="res://Assets/Images/Towers/Multi4TowerBase.png" id="7_23e0o"]
+[ext_resource type="Texture2D" uid="uid://cieo553df8ml1" path="res://Assets/Images/Towers/Multi8TowerBase.png" id="8_f1ike"]
+[ext_resource type="Texture2D" uid="uid://cbmikt7t4pfwd" path="res://Assets/Images/Towers/SniperHeavyTowerBase.png" id="9_4y8oo"]
+[ext_resource type="Texture2D" uid="uid://csa46d5ss83ab" path="res://Assets/Images/Towers/SniperTowerBase.png" id="10_qcyek"]
+[ext_resource type="PackedScene" uid="uid://c2uvagksx0cqq" path="res://Scenes/Prefabs/Slots/Slot.tscn" id="11_ms3p7"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("rulett")]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vgg7n")
+Textures = Array[Texture]([ExtResource("1_x6xoq"), ExtResource("2_vgg7n"), ExtResource("3_rkulq"), ExtResource("2_rkulq"), ExtResource("6_ms3p7"), ExtResource("7_23e0o"), ExtResource("8_f1ike"), ExtResource("10_qcyek"), ExtResource("9_4y8oo")])
+ResultTypes = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8])
+Slot = ExtResource("11_ms3p7")
+Speed = -9.0
+rulett = NodePath("Rulett")
+
+[node name="Rulett" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

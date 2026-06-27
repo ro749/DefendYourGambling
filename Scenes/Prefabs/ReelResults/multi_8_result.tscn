@@ -6,6 +6,7 @@
 
 [node name="Multi8Result" instance=ExtResource("1_ui71u")]
 scale = Vector2(0.167, 0.167)
+type = 6
 
 [node name="TextureButton" parent="." index="0"]
 texture_normal = ExtResource("2_kfj2t")

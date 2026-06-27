@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr77uwspjtd0n" path="res://Scenes/Prefabs/Previews/preview_tower_basic.tscn" id="4_fmdcg"]
 
 [node name="BasicTowerResult" instance=ExtResource("1_3o6e3")]
+type = 3
 
 [node name="TextureButton" parent="." index="0"]
 texture_normal = ExtResource("2_js7cd")
