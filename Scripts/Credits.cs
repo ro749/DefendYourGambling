@@ -44,6 +44,12 @@ public partial class Credits : Control
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        if (Input.IsActionJustPressed("pause") && GetTree().Paused)
+        {
+            GetTree().Paused = false;
+            Hide();
+        }
+
         _programmersCurrentFlickerTimeout -= delta;
         _artistsCurrentFlickerTimeout -= delta;
 

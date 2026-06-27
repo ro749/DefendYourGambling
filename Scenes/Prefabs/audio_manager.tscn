@@ -1,0 +1,46 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxneolnokraao"]
+
+[ext_resource type="Script" uid="uid://c3shagmn87ryq" path="res://Scripts/AudioManager.cs" id="1_21kog"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_hq5st"]
+[ext_resource type="AudioStream" uid="uid://da4nyoxp0ravy" path="res://Assets/Sounds/Soundtrack.mp3" id="3_03qyc"]
+[ext_resource type="AudioStream" uid="uid://d17bs31eibbcb" path="res://Assets/Sounds/NormalTileDmg1.wav" id="3_lixb5"]
+[ext_resource type="AudioStream" uid="uid://4n8rloiboja1" path="res://Assets/Sounds/NormalTileDmg2.wav" id="4_o5d3g"]
+[ext_resource type="AudioStream" uid="uid://bhiq77su8vmla" path="res://Assets/Sounds/NormalTileDmg3.wav" id="5_03qyc"]
+[ext_resource type="AudioStream" uid="uid://p6dtc0djx2rt" path="res://Assets/Sounds/NormalTileDead.wav" id="6_o5d3g"]
+
+[sub_resource type="Resource" id="Resource_4vj3k"]
+script = ExtResource("2_hq5st")
+source = ExtResource("3_03qyc")
+volumeDB = -8.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_tf5t4"]
+script = ExtResource("2_hq5st")
+source = ExtResource("3_lixb5")
+volumeDB = -8.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_53xs8"]
+script = ExtResource("2_hq5st")
+source = ExtResource("4_o5d3g")
+volumeDB = -8.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_vhi1h"]
+script = ExtResource("2_hq5st")
+source = ExtResource("5_03qyc")
+volumeDB = -8.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_03qyc"]
+script = ExtResource("2_hq5st")
+source = ExtResource("6_o5d3g")
+volumeDB = -8.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[node name="AudioManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_21kog")
+_backgroundMusic = SubResource("Resource_4vj3k")
+_normalEnemyDamageSounds = [SubResource("Resource_tf5t4"), SubResource("Resource_53xs8"), SubResource("Resource_vhi1h")]
+_normalEnemyDeadSounds = [SubResource("Resource_03qyc")]

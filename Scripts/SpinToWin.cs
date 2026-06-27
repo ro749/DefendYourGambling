@@ -18,6 +18,9 @@ public partial class SpinToWin : TextureButton
         MORE_ENEMIES_2 = 2401, // 7^4
         MORE_ENEMIES_3 = 16807 // 7^5
     }
+
+    AudioManager audioManager;
+
     [Export] public BoxContainer slotMachine;
     [Export] public int moneyCost = 60;
 
@@ -25,10 +28,20 @@ public partial class SpinToWin : TextureButton
     public Action<int> MoneyReward;
     public Action<int> EnemyPenalty;
 
+    [Export] private AudioSetting _startSound;
+    [Export] private AudioSetting[] _moneyRewardSounds = [];
+    [Export] private AudioSetting[] _moreEnemySounds = [];
+    [Export] private AudioSetting[] _killEnemySounds = [];
+
     private Func<int, bool> _tryBuy;
 
     [Export]
     private int RerollTimes = 0;
+
+    public override void _Ready()
+    {
+        audioManager = GetNode<AudioManager>("/root/AudioManager");
+    }
 
     public void Setup(Func<int, bool> canBuy)
     {
@@ -49,6 +62,8 @@ public partial class SpinToWin : TextureButton
         if (_tryBuy == null || !_tryBuy(moneyCost))
             return;
 
+        audioManager.PlaySound(_startSound);
+
         var v = _roll();
 
         if (RerollTimes > 0)
@@ -62,17 +77,36 @@ public partial class SpinToWin : TextureButton
 
         if (v % (int)TowerState.DESTROY_ENEMIES_1 == 0)
         {
-            KillEnemies?.Invoke(v % (int)TowerState.DESTROY_ENEMIES_3 == 0 ? 3 : (v % (int)TowerState.DESTROY_ENEMIES_2 == 0 ? 2 : 1));
+            int rewardIndex = v % (int)TowerState.DESTROY_ENEMIES_3 == 0 ? 2 : (v % (int)TowerState.DESTROY_ENEMIES_2 == 0 ? 1 : 0);
+            if (rewardIndex < _killEnemySounds.Length)
+            {
+                int soundIndex = Mathf.Min(rewardIndex, _killEnemySounds.Length - 1);
+                audioManager.PlaySound(_killEnemySounds[soundIndex]);
+            }
+            KillEnemies?.Invoke(rewardIndex + 1);
         }
                 
         if (v % (int)TowerState.WIN_MONEY_1 == 0)
         {
-            MoneyReward?.Invoke(v % (int)TowerState.WIN_MONEY_3 == 0 ? 5 * moneyCost : (v % (int)TowerState.WIN_MONEY_2 == 0 ? 3 * moneyCost / 2 : moneyCost / 2));
+            int rewardIndex = v % (int)TowerState.WIN_MONEY_3 == 0 ? 2 : (v % (int)TowerState.WIN_MONEY_2 == 0 ? 1 : 0);
+            audioManager.PlaySound(_moneyRewardSounds[rewardIndex]);
+            if (rewardIndex < _moneyRewardSounds.Length)
+            {
+                int soundIndex = Mathf.Min(rewardIndex, _moneyRewardSounds.Length - 1);
+                audioManager.PlaySound(_moneyRewardSounds[soundIndex]);
+            }
+            MoneyReward?.Invoke(rewardIndex == 2 ? 5 * moneyCost : (rewardIndex == 1 ? 3 * moneyCost / 2 : moneyCost / 2));
         }
 
         if (v % (int)TowerState.MORE_ENEMIES_1 == 0)
         {
-            EnemyPenalty?.Invoke(v % (int)TowerState.MORE_ENEMIES_3 == 0 ? 3 : (v % (int)TowerState.MORE_ENEMIES_2 == 0 ? 2 : 1));
+            int rewardIndex = v % (int)TowerState.MORE_ENEMIES_3 == 0 ? 2 : (v % (int)TowerState.MORE_ENEMIES_2 == 0 ? 1 : 0);
+            if (_moreEnemySounds.Length > 0)
+            {
+                int soundIndex = Mathf.Min(rewardIndex, _moreEnemySounds.Length - 1);
+                audioManager.PlaySound(_moreEnemySounds[soundIndex]);
+            }
+            EnemyPenalty?.Invoke(rewardIndex);
         }
     }
 }

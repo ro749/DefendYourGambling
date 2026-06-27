@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1n1v0lwnlfuj"]
+[gd_scene load_steps=16 format=3 uid="uid://b1n1v0lwnlfuj"]
 
 [ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_6ea0t"]
 [ext_resource type="Texture2D" uid="uid://3qf6qbtlakhv" path="res://Assets/Images/UI/MainMenuBG.png" id="2_duwsb"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="2_ruwid"]
 [ext_resource type="Texture2D" uid="uid://c0pycmpjsyh5" path="res://Assets/Images/UI/title.png" id="3_duwsb"]
+[ext_resource type="AudioStream" uid="uid://da4nyoxp0ravy" path="res://Assets/Sounds/Soundtrack.mp3" id="3_n87qx"]
 [ext_resource type="Texture2D" uid="uid://catqn7fbmi8du" path="res://Assets/Images/UI/StartButtonBase.png" id="4_xb4ol"]
 [ext_resource type="Texture2D" uid="uid://b6eh5ikcul1qh" path="res://Assets/Images/UI/StartButtonHovered.png" id="5_1u7jv"]
 [ext_resource type="Texture2D" uid="uid://cpgwtw6adnmv5" path="res://Assets/Images/UI/OptionsButtonBase.png" id="6_g00cn"]
@@ -13,6 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://b5pjf3kfn84tb" path="res://Assets/Images/UI/ExitButtonHovered.png" id="9_n87qx"]
 [ext_resource type="Texture2D" uid="uid://wt7mfs2liv1f" path="res://Assets/Images/UI/CreditsButtonHovered.png" id="9_w3grw"]
 
+[sub_resource type="Resource" id="Resource_vd6i3"]
+script = ExtResource("2_6ea0t")
+source = ExtResource("3_n87qx")
+volumeDB = -10.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -21,6 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cxitb")
+_backgroundMusic = SubResource("Resource_vd6i3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -43,7 +52,7 @@ texture = ExtResource("3_duwsb")
 expand_mode = 1
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
 [node name="StartGame" type="TextureButton" parent="VBoxContainer"]

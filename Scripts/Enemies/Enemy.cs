@@ -5,23 +5,15 @@ using System.Collections.Generic;
 #nullable enable
 public partial class Enemy : Area2D
 {
-    [Signal]
-    public delegate void DiedEventHandler(Enemy enemy);
-
+    public Action<Enemy>? Died;
+    public Action<Enemy>? Damaged;
     public Action<Enemy, int>? DoDamageToPlayer;
-
-    private RandomNumberGenerator _rng = new();
 
     [Export]
     public Data.EnemyType Type { get; private set; } = Data.EnemyType.BASIC;
 
 
     public PathFollow2D? PathFollow{ get; private set; }
-    private AudioStreamPlayer2D? _audioPlayer;
-    [Export]
-    private AudioStream[] _damageSounds = [];
-    [Export]
-    private AudioStream? _deadSound;
 
     [Export]
     private double _maxHealth = 50.0;
@@ -41,9 +33,7 @@ public partial class Enemy : Area2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        _rng.Randomize();
         Health = _maxHealth;
-        _audioPlayer = GetNode<AudioStreamPlayer2D>("AudioPlayer");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,27 +65,22 @@ public partial class Enemy : Area2D
                 return; // This bullet has already hit max enemies, ignore it.
             }
             Health -= bullet.Damage;
+
             bullet.HitEnemy(this);
+            Damaged?.Invoke(this);
+            
             if (Health <= 0)
             {
                 Die();
-                if (_audioPlayer != null && _deadSound != null)
-                {
-                    _audioPlayer.Stream = _deadSound;
-                    _audioPlayer.Play();
-                }
-            }
-            else if (_audioPlayer != null && _damageSounds != null && _damageSounds.Length > 0)
-            {
-                _audioPlayer.Stream = _damageSounds[_rng.RandiRange(0, _damageSounds.Length - 1)];
-                _audioPlayer.Play();
             }
         }
     }
 
     public void Die()
     {
-        EmitSignal("Died", this);
+        if (!GodotObject.IsInstanceValid(this)) return;
+
+        Died?.Invoke(this);
         QueueFree();
     }
 }

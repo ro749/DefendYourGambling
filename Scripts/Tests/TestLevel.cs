@@ -14,9 +14,13 @@ public partial class TestLevel : Node
     PauseScreen pauseScreen;
     GameInterface gameInterface;
 
+    AudioManager audioManager;
+    [Export] private AudioSetting _victorySound;
+
     private SpinToWin spinToWinMachineBasic;
     private SpinToWin spinToWinMachineUpgrade;
 
+    private bool _wavesStarted = false;
     private WaveManager waveManager;
     private Timer waveTimer;
 
@@ -35,6 +39,8 @@ public partial class TestLevel : Node
 
     public override void _Ready()
     {
+        audioManager = GetNode<AudioManager>("/root/AudioManager");
+
         fadeTransition = GetNode<ColorRect>("CanvasLayer/FadeTransition");
         fadeAnimation = GetNode<AnimationPlayer>("CanvasLayer/FadeTransition/AnimationPlayer");
         fadeTransition.Show();
@@ -86,8 +92,8 @@ public partial class TestLevel : Node
             float alpha = currentWave / (float)(waveManager.TotalWaves - 1);
             _moneyMultiply = Mathf.Lerp(1.0f, _maxMoneyMultiply, alpha);
             _enemyLifeMultiply = Mathf.Lerp(1.0f, _maxEnemyLifeMultiply, alpha);
-            GD.Print($"Current enemy multiply {_enemyLifeMultiply}");
         };
+        gameInterface.ChangeWaveText(1, waveManager.TotalWaves);
 
         waveTimer = GetNode<Timer>("WaveTimer");
         waveTimer.Timeout += _onWaveTimerTimeout;
@@ -106,7 +112,7 @@ public partial class TestLevel : Node
         spinToWinMachineUpgrade.KillEnemies += OnKillEnemiesReward;
 
         // Start the first wave for testing
-        waveManager.StartWaves();
+        waveTimer.Start(6.0f);
     }
     
     public override void _Process(double delta)
@@ -145,6 +151,13 @@ public partial class TestLevel : Node
     public void _onWaveTimerTimeout()
     {
         waveTimer.Stop();
+        if (!_wavesStarted)
+        {
+            _wavesStarted = true;
+            waveManager.StartWaves();
+            return;
+        }
+
         if (waveManager.StartNextWave())
         {
             GD.Print("Starting next wave: " + waveManager.CurrentWave);
@@ -203,6 +216,7 @@ public partial class TestLevel : Node
 
                 activeEnemies.Add(enemyInstance);
                 enemyInstance.Died += _onEnemyDied;
+                enemyInstance.Damaged += _onEnemyDamaged;
                 enemyInstance.DoDamageToPlayer += EnemyDamagePlayer;
             }
         }
@@ -210,6 +224,8 @@ public partial class TestLevel : Node
 
     private void _onEnemyDied(Enemy enemy)
     {
+        audioManager.PlayNormalEnemyDeadSound();
+        
         playerState.AddMoney(Mathf.Max(Mathf.RoundToInt(enemy.Reward * _moneyMultiply), 1));
 
         if (activeEnemies.Contains(enemy))
@@ -218,6 +234,11 @@ public partial class TestLevel : Node
         }
 
         CheckForNewWave();
+    }
+
+    private void _onEnemyDamaged(Enemy enemy)
+    {
+        audioManager.PlayNormalEnemyDamageSound();
     }
     
     private void _CreateBullet(Vector2 pos, float direction, float speed, float damage, int maxPenetration, int bulletEnum)
@@ -257,13 +278,15 @@ public partial class TestLevel : Node
             }
             else
             {
-                GetTree().Paused = true;
                 victoryScreen.Show();
+                audioManager.PlaySound(_victorySound);
 
                 if (towerPreview != null)
                 {
                     towerPreview.Cancel();
                 }
+
+                GetTree().Paused = true;
             }
         }
     }
