@@ -27,7 +27,7 @@ public partial class WaveManager : Node
     public int TotalWaves => waves.Count;
     public int CurrentWave { get; private set; } = 0;
 
-    public bool IsWaveAvailable = true;
+    public bool IsWaveAvailable = false;
     public bool IsWaveActive { get; private set; } = false;
     private double waveTimer = 0.0;
 
@@ -48,11 +48,6 @@ public partial class WaveManager : Node
     public override void _Process(double delta)
     {
         if (!IsWaveAvailable) return;
-
-        if (Input.IsActionJustPressed("penalty"))
-        {
-            AddEnemiesPenalty(0);
-        }
 
         if (!IsWaveActive && addingPenaltyIndex != null) return;
 
@@ -131,6 +126,7 @@ public partial class WaveManager : Node
     {
         // Load the JSON file
         using var jsonFile = FileAccess.Open("res://Data/waves.json", FileAccess.ModeFlags.Read);
+        //using var jsonFile = FileAccess.Open("res://Data/waves_instant.json", FileAccess.ModeFlags.Read);
         if (jsonFile == null || !jsonFile.IsOpen())
         {
             GD.PrintErr("Failed to load waves.json");
@@ -205,6 +201,8 @@ public partial class WaveManager : Node
         int waveIndex = 0;
         foreach (var waveDict in waveArray)
         {
+            if (waveIndex >= waves.Count) break;
+
             var waveStats = waves[waveIndex];
             waveStats.waveEnemiesPenalty = new List<List<WaveEnemiesSpawnDesc>>();
 
@@ -240,6 +238,7 @@ public partial class WaveManager : Node
     public void StartWaves()
     {
         ResetWaves();
+        IsWaveAvailable = true;
         IsWaveActive = true;
         GD.Print($"Starting wave {CurrentWave + 1}");
         WaveChanged?.Invoke(CurrentWave);

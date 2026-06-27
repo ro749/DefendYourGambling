@@ -138,7 +138,7 @@ public partial class Tower : Area2D
         {
             if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
             {
-                startedDrag = true;
+                //startedDrag = true;
                 draggedInitialMousePos = GetGlobalMousePosition();
             }
             if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.IsReleased())

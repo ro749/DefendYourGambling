@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=21 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_htxeb"]
 [ext_resource type="Texture2D" uid="uid://83vag8i73w4t" path="res://Assets/Images/UI/GameBackground.png" id="2_pmk55"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
+[ext_resource type="AudioStream" uid="uid://cfyt3lws7esj6" path="res://Assets/Sounds/Victory Sound.wav" id="3_htxeb"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="5_h1i30"]
 [ext_resource type="PackedScene" uid="uid://3p10dff762oj" path="res://Scenes/UI/victory_screen.tscn" id="5_j28jb"]
 [ext_resource type="PackedScene" uid="uid://cjsbhhp1yg3gu" path="res://Scenes/UI/pause_screen.tscn" id="5_kukki"]
@@ -16,8 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="10_snl3g"]
 [ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
 
+[sub_resource type="Resource" id="Resource_ewx0n"]
+script = ExtResource("2_htxeb")
+source = ExtResource("3_htxeb")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcfig"]
-size = Vector2(1675.8857, 942.0005)
+size = Vector2(1821.2573, 1000.00073)
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
@@ -27,7 +34,7 @@ point_count = 11
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
-_initialMoney = 90
+_victorySound = SubResource("Resource_ewx0n")
 
 [node name="GameBackground" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
@@ -43,8 +50,8 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MapArea"]
-position = Vector2(-5.4856567, -15.999878)
-scale = Vector2(0.9999999, 0.99999934)
+position = Vector2(5.485718, -1.9998779)
+scale = Vector2(0.9999999, 0.99999905)
 shape = SubResource("RectangleShape2D_xcfig")
 
 [node name="TileMap" type="Node2D" parent="."]

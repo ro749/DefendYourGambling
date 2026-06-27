@@ -1,0 +1,203 @@
+[gd_scene load_steps=30 format=3 uid="uid://brsqtmstyncnt"]
+
+[ext_resource type="Texture2D" uid="uid://dsjdtqe01s0vx" path="res://Assets/Images/UI/TowerMachineBase.png" id="1_pr1aj"]
+[ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_62i1d"]
+[ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="3_fq76e"]
+[ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_qyow7"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="5_hxn1x"]
+[ext_resource type="AudioStream" uid="uid://jmam27l8b3m3" path="res://Assets/Sounds/Rewards/SlotMachineStart.wav" id="6_f1bqh"]
+[ext_resource type="AudioStream" uid="uid://b5nwcmgfqa14k" path="res://Assets/Sounds/Rewards/FirstMoneyReward.wav" id="7_yyl8v"]
+[ext_resource type="AudioStream" uid="uid://dqkuwtify8s02" path="res://Assets/Sounds/Rewards/SecondMoneyReward.wav" id="8_t64yf"]
+[ext_resource type="AudioStream" uid="uid://de366sb06en3x" path="res://Assets/Sounds/Rewards/ThirdMoneyReward.wav" id="9_20v44"]
+[ext_resource type="AudioStream" uid="uid://ccivvaageo87o" path="res://Assets/Sounds/Rewards/BadRoll.wav" id="10_2ky88"]
+[ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="11_pwe2g"]
+[ext_resource type="PackedScene" uid="uid://b6q5vy6p6n4to" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="12_3ygqk"]
+[ext_resource type="PackedScene" uid="uid://b4t2w330ari5o" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="13_mc6y7"]
+[ext_resource type="PackedScene" uid="uid://ccik0wxs2ivya" path="res://Scenes/Prefabs/ReelResults/multi_4_result.tscn" id="14_qrccb"]
+[ext_resource type="PackedScene" uid="uid://ckyuknndxxm78" path="res://Scenes/Prefabs/ReelResults/multi_8_result.tscn" id="15_bflyq"]
+[ext_resource type="PackedScene" uid="uid://8u0y82bd6vmk" path="res://Scenes/Prefabs/ReelResults/sinper_result.tscn" id="16_kmq7e"]
+[ext_resource type="PackedScene" uid="uid://2jhl3eswnob0" path="res://Scenes/Prefabs/ReelResults/sniper_heavy_result.tscn" id="17_hyd3l"]
+[ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="18_y44jv"]
+[ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="19_l0kd1"]
+[ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="20_wefhx"]
+[ext_resource type="Script" uid="uid://ctu36hlxum86y" path="res://Scripts/Reel.cs" id="21_od4m3"]
+
+[sub_resource type="Resource" id="Resource_vh700"]
+script = ExtResource("5_hxn1x")
+source = ExtResource("6_f1bqh")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_ybnhl"]
+script = ExtResource("5_hxn1x")
+source = ExtResource("7_yyl8v")
+volumeDB = 5.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_4ue7g"]
+script = ExtResource("5_hxn1x")
+source = ExtResource("8_t64yf")
+volumeDB = 5.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_lspfr"]
+script = ExtResource("5_hxn1x")
+source = ExtResource("9_20v44")
+volumeDB = 5.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_fyola"]
+script = ExtResource("5_hxn1x")
+source = ExtResource("10_2ky88")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Animation" id="Animation_01hbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.80808747]
+}
+
+[sub_resource type="Animation" id="Animation_70iir"]
+resource_name = "pull_lever"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [128.0, 576.0, 128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.80808747, 0.80808747, -0.80808747]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhs2e"]
+_data = {
+&"RESET": SubResource("Animation_01hbv"),
+&"pull_lever": SubResource("Animation_70iir")
+}
+
+[node name="TowerSlotMachine2" type="TextureRect"]
+texture = ExtResource("1_pr1aj")
+script = ExtResource("2_62i1d")
+
+[node name="TextureButton" type="TextureButton" parent="." node_paths=PackedStringArray("slotMachine")]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 128.0
+offset_right = 1078.0
+offset_bottom = 316.0018
+texture_normal = ExtResource("3_fq76e")
+script = ExtResource("4_qyow7")
+slotMachine = NodePath("../SlotMachine")
+_startSound = SubResource("Resource_vh700")
+_moneyRewardSounds = [SubResource("Resource_ybnhl"), SubResource("Resource_4ue7g"), SubResource("Resource_lspfr")]
+_moreEnemySounds = [SubResource("Resource_fyola")]
+RerollTimes = 2
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 190.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 90
+text = "$60"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bhs2e")
+}
+
+[node name="Control" type="Control" parent="."]
+show_behind_parent = true
+anchors_preset = 0
+offset_left = 761.0
+offset_top = 440.0
+offset_right = 801.0
+offset_bottom = 480.0
+rotation = -0.80808747
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 278.20227
+offset_bottom = 17.0
+color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+
+[node name="SlotMachine" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 55.985
+offset_top = 551.76
+offset_right = 652.0
+offset_bottom = 680.0
+script = ExtResource("11_pwe2g")
+Results = Array[Object]([ExtResource("12_3ygqk"), ExtResource("13_mc6y7"), ExtResource("14_qrccb"), ExtResource("15_bflyq"), ExtResource("16_kmq7e"), ExtResource("17_hyd3l"), ExtResource("18_y44jv"), ExtResource("19_l0kd1"), ExtResource("20_wefhx")])
+Probabilities = Array[int]([22, 2, 20, 2, 18, 2, 145, 145, 145])
+
+[node name="Container" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("21_od4m3")
+Results = Array[PackedScene]([])
+
+[node name="Container2" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("21_od4m3")
+Results = Array[PackedScene]([])
+Probabilities = Array[PackedScene]([])
+
+[node name="Container3" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("21_od4m3")
+
+[node name="Container4" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("21_od4m3")
+
+[node name="Container5" type="Container" parent="SlotMachine"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+script = ExtResource("21_od4m3")
+
+[connection signal="pressed" from="TextureButton" to="." method="_onTextureButtonPressed"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

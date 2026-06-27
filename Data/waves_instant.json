@@ -1,0 +1,12 @@
+[
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0,
+				"enemyType": "BASIC"
+			}
+		]
+	}
+]

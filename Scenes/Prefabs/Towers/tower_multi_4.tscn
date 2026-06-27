@@ -16,6 +16,7 @@ bulletSpeed = 500.0
 bulletDamage = 17.0
 towerSeekFunction = 0
 towerType = 3
+SellValue = 35
 
 [node name="Base" parent="." index="0"]
 rotation = 0.7853982

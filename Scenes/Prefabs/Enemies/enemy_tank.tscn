@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdorkmei4c38s" path="res://Assets/Images/Enemies/TankEnemy.png" id="2_h5mtp"]
 
 [node name="EnemyTank" instance=ExtResource("1_yjbw7")]
+Type = 1
 _maxHealth = 100.0
 _moveSpeed = 60.0
 _damage = 2
