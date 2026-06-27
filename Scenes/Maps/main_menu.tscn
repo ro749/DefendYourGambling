@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1n1v0lwnlfuj"]
+[gd_scene load_steps=13 format=3 uid="uid://b1n1v0lwnlfuj"]
 
 [ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
 [ext_resource type="Texture2D" uid="uid://3qf6qbtlakhv" path="res://Assets/Images/UI/MainMenuBG.png" id="2_duwsb"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cpgwtw6adnmv5" path="res://Assets/Images/UI/OptionsButtonBase.png" id="6_g00cn"]
 [ext_resource type="Texture2D" uid="uid://sxkkgqpf5cib" path="res://Assets/Images/UI/OptionsButtonHovered.png" id="7_w3grw"]
 [ext_resource type="Texture2D" uid="uid://5gds2g052ywd" path="res://Assets/Images/UI/ExitButtonBase.png" id="8_6ea0t"]
+[ext_resource type="Texture2D" uid="uid://bialxsqja5b68" path="res://Assets/Images/UI/CreditsButtonBase.png" id="8_g00cn"]
 [ext_resource type="Texture2D" uid="uid://b5pjf3kfn84tb" path="res://Assets/Images/UI/ExitButtonHovered.png" id="9_n87qx"]
+[ext_resource type="Texture2D" uid="uid://wt7mfs2liv1f" path="res://Assets/Images/UI/CreditsButtonHovered.png" id="9_w3grw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -67,6 +69,16 @@ texture_hover = ExtResource("7_w3grw")
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
+[node name="Credits" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_g00cn")
+texture_hover = ExtResource("9_w3grw")
+
+[node name="Control4" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
 [node name="CloseGame" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -85,4 +97,5 @@ grow_vertical = 1
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_onStartGamePressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_onOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_onCreditsPressed"]
 [connection signal="pressed" from="VBoxContainer/CloseGame" to="." method="_onCloseGamePressed"]

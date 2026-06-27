@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1eudno5cur68"]
+
+[ext_resource type="Texture2D" uid="uid://3qf6qbtlakhv" path="res://Assets/Images/UI/MainMenuBG.png" id="1_6o62i"]
+[ext_resource type="Script" uid="uid://db3x270naof5y" path="res://Scripts/Credits.cs" id="1_cwi2s"]
+[ext_resource type="FontFile" uid="uid://clj5uwtehxn4m" path="res://Assets/Fonts/budmo jiggler.otf" id="2_r5cdw"]
+[ext_resource type="FontFile" uid="uid://e1xbnv75fv78" path="res://Assets/Fonts/CrayonLibre.ttf" id="3_jglaw"]
+[ext_resource type="Texture2D" uid="uid://cxn5i7ofpkxdr" path="res://Assets/Images/UI/BackButtonBase.png" id="5_apgy4"]
+[ext_resource type="Texture2D" uid="uid://ba4rnjskbpd6r" path="res://Assets/Images/UI/BackButtonHovered.png" id="6_tqq8t"]
+[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="7_tqq8t"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwi2s")
+_maxTimeOn = 1.8
+_minTimeOff = 0.04
+_maxTimeOff = 0.25
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6o62i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 672.0
+offset_bottom = 880.0
+color = Color(0, 0, 0, 0.5411765)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -76.5
+offset_right = 135.5
+offset_bottom = 76.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Programmers" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.7607843, 0, 1)
+theme_override_fonts/font = ExtResource("2_r5cdw")
+theme_override_font_sizes/font_size = 80
+text = "Programmers"
+
+[node name="Padding3" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Rodrigo" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.76723474, 0.7780561, 0.88029605, 1)
+theme_override_fonts/font = ExtResource("3_jglaw")
+theme_override_font_sizes/font_size = 50
+text = "Rodrigo Rivera Moran
+\"Rivaz\""
+horizontal_alignment = 1
+
+[node name="Padding" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Dalia" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.76723474, 0.7780561, 0.88029605, 1)
+theme_override_fonts/font = ExtResource("3_jglaw")
+theme_override_font_sizes/font_size = 50
+text = "Dalia Castellanos
+Beard"
+horizontal_alignment = 1
+
+[node name="Padding2" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Artists" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.7607843, 0, 1)
+theme_override_fonts/font = ExtResource("2_r5cdw")
+theme_override_font_sizes/font_size = 80
+text = "Artist"
+
+[node name="Padding5" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Mark" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.76723474, 0.7780561, 0.88029605, 1)
+theme_override_fonts/font = ExtResource("3_jglaw")
+theme_override_font_sizes/font_size = 50
+text = "Mark Arknetz"
+horizontal_alignment = 1
+
+[node name="Padding4" type="Control" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Dalia3" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.76723474, 0.7780561, 0.88029605, 1)
+theme_override_fonts/font = ExtResource("3_jglaw")
+theme_override_font_sizes/font_size = 50
+text = "Thank you for playing
+<3"
+horizontal_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 912.0
+offset_right = 628.0
+offset_bottom = 1078.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("5_apgy4")
+texture_hover = ExtResource("6_tqq8t")
+
+[node name="FadeTransition" parent="." instance=ExtResource("7_tqq8t")]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+anchors_preset = 0
+
+[connection signal="pressed" from="BackButton" to="." method="_onBackButtonPressed"]

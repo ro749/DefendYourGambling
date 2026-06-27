@@ -14,9 +14,10 @@ bulletsCount = 8
 bulletsAngle = 45.0
 bulletsAngleOffset = 22.5
 bulletSpeed = 500.0
-bulletDamage = 25.0
+bulletDamage = 17.0
 towerSeekFunction = 0
 towerType = 4
+SellValue = 110
 
 [node name="Base" parent="." index="0"]
 scale = Vector2(0.16216214, 0.2)

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcfig"]
-size = Vector2(1675.8857, 942.0005)
+size = Vector2(1821.2573, 1000.00073)
 
 [sub_resource type="Curve2D" id="Curve2D_276sc"]
 _data = {
@@ -43,8 +43,8 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MapArea"]
-position = Vector2(-5.4856567, -15.999878)
-scale = Vector2(0.9999999, 0.99999934)
+position = Vector2(5.485718, -1.9998779)
+scale = Vector2(0.9999999, 0.99999905)
 shape = SubResource("RectangleShape2D_xcfig")
 
 [node name="TileMap" type="Node2D" parent="."]

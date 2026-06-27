@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 using System.Collections.Generic;
 
 public partial class TestLevel : Node
@@ -24,7 +25,13 @@ public partial class TestLevel : Node
     public PreviewTower towerPreview = null;
 
     [Export]
-    private int _initialMoney = 99999;
+    private int _initialMoney = 90;
+    [Export]
+    private float _maxMoneyMultiply = 0.3f;
+    private float _moneyMultiply = 1.0f;
+    [Export]
+    private double _maxEnemyLifeMultiply = 1.8;
+    private double _enemyLifeMultiply = 1.0;
 
     public override void _Ready()
     {
@@ -46,52 +53,6 @@ public partial class TestLevel : Node
         pauseScreen.OnResume += OnResume;
         gameInterface = GetNode<GameInterface>("CanvasLayer/GameInterface");
 
-        spinToWinMachineBasic = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachineUpgrade/TextureButton");
-        spinToWinMachineBasic.EnemyPenalty += (int tier) =>
-        {
-            waveManager.AddEnemiesPenalty(tier);
-        };
-        spinToWinMachineBasic.KillAllEnemies += () =>
-        {
-            List<Enemy> cloneActiveEnemies = [];
-            foreach (Enemy child in activeEnemies)
-            {
-                cloneActiveEnemies.Add(child);
-            }
-            foreach (Enemy child in cloneActiveEnemies)
-            {
-                _onEnemyDied(child);
-                child.QueueFree();
-            }
-        };
-        spinToWinMachineUpgrade = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachine/TextureButton");
-        spinToWinMachineUpgrade.EnemyPenalty += (int tier) =>
-        {
-            waveManager.AddEnemiesPenalty(tier);
-        };
-        spinToWinMachineUpgrade.KillAllEnemies += () =>
-        {
-            List<Enemy> cloneActiveEnemies = [];
-            foreach (Enemy child in activeEnemies)
-            {
-                cloneActiveEnemies.Add(child);
-            }
-            foreach (Enemy child in cloneActiveEnemies)
-            {
-                _onEnemyDied(child);
-                child.QueueFree();
-            }
-        };
-
-        waveManager = GetNode<WaveManager>("WaveManager");
-        waveManager.CreateEnemy += CreateEnemy;
-        waveManager.WaveChanged += (int currentWave) =>
-        {
-            gameInterface.ChangeWaveText(currentWave + 1, waveManager.TotalWaves);
-        };
-
-        waveTimer = GetNode<Timer>("WaveTimer");
-        waveTimer.Timeout += _onWaveTimerTimeout;
 
         playerState = GetNode<PlayerState>("PlayerState");
         playerState.LivesChanged += (int currentLives) =>
@@ -101,6 +62,11 @@ public partial class TestLevel : Node
             {
                 GetTree().Paused = true;
                 loseScreen.Show();
+
+                if (towerPreview != null)
+                {
+                    towerPreview.Cancel();
+                }
             }
         };
         playerState.MoneyChanged += (int currentMoney) =>
@@ -109,6 +75,35 @@ public partial class TestLevel : Node
         };
         gameInterface.ChangeLifesText(playerState.Lives);
         playerState.SetMoney(_initialMoney);
+
+
+        waveManager = GetNode<WaveManager>("WaveManager");
+        waveManager.CreateEnemy += CreateEnemy;
+        waveManager.WaveChanged += (int currentWave) =>
+        {
+            gameInterface.ChangeWaveText(currentWave + 1, waveManager.TotalWaves);
+
+            float alpha = currentWave / (float)(waveManager.TotalWaves - 1);
+            _moneyMultiply = Mathf.Lerp(1.0f, _maxMoneyMultiply, alpha);
+            _enemyLifeMultiply = Mathf.Lerp(1.0f, _maxEnemyLifeMultiply, alpha);
+            GD.Print($"Current enemy multiply {_enemyLifeMultiply}");
+        };
+
+        waveTimer = GetNode<Timer>("WaveTimer");
+        waveTimer.Timeout += _onWaveTimerTimeout;
+
+
+        spinToWinMachineBasic = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachineUpgrade/TextureButton");
+        spinToWinMachineBasic.Setup((money) => { return playerState.SpendMoney(money); });
+        spinToWinMachineBasic.EnemyPenalty += waveManager.AddEnemiesPenalty;
+        spinToWinMachineBasic.MoneyReward += playerState.AddMoney;
+        spinToWinMachineBasic.KillEnemies += OnKillEnemiesReward;
+
+        spinToWinMachineUpgrade = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachine/TextureButton");
+        spinToWinMachineUpgrade.Setup((money) => { return playerState.SpendMoney(money); });
+        spinToWinMachineUpgrade.EnemyPenalty += waveManager.AddEnemiesPenalty;
+        spinToWinMachineUpgrade.MoneyReward += playerState.AddMoney;
+        spinToWinMachineUpgrade.KillEnemies += OnKillEnemiesReward;
 
         // Start the first wave for testing
         waveManager.StartWaves();
@@ -125,6 +120,7 @@ public partial class TestLevel : Node
         {
             GetTree().Paused = true;
             pauseScreen.Show();
+
             if (towerPreview != null)
             {
                 towerPreview.Cancel();
@@ -199,7 +195,7 @@ public partial class TestLevel : Node
             {
                 PathFollow2D pathFollow = new PathFollow2D();
 
-                enemyInstance.Setup(pathFollow);
+                enemyInstance.Setup(pathFollow, _enemyLifeMultiply);
                 pathFollow.AddChild(enemyInstance);
                 pathFollow.Rotates = false;
 
@@ -214,7 +210,7 @@ public partial class TestLevel : Node
 
     private void _onEnemyDied(Enemy enemy)
     {
-        playerState.AddMoney(enemy.Reward);
+        playerState.AddMoney(Mathf.Max(Mathf.RoundToInt(enemy.Reward * _moneyMultiply), 1));
 
         if (activeEnemies.Contains(enemy))
         {
@@ -263,7 +259,55 @@ public partial class TestLevel : Node
             {
                 GetTree().Paused = true;
                 victoryScreen.Show();
+
+                if (towerPreview != null)
+                {
+                    towerPreview.Cancel();
+                }
             }
+        }
+    }
+
+
+    private void OnKillEnemiesReward(int tier)
+    {
+        GD.Print($"Destroying enemies tier {tier}");
+        List<Enemy> cloneActiveEnemies = [];
+        foreach (Enemy child in activeEnemies)
+        {
+            if (child.Type == Data.EnemyType.BOSS) continue;
+
+            cloneActiveEnemies.Add(child);
+        }
+
+        if (tier == 3)
+        {
+            foreach (Enemy child in cloneActiveEnemies)
+            {
+                _onEnemyDied(child);
+                child.QueueFree();
+            }
+            return;
+        }
+
+        int enemyCount = cloneActiveEnemies.Count;
+        int killEnemyCount = tier == 1 ? enemyCount / 5 : enemyCount / 2;
+        killEnemyCount = tier == 1 ? Mathf.Max(killEnemyCount, 3) : Mathf.Max(killEnemyCount, 10);
+        GD.Print($"Kill enemy count {killEnemyCount}");
+
+        List<int> enemyIndices = Enumerable.Range(0, enemyCount).ToList();
+
+        while (killEnemyCount > 0 && enemyIndices.Count > 0)
+        {
+            var v = (int)(GD.Randi() % enemyIndices.Count);
+            var e = enemyIndices[v];
+            
+            Enemy child = cloneActiveEnemies[e];
+            _onEnemyDied(child);
+            child.QueueFree();
+
+            enemyIndices.RemoveAt(v);
+            --killEnemyCount;
         }
     }
 }

@@ -32,6 +32,13 @@ public partial class MainMenu : Control
 		fadeAnimation.Play("fade_in");
 	}
 
+	private void _onCreditsPressed()
+	{
+		btnPressed = "Credits";
+		fadeTransition.Show();
+		fadeAnimation.Play("fade_in");
+	}
+
 	private void _onCloseGamePressed()
 	{
 		btnPressed = "CloseGame";
@@ -49,6 +56,9 @@ public partial class MainMenu : Control
 		{
 			case "StartGame":
 				GetTree().ChangeSceneToFile("res://Scenes/Maps/TestMap.tscn");
+				break;
+			case "Credits":
+				GetTree().ChangeSceneToFile("res://Scenes/Maps/credits.tscn");
 				break;
 			case "Options":
 				// Handle options menu logic here

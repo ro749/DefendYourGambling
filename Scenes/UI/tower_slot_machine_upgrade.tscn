@@ -91,6 +91,7 @@ texture_normal = ExtResource("3_u2t5e")
 script = ExtResource("4_7pshy")
 slotMachine = NodePath("../SlotMachine")
 moneyCost = 150
+RerollTimes = 1
 
 [node name="Label" type="Label" parent="TextureButton"]
 layout_mode = 0
@@ -132,7 +133,7 @@ offset_right = 652.0
 offset_bottom = 680.0
 script = ExtResource("5_s2j8n")
 Results = Array[Object]([ExtResource("6_wkgam"), ExtResource("7_wisaq"), ExtResource("8_8qiy3"), ExtResource("9_egtrv"), ExtResource("10_j7mpl"), ExtResource("11_d3rhh"), ExtResource("12_m5eoq"), ExtResource("13_atyry"), ExtResource("14_gx7qj")])
-Probabilities = Array[int]([1, 6, 1, 5, 1, 4, 13, 13, 13])
+Probabilities = Array[int]([2, 22, 2, 20, 2, 18, 145, 145, 145])
 
 [node name="Container" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)

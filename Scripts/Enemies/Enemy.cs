@@ -12,6 +12,9 @@ public partial class Enemy : Area2D
 
     private RandomNumberGenerator _rng = new();
 
+    [Export]
+    public Data.EnemyType Type { get; private set; } = Data.EnemyType.BASIC;
+
 
     public PathFollow2D? PathFollow{ get; private set; }
     private AudioStreamPlayer2D? _audioPlayer;
@@ -57,10 +60,10 @@ public partial class Enemy : Area2D
         _lastProgressRatio = PathFollow.ProgressRatio;
     }
     
-    public void Setup(PathFollow2D newPathFollow)
+    public void Setup(PathFollow2D newPathFollow, double maxHealthMultiply = 1.0)
     {
         PathFollow = newPathFollow;
-        Health = _maxHealth;
+        Health = _maxHealth * maxHealthMultiply;
     }
 
     public void _OnAreaEntered(Area2D area)

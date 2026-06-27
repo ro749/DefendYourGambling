@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://um1ypv2edww8" path="res://Assets/Images/Enemies/FastEnemy.png" id="2_qjodd"]
 
 [node name="EnemyFast" instance=ExtResource("1_xsg1w")]
+Type = 2
 _maxHealth = 40.0
 _moveSpeed = 120.0
 Reward = 5

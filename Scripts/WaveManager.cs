@@ -131,6 +131,7 @@ public partial class WaveManager : Node
     {
         // Load the JSON file
         using var jsonFile = FileAccess.Open("res://Data/waves.json", FileAccess.ModeFlags.Read);
+        //using var jsonFile = FileAccess.Open("res://Data/waves_instant.json", FileAccess.ModeFlags.Read);
         if (jsonFile == null || !jsonFile.IsOpen())
         {
             GD.PrintErr("Failed to load waves.json");
@@ -205,6 +206,8 @@ public partial class WaveManager : Node
         int waveIndex = 0;
         foreach (var waveDict in waveArray)
         {
+            if (waveIndex >= waves.Count) break;
+
             var waveStats = waves[waveIndex];
             waveStats.waveEnemiesPenalty = new List<List<WaveEnemiesSpawnDesc>>();
 

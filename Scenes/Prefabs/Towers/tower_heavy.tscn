@@ -14,9 +14,10 @@ radius = 256.12497
 bulletType = 1
 shootSpeed = 1.2
 bulletSpeed = 1200.0
-bulletDamage = 40.0
+bulletDamage = 30.0
 bulletMaxPenetration = 3
 towerType = 1
+SellValue = 100
 
 [node name="Base" parent="." index="0"]
 scale = Vector2(0.23, 0.23)

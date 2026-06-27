@@ -90,7 +90,7 @@ offset_bottom = 316.0018
 texture_normal = ExtResource("2_5a7ln")
 script = ExtResource("4_p2isk")
 slotMachine = NodePath("../SlotMachine")
-moneyCost = 60
+RerollTimes = 2
 
 [node name="Label" type="Label" parent="TextureButton"]
 layout_mode = 0
@@ -132,17 +132,20 @@ offset_right = 652.0
 offset_bottom = 680.0
 script = ExtResource("5_7v8bt")
 Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw"), ExtResource("12_sljhw"), ExtResource("13_tt0ev"), ExtResource("14_kq454")])
-Probabilities = Array[int]([11, 1, 9, 1, 7, 1, 35, 35, 35])
+Probabilities = Array[int]([22, 2, 20, 2, 18, 2, 145, 145, 145])
 
 [node name="Container" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 script = ExtResource("8_gs4bg")
+Results = Array[PackedScene]([])
 
 [node name="Container2" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 script = ExtResource("8_gs4bg")
+Results = Array[PackedScene]([])
+Probabilities = Array[PackedScene]([])
 
 [node name="Container3" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)

@@ -6,54 +6,73 @@ public partial class SpinToWin : TextureButton
 {
     public enum TowerState
     {
-        DESTROY_ENEMIES = 27,
-        WIN_MONEY = 125,
-        MORE_ENEMIES = 343
+        DESTROY_ENEMIES_1 = 27, // 3^3
+        DESTROY_ENEMIES_2 = 81, // 3^4
+        DESTROY_ENEMIES_3 = 243, // 3^5
+
+        WIN_MONEY_1 = 125, // 5^3
+        WIN_MONEY_2 = 625, // 5^4
+        WIN_MONEY_3 = 3125, // 5^5
+
+        MORE_ENEMIES_1 = 343, // 7^3
+        MORE_ENEMIES_2 = 2401, // 7^4
+        MORE_ENEMIES_3 = 16807 // 7^5
     }
     [Export] public BoxContainer slotMachine;
-    [Export] public int moneyCost = 50;
+    [Export] public int moneyCost = 60;
 
-    public Action KillAllEnemies;
+    public Action<int> KillEnemies;
+    public Action<int> MoneyReward;
     public Action<int> EnemyPenalty;
 
-    private bool IsFirstRoll = true;
-    private PlayerState playerState;
-    public override void _Ready()
+    private Func<int, bool> _tryBuy;
+
+    [Export]
+    private int RerollTimes = 0;
+
+    public void Setup(Func<int, bool> canBuy)
     {
-        playerState = GetTree().Root.GetNode<PlayerState>("Map/PlayerState");
+        _tryBuy = canBuy;
     }
-    public void _on_pressed()
+
+    private int _roll()
     {
-        if (playerState.SpendMoney(moneyCost) == false)
-            return;
         var v = 1;
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
             v *= child.roll();
         }
-        if (IsFirstRoll)
+        return v;
+    }
+    
+    public void _on_pressed()
+    {
+        if (_tryBuy == null || !_tryBuy(moneyCost))
+            return;
+
+        var v = _roll();
+
+        if (RerollTimes > 0)
         {
             while(v % 2 != 0)
             {
-                v = 1;
-                foreach (Reel child in slotMachine.GetChildren().OfType<Reel>())
-                {
-                    v *= child.roll();
-                }
+                v = _roll();
             }
-            IsFirstRoll = false;
+            --RerollTimes;
         }
-        if (v % (int)TowerState.DESTROY_ENEMIES == 0)
+
+        if (v % (int)TowerState.DESTROY_ENEMIES_1 == 0)
         {
-            KillAllEnemies?.Invoke();
+            KillEnemies?.Invoke(v % (int)TowerState.DESTROY_ENEMIES_3 == 0 ? 3 : (v % (int)TowerState.DESTROY_ENEMIES_2 == 0 ? 2 : 1));
         }
                 
-        if (v % (int)TowerState.WIN_MONEY == 0)
+        if (v % (int)TowerState.WIN_MONEY_1 == 0)
         {
-            playerState.AddMoney(50);
+            MoneyReward?.Invoke(v % (int)TowerState.WIN_MONEY_3 == 0 ? 5 * moneyCost : (v % (int)TowerState.WIN_MONEY_2 == 0 ? 3 * moneyCost / 2 : moneyCost / 2));
         }
-        if (v % (int)TowerState.MORE_ENEMIES == 0)
+
+        if (v % (int)TowerState.MORE_ENEMIES_1 == 0)
         {
-            EnemyPenalty?.Invoke(0);
+            EnemyPenalty?.Invoke(v % (int)TowerState.MORE_ENEMIES_3 == 0 ? 3 : (v % (int)TowerState.MORE_ENEMIES_2 == 0 ? 2 : 1));
         }
     }
 }

@@ -14,6 +14,7 @@ radius = 192.0
 bulletSpeed = 1000.0
 bulletDamage = 31.0
 towerType = 0
+SellValue = 30
 
 [node name="Base" parent="." index="0"]
 texture_filter = 1
