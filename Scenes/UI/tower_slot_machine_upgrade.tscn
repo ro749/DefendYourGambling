@@ -1,20 +1,52 @@
-[gd_scene load_steps=19 format=3 uid="uid://dcsr3oqsifvff"]
+[gd_scene load_steps=30 format=3 uid="uid://dcsr3oqsifvff"]
 
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="1_138dk"]
 [ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_wwrry"]
 [ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="3_u2t5e"]
 [ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_7pshy"]
 [ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="5_s2j8n"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="5_wisaq"]
+[ext_resource type="AudioStream" uid="uid://jmam27l8b3m3" path="res://Assets/Sounds/Rewards/SlotMachineStart.wav" id="6_8qiy3"]
 [ext_resource type="PackedScene" uid="uid://b6q5vy6p6n4to" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="6_wkgam"]
+[ext_resource type="AudioStream" uid="uid://b5nwcmgfqa14k" path="res://Assets/Sounds/Rewards/FirstMoneyReward.wav" id="7_egtrv"]
 [ext_resource type="PackedScene" uid="uid://b4t2w330ari5o" path="res://Scenes/Prefabs/ReelResults/heavy_tower_result.tscn" id="7_wisaq"]
 [ext_resource type="PackedScene" uid="uid://ccik0wxs2ivya" path="res://Scenes/Prefabs/ReelResults/multi_4_result.tscn" id="8_8qiy3"]
+[ext_resource type="AudioStream" uid="uid://dqkuwtify8s02" path="res://Assets/Sounds/Rewards/SecondMoneyReward.wav" id="8_j7mpl"]
+[ext_resource type="AudioStream" uid="uid://de366sb06en3x" path="res://Assets/Sounds/Rewards/ThirdMoneyReward.wav" id="9_d3rhh"]
 [ext_resource type="PackedScene" uid="uid://ckyuknndxxm78" path="res://Scenes/Prefabs/ReelResults/multi_8_result.tscn" id="9_egtrv"]
 [ext_resource type="PackedScene" uid="uid://8u0y82bd6vmk" path="res://Scenes/Prefabs/ReelResults/sinper_result.tscn" id="10_j7mpl"]
+[ext_resource type="AudioStream" uid="uid://ccivvaageo87o" path="res://Assets/Sounds/Rewards/BadRoll.wav" id="10_m5eoq"]
 [ext_resource type="PackedScene" uid="uid://2jhl3eswnob0" path="res://Scenes/Prefabs/ReelResults/sniper_heavy_result.tscn" id="11_d3rhh"]
 [ext_resource type="PackedScene" uid="uid://dqduj880mh4hn" path="res://Scenes/Prefabs/ReelResults/win.tscn" id="12_m5eoq"]
 [ext_resource type="PackedScene" uid="uid://bjrf815xo42o1" path="res://Scenes/Prefabs/ReelResults/jackpot.tscn" id="13_atyry"]
 [ext_resource type="PackedScene" uid="uid://ij5f70mxx38t" path="res://Scenes/Prefabs/ReelResults/loose.tscn" id="14_gx7qj"]
 [ext_resource type="PackedScene" uid="uid://wndk3yvnp31l" path="res://Scenes/UI/Reel.tscn" id="15_138dk"]
+
+[sub_resource type="Resource" id="Resource_atyry"]
+script = ExtResource("5_wisaq")
+source = ExtResource("6_8qiy3")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_gx7qj"]
+script = ExtResource("5_wisaq")
+source = ExtResource("7_egtrv")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_ly32d"]
+script = ExtResource("5_wisaq")
+source = ExtResource("8_j7mpl")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_rnobm"]
+script = ExtResource("5_wisaq")
+source = ExtResource("9_d3rhh")
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
+
+[sub_resource type="Resource" id="Resource_4lbho"]
+script = ExtResource("5_wisaq")
+source = ExtResource("10_m5eoq")
+volumeDB = -5.0
+metadata/_custom_type_script = "uid://y3fmanc58dq3"
 
 [sub_resource type="Animation" id="Animation_01hbv"]
 length = 0.001
@@ -90,8 +122,12 @@ offset_bottom = 316.0018
 texture_normal = ExtResource("3_u2t5e")
 script = ExtResource("4_7pshy")
 slotMachine = NodePath("../SlotMachine")
-SecondsBetweenRolls = 0.167
+SecondsBetweenRolls = 0.5
 moneyCost = 150
+_startSound = SubResource("Resource_atyry")
+_moneyRewardSounds = [SubResource("Resource_gx7qj"), SubResource("Resource_ly32d"), SubResource("Resource_rnobm")]
+_moreEnemySounds = [SubResource("Resource_4lbho")]
+RerollTimes = 1
 
 [node name="Label" type="Label" parent="TextureButton"]
 layout_mode = 0
@@ -134,7 +170,7 @@ offset_right = 671.985
 offset_bottom = 810.55
 script = ExtResource("5_s2j8n")
 Results = Array[Object]([ExtResource("6_wkgam"), ExtResource("7_wisaq"), ExtResource("8_8qiy3"), ExtResource("9_egtrv"), ExtResource("10_j7mpl"), ExtResource("11_d3rhh"), ExtResource("12_m5eoq"), ExtResource("13_atyry"), ExtResource("14_gx7qj")])
-Probabilities = Array[int]([1, 6, 1, 5, 1, 4, 13, 13, 13])
+Probabilities = Array[int]([2, 22, 2, 20, 2, 18, 145, 145, 145])
 
 [node name="Control" parent="SlotMachine" instance=ExtResource("15_138dk")]
 layout_mode = 2

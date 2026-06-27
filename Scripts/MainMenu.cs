@@ -55,7 +55,7 @@ public partial class MainMenu : Control
         switch (btnPressed)
         {
             case "StartGame":
-                GetTree().ChangeSceneToFile("res://Scenes/Maps/TestMap.tscn");
+                GetTree().ChangeSceneToFile("res://Scenes/Maps/test_map.tscn");
                 break;
             case "Credits":
                 GetTree().ChangeSceneToFile("res://Scenes/Maps/credits.tscn");

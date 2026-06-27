@@ -1,26 +1,25 @@
-[gd_scene load_steps=21 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=20 format=3 uid="uid://4b8q2g1mu0iw"]
 
-[ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
-[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_htxeb"]
-[ext_resource type="Texture2D" uid="uid://83vag8i73w4t" path="res://Assets/Images/UI/GameBackground.png" id="2_pmk55"]
-[ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
-[ext_resource type="AudioStream" uid="uid://cfyt3lws7esj6" path="res://Assets/Sounds/Victory Sound.wav" id="3_htxeb"]
-[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="5_h1i30"]
-[ext_resource type="PackedScene" uid="uid://3p10dff762oj" path="res://Scenes/UI/victory_screen.tscn" id="5_j28jb"]
-[ext_resource type="PackedScene" uid="uid://cjsbhhp1yg3gu" path="res://Scenes/UI/pause_screen.tscn" id="5_kukki"]
-[ext_resource type="PackedScene" uid="uid://bx8x304erh4mv" path="res://Scenes/UI/lose_screen.tscn" id="6_xj7ls"]
-[ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="7_j28jb"]
-[ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="8_nd5sh"]
-[ext_resource type="Script" uid="uid://dl1bxdjhlbxjp" path="res://Scripts/PlayerState.cs" id="9_nd5sh"]
-[ext_resource type="PackedScene" uid="uid://cnovox0sidh8f" path="res://Scenes/UI/tower_slot_machine_upgrade.tscn" id="9_snl3g"]
-[ext_resource type="PackedScene" uid="uid://ctc1ylplkj422" path="res://Scenes/UI/game_interface.tscn" id="9_v3b54"]
-[ext_resource type="Script" uid="uid://cve012pe3krt3" path="res://Scripts/WaveManager.cs" id="10_r4ehd"]
-[ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="10_snl3g"]
-[ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="10_xcfig"]
+[ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_i3lja"]
+[ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_udsps"]
+[ext_resource type="AudioStream" uid="uid://cfyt3lws7esj6" path="res://Assets/Sounds/Victory Sound.wav" id="3_xosb5"]
+[ext_resource type="Texture2D" uid="uid://83vag8i73w4t" path="res://Assets/Images/UI/GameBackground.png" id="4_54pvn"]
+[ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="5_otpcx"]
+[ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="6_m0d5v"]
+[ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="7_mppu7"]
+[ext_resource type="PackedScene" uid="uid://ctc1ylplkj422" path="res://Scenes/UI/game_interface.tscn" id="8_vu4kc"]
+[ext_resource type="PackedScene" uid="uid://3p10dff762oj" path="res://Scenes/UI/victory_screen.tscn" id="9_bvf2a"]
+[ext_resource type="PackedScene" uid="uid://bx8x304erh4mv" path="res://Scenes/UI/lose_screen.tscn" id="10_6yorc"]
+[ext_resource type="PackedScene" uid="uid://cjsbhhp1yg3gu" path="res://Scenes/UI/pause_screen.tscn" id="11_fdakd"]
+[ext_resource type="PackedScene" uid="uid://dcsr3oqsifvff" path="res://Scenes/UI/tower_slot_machine_upgrade.tscn" id="12_f6s5d"]
+[ext_resource type="PackedScene" uid="uid://1y6gy11c0w3p" path="res://Scenes/UI/tower_slot_machine.tscn" id="13_v05bk"]
+[ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="14_2rv46"]
+[ext_resource type="Script" uid="uid://dl1bxdjhlbxjp" path="res://Scripts/PlayerState.cs" id="15_y6gbo"]
+[ext_resource type="Script" uid="uid://cve012pe3krt3" path="res://Scripts/WaveManager.cs" id="16_e3wx2"]
 
 [sub_resource type="Resource" id="Resource_ewx0n"]
-script = ExtResource("2_htxeb")
-source = ExtResource("3_htxeb")
+script = ExtResource("2_udsps")
+source = ExtResource("3_xosb5")
 metadata/_custom_type_script = "uid://y3fmanc58dq3"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcfig"]
@@ -33,17 +32,17 @@ _data = {
 point_count = 11
 
 [node name="Map" type="Node2D"]
-script = ExtResource("1_1wegt")
+script = ExtResource("1_i3lja")
 _victorySound = SubResource("Resource_ewx0n")
 
 [node name="GameBackground" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
-texture = ExtResource("2_pmk55")
+texture = ExtResource("4_54pvn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(700, 541.99994)
 scale = Vector2(0.7291667, 1)
-texture = ExtResource("2_r4ehd")
+texture = ExtResource("5_otpcx")
 
 [node name="MapArea" type="Area2D" parent="Sprite2D"]
 collision_layer = 16
@@ -63,300 +62,300 @@ visible = false
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(16, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor2" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(48, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor3" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(80, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor4" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(112, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor5" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(144, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor6" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(176, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="CasinoFloor7" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(208, 16)
-texture = ExtResource("7_j28jb")
+texture = ExtResource("6_m0d5v")
 
 [node name="Path" type="Node2D" parent="TileMap"]
 
 [node name="CasinoPath" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath2" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 280)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath3" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 376)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath4" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 472)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath5" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 568)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath6" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 664)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath7" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath8" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 856)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath9" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(128, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath10" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(224, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath11" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(320, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath12" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath13" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(512, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath14" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(608, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath15" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(704, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath16" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(800, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath17" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(800.00006, 856)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath18" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(800, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath19" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(704, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath20" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(608, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath21" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(512, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath22" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath23" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 664)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath24" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 568)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath25" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 472)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath26" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 376.00003)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath27" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 280)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath28" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(416, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath29" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(512, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath30" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(608, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath31" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(704, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath32" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(800, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath33" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(896.00006, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath34" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(992, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath35" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1072, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath36" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1168, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath37" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1264, 184)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath38" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1264, 280)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath39" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1264, 376)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath40" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1168, 376)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath41" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1072, 376)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath42" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 376)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath43" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 472)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath44" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 568)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath45" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 664)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath46" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 760)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath47" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 856)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath48" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(976, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath49" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1072, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath50" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1168, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="CasinoPath51" type="Sprite2D" parent="TileMap/Path"]
 position = Vector2(1264, 952)
 scale = Vector2(3, 3)
-texture = ExtResource("8_nd5sh")
+texture = ExtResource("7_mppu7")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_276sc")
@@ -374,55 +373,46 @@ polygon = PackedVector2Array(80, 136, 80, 1000, 848, 1000, 848, 712, 464, 712, 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameInterface" parent="CanvasLayer" instance=ExtResource("9_v3b54")]
+[node name="GameInterface" parent="CanvasLayer" instance=ExtResource("8_vu4kc")]
 
 [node name="Menus" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VictoryScreen" parent="CanvasLayer/Menus" instance=ExtResource("5_j28jb")]
+[node name="VictoryScreen" parent="CanvasLayer/Menus" instance=ExtResource("9_bvf2a")]
 visible = false
 layout_mode = 2
 
-[node name="LoseScreen" parent="CanvasLayer/Menus" instance=ExtResource("6_xj7ls")]
+[node name="LoseScreen" parent="CanvasLayer/Menus" instance=ExtResource("10_6yorc")]
 visible = false
 layout_mode = 2
 
-[node name="PauseScreen" parent="CanvasLayer/Menus" instance=ExtResource("5_kukki")]
+[node name="PauseScreen" parent="CanvasLayer/Menus" instance=ExtResource("11_fdakd")]
 visible = false
 layout_mode = 2
 
-[node name="TowerSlotMachineUpgrade" parent="CanvasLayer" instance=ExtResource("9_snl3g")]
+[node name="TowerSlotMachineUpgrade" parent="CanvasLayer" instance=ExtResource("12_f6s5d")]
 offset_left = 1424.0
 offset_top = 256.0
 offset_right = 2262.0
 offset_bottom = 1107.0
 scale = Vector2(0.45, 0.45)
 
-[node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
+[node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("13_v05bk")]
 offset_left = 1424.0
 offset_top = 672.0
 offset_right = 2261.0
 offset_bottom = 1512.0
 scale = Vector2(0.45, 0.45)
 
-[node name="TowerSlotMachine2" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
-visible = false
-offset_left = 1424.0
-offset_top = 248.0
-offset_right = 2261.0
-offset_bottom = 1088.0
-scale = Vector2(0.45, 0.456)
-texture = ExtResource("10_snl3g")
-
-[node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("5_h1i30")]
+[node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("14_2rv46")]
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
 
 [node name="WaveTimer" type="Timer" parent="."]
 
 [node name="PlayerState" type="Node2D" parent="."]
-script = ExtResource("9_nd5sh")
+script = ExtResource("15_y6gbo")
 
 [node name="WaveManager" type="Node2D" parent="."]
-script = ExtResource("10_r4ehd")
+script = ExtResource("16_e3wx2")

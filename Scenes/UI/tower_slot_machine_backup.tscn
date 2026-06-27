@@ -111,7 +111,7 @@ _data = {
 &"pull_lever": SubResource("Animation_70iir")
 }
 
-[node name="TowerSlotMachine2" type="TextureRect"]
+[node name="TowerSlotMachineBackup" type="TextureRect"]
 texture = ExtResource("1_pr1aj")
 script = ExtResource("2_62i1d")
 
@@ -175,14 +175,11 @@ Probabilities = Array[int]([22, 2, 20, 2, 18, 2, 145, 145, 145])
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 script = ExtResource("21_od4m3")
-Results = Array[PackedScene]([])
 
 [node name="Container2" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 script = ExtResource("21_od4m3")
-Results = Array[PackedScene]([])
-Probabilities = Array[PackedScene]([])
 
 [node name="Container3" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)

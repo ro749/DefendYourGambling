@@ -111,7 +111,7 @@ _data = {
 &"pull_lever": SubResource("Animation_70iir")
 }
 
-[node name="TowerSlotMachine" type="TextureRect"]
+[node name="TowerSlotMachineBackup" type="TextureRect"]
 texture = ExtResource("1_mmluv")
 script = ExtResource("2_vm5ad")
 
