@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public struct BulletStats
 {
-	public float damage;
-	public int maxPenetration;
 	public PackedScene bulletScene;
 }
 
@@ -30,8 +28,8 @@ public partial class Data : Node
 	
 	public static Dictionary<BulletType, BulletStats> bulletStats = new Dictionary<BulletType, BulletStats>()
 	{
-		{ BulletType.SINGLE, new BulletStats { damage = 20, maxPenetration = 1, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_single.tscn") } },
-		{ BulletType.HEAVY, new BulletStats { damage = 30, maxPenetration = 3, bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_heavy.tscn") } },
+		{ BulletType.SINGLE, new BulletStats { bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_single.tscn") } },
+		{ BulletType.HEAVY, new BulletStats { bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_heavy.tscn") } },
 	};
 
 	public static Dictionary<TowerType, TowerStats> towerStats = new Dictionary<TowerType, TowerStats>()

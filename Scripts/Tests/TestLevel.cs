@@ -20,6 +20,9 @@ public partial class TestLevel : Node
 
     public PreviewTower towerPreview = null;
 
+    [Export]
+    private int _initialMoney = 99999;
+
     public override void _Ready()
     {
         fadeTransition = GetNode<ColorRect>("CanvasLayer/FadeTransition");
@@ -65,7 +68,7 @@ public partial class TestLevel : Node
             gameInterface.ChangeMoneyText(currentMoney);
         };
         gameInterface.ChangeLifesText(playerState.Lives);
-        playerState.SetMoney(1000);
+        playerState.SetMoney(_initialMoney);
 
         // Start the first wave for testing
         waveManager.StartWaves();
@@ -181,11 +184,11 @@ public partial class TestLevel : Node
         CheckForNewWave();
     }
     
-    private void _CreateBullet(Vector2 pos, float direction, float speed, int bulletEnum)
+    private void _CreateBullet(Vector2 pos, float direction, float speed, float damage, int maxPenetration, int bulletEnum)
     {
         if (Data.bulletStats.TryGetValue((Data.BulletType)bulletEnum, out var bulletStats) && bulletStats.bulletScene.Instantiate() is Bullet bulletInstance)
         {
-            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, speed, (Data.BulletType)bulletEnum);
+            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, speed, damage, maxPenetration, (Data.BulletType)bulletEnum);
             GetNode<Node2D>("Bullets").AddChild(bulletInstance);
         }
     }

@@ -8,10 +8,12 @@
 size = Vector2(64, 96)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctxl4"]
-radius = 768.0
+radius = 600.0
 
 [node name="TowerSniper" instance=ExtResource("1_hdp0i")]
-bulletSpeed = 2500.0
+shootSpeed = 1.4
+bulletSpeed = 3000.0
+bulletDamage = 12.0
 towerType = 5
 
 [node name="Base" parent="." index="0"]
@@ -30,7 +32,7 @@ texture = ExtResource("3_2j0c8")
 shape = SubResource("CircleShape2D_ctxl4")
 
 [node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
-scale = Vector2(1536, 1536)
+scale = Vector2(1200, 1200)
 
 [node name="SelectedMenu" parent="." index="5"]
 offset_left = -44.0

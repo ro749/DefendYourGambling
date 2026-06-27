@@ -12,7 +12,10 @@ radius = 256.12497
 
 [node name="TowerHeavy" instance=ExtResource("1_dvdqr")]
 bulletType = 1
+shootSpeed = 1.2
 bulletSpeed = 1200.0
+bulletDamage = 40.0
+bulletMaxPenetration = 3
 towerType = 1
 
 [node name="Base" parent="." index="0"]

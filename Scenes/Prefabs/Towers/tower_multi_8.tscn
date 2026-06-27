@@ -14,6 +14,7 @@ bulletsCount = 8
 bulletsAngle = 45.0
 bulletsAngleOffset = 22.5
 bulletSpeed = 500.0
+bulletDamage = 25.0
 towerSeekFunction = 0
 towerType = 4
 

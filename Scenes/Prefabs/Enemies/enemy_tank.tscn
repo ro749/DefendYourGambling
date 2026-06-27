@@ -5,7 +5,7 @@
 
 [node name="EnemyTank" instance=ExtResource("1_yjbw7")]
 _maxHealth = 100.0
-_moveSpeed = 70.0
+_moveSpeed = 60.0
 _damage = 2
 Reward = 50
 

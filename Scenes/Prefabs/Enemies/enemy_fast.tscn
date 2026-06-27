@@ -5,7 +5,7 @@
 
 [node name="EnemyFast" instance=ExtResource("1_xsg1w")]
 _maxHealth = 40.0
-_moveSpeed = 150.0
+_moveSpeed = 120.0
 Reward = 25
 
 [node name="Sprite2D" parent="." index="0"]

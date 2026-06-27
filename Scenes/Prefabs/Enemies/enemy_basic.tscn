@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cygufxs83qe08" path="res://Assets/Images/Enemies/BasicEnemy.png" id="2_l2u82"]
 
 [node name="EnemyBasic" instance=ExtResource("1_v5ntw")]
+_moveSpeed = 80.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)
