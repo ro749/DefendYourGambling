@@ -67,11 +67,11 @@ public partial class Enemy : Area2D
     {
         if (area is Bullet bullet)
         {
-            if (Health <= 0 || bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= Data.bulletStats[bullet.bulletEnum].maxPenetration)
+            if (Health <= 0 || bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= bullet.MaxPenetration)
             {
                 return; // This bullet has already hit max enemies, ignore it.
             }
-            Health -= Data.bulletStats[bullet.bulletEnum].damage;
+            Health -= bullet.Damage;
             bullet.HitEnemy(this);
             if (Health <= 0)
             {

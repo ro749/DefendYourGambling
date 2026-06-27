@@ -32,10 +32,12 @@ label_settings = SubResource("LabelSettings_mq5wo")
 horizontal_alignment = 1
 
 [node name="Container" type="Control" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="InfiniteMode" type="Button" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48

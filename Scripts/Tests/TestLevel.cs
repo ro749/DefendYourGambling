@@ -13,12 +13,18 @@ public partial class TestLevel : Node
     PauseScreen pauseScreen;
     GameInterface gameInterface;
 
+    private SpinToWin spinToWinMachineBasic;
+    private SpinToWin spinToWinMachineUpgrade;
+
     private WaveManager waveManager;
     private Timer waveTimer;
 
     private List<Enemy> activeEnemies = new List<Enemy>();
 
     public PreviewTower towerPreview = null;
+
+    [Export]
+    private int _initialMoney = 99999;
 
     public override void _Ready()
     {
@@ -39,6 +45,43 @@ public partial class TestLevel : Node
         pauseScreen = GetNode<PauseScreen>("CanvasLayer/Menus/PauseScreen");
         pauseScreen.OnResume += OnResume;
         gameInterface = GetNode<GameInterface>("CanvasLayer/GameInterface");
+
+        spinToWinMachineBasic = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachineUpgrade/TextureButton");
+        spinToWinMachineBasic.EnemyPenalty += (int tier) =>
+        {
+            waveManager.AddEnemiesPenalty(tier);
+        };
+        spinToWinMachineBasic.KillAllEnemies += () =>
+        {
+            List<Enemy> cloneActiveEnemies = [];
+            foreach (Enemy child in activeEnemies)
+            {
+                cloneActiveEnemies.Add(child);
+            }
+            foreach (Enemy child in cloneActiveEnemies)
+            {
+                _onEnemyDied(child);
+                child.QueueFree();
+            }
+        };
+        spinToWinMachineUpgrade = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachine/TextureButton");
+        spinToWinMachineUpgrade.EnemyPenalty += (int tier) =>
+        {
+            waveManager.AddEnemiesPenalty(tier);
+        };
+        spinToWinMachineUpgrade.KillAllEnemies += () =>
+        {
+            List<Enemy> cloneActiveEnemies = [];
+            foreach (Enemy child in activeEnemies)
+            {
+                cloneActiveEnemies.Add(child);
+            }
+            foreach (Enemy child in cloneActiveEnemies)
+            {
+                _onEnemyDied(child);
+                child.QueueFree();
+            }
+        };
 
         waveManager = GetNode<WaveManager>("WaveManager");
         waveManager.CreateEnemy += CreateEnemy;
@@ -65,7 +108,7 @@ public partial class TestLevel : Node
             gameInterface.ChangeMoneyText(currentMoney);
         };
         gameInterface.ChangeLifesText(playerState.Lives);
-        playerState.SetMoney(100000);
+        playerState.SetMoney(_initialMoney);
 
         // Start the first wave for testing
         waveManager.StartWaves();
@@ -181,11 +224,11 @@ public partial class TestLevel : Node
         CheckForNewWave();
     }
     
-    private void _CreateBullet(Vector2 pos, float direction, float speed, int bulletEnum)
+    private void _CreateBullet(Vector2 pos, float direction, float speed, float damage, int maxPenetration, int bulletEnum)
     {
         if (Data.bulletStats.TryGetValue((Data.BulletType)bulletEnum, out var bulletStats) && bulletStats.bulletScene.Instantiate() is Bullet bulletInstance)
         {
-            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, speed, (Data.BulletType)bulletEnum);
+            bulletInstance.Setup(pos + Vector2.FromAngle(direction) * 32, direction, speed, damage, maxPenetration, (Data.BulletType)bulletEnum);
             GetNode<Node2D>("Bullets").AddChild(bulletInstance);
         }
     }

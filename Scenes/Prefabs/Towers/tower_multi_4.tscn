@@ -12,12 +12,13 @@ radius = 128.0
 [node name="TowerMulti4" instance=ExtResource("1_1gmp1")]
 bulletsCount = 4
 bulletsAngle = 90.0
-bulletsAngleOffset = 45.0
 bulletSpeed = 500.0
+bulletDamage = 17.0
 towerSeekFunction = 0
 towerType = 3
 
 [node name="Base" parent="." index="0"]
+rotation = 0.7853982
 scale = Vector2(0.16216214, 0.2)
 texture = ExtResource("2_qlueb")
 

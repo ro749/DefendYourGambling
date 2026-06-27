@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public partial class Tower : Area2D
 {
     [Signal]
-    public delegate void ShootEventHandler(Vector2 pos, float direction, float speed, int bulletEnum);
+    public delegate void ShootEventHandler(Vector2 pos, float direction, float speed, float damage, int maxPenetration, int bulletEnum);
 
     public Action<Tower>? OnClicked;
     public Action<Tower>? OnSelled;
@@ -30,9 +30,13 @@ public partial class Tower : Area2D
     [Export]
     public float bulletsAngleOffset = 0.0f;
     [Export]
+    public float shootSpeed = 1.0f;
+    [Export]
     public float bulletSpeed = 100.0f;
     [Export]
-    public float shootSpeed = 1.0f;
+    public float bulletDamage = 20.0f;
+    [Export]
+    public int bulletMaxPenetration = 1;
     
     [Export]
     public Data.TowerSeekFnc towerSeekFunction = Data.TowerSeekFnc.FURTHEST;
@@ -66,7 +70,7 @@ public partial class Tower : Area2D
         if (startedDrag)
         {
             float movedDistance = (GetGlobalMousePosition() - draggedInitialMousePos).Length();
-            if (movedDistance > 25)
+            if (movedDistance > 15)
             {
                 dragged = true;
                 startedDrag = false;
@@ -96,7 +100,7 @@ public partial class Tower : Area2D
         {
             float angleOffset = ((1 - bulletsCount) / 2.0f + i) * bulletsAngle + bulletsAngleOffset;
             angleOffset = angleOffset * Mathf.Pi / 180.0f;
-            EmitSignal("Shoot", GlobalPosition, (turretNode?.Rotation?? 0.0f) + angleOffset, bulletSpeed, (int)bulletType);
+            EmitSignal("Shoot", GlobalPosition, (turretNode?.Rotation?? 0.0f) + angleOffset, bulletSpeed, bulletDamage, bulletMaxPenetration, (int)bulletType);
         }
         _reloadTimer.Start(shootSpeed);
     }

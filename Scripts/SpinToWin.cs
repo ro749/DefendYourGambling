@@ -12,6 +12,11 @@ public partial class SpinToWin : TextureButton
     }
     [Export] public BoxContainer slotMachine;
     [Export] public float SecondsBetweenRolls = 1.0f;
+    [Export] public int moneyCost = 50;
+
+    public Action KillAllEnemies;
+    public Action<int> EnemyPenalty;
+
     private bool IsFirstRoll = true;
     private PlayerState playerState;
     public override void _Ready()
@@ -20,7 +25,7 @@ public partial class SpinToWin : TextureButton
     }
     public async void _on_pressed()
     {
-        if (playerState.SpendMoney(167) == false)
+        if (playerState.SpendMoney(moneyCost) == false)
             return;
         var v = 1;
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
@@ -41,19 +46,16 @@ public partial class SpinToWin : TextureButton
         }
         if (v % (int)TowerState.DESTROY_ENEMIES == 0)
         {
-            foreach (Node2D child in GetTree().Root.GetNode<Node2D>("Map/Path2D").GetChildren())
-            {
-                child.QueueFree();
-            }
+            KillAllEnemies?.Invoke();
         }
                 
         if (v % (int)TowerState.WIN_MONEY == 0)
         {
-            playerState.AddMoney(1000);
+            playerState.AddMoney(50);
         }
         if (v % (int)TowerState.MORE_ENEMIES == 0)
         {
-            GD.Print("More Enemies");
+            EnemyPenalty?.Invoke(0);
         }
     }
 }
