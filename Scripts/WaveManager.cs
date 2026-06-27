@@ -231,9 +231,10 @@ public partial class WaveManager : Node
             }
 
             waves[waveIndex] = waveStats;
+            ++waveIndex;
         }
 
-        GD.Print($"Loaded {waves.Count} waves from waves.json");
+        GD.Print(waves);
     }
 
     public void StartWaves()

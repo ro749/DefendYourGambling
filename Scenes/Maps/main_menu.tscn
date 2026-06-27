@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1n1v0lwnlfuj"]
+[gd_scene load_steps=11 format=3 uid="uid://b1n1v0lwnlfuj"]
 
 [ext_resource type="Script" uid="uid://x62asba8pkgc" path="res://Scripts/MainMenu.cs" id="1_cxitb"]
 [ext_resource type="Texture2D" uid="uid://3qf6qbtlakhv" path="res://Assets/Images/UI/MainMenuBG.png" id="2_duwsb"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="2_ruwid"]
 [ext_resource type="Texture2D" uid="uid://c0pycmpjsyh5" path="res://Assets/Images/UI/title.png" id="3_duwsb"]
+[ext_resource type="Texture2D" uid="uid://catqn7fbmi8du" path="res://Assets/Images/UI/StartButtonBase.png" id="4_xb4ol"]
+[ext_resource type="Texture2D" uid="uid://b6eh5ikcul1qh" path="res://Assets/Images/UI/StartButtonHovered.png" id="5_1u7jv"]
+[ext_resource type="Texture2D" uid="uid://cpgwtw6adnmv5" path="res://Assets/Images/UI/OptionsButtonBase.png" id="6_g00cn"]
+[ext_resource type="Texture2D" uid="uid://sxkkgqpf5cib" path="res://Assets/Images/UI/OptionsButtonHovered.png" id="7_w3grw"]
+[ext_resource type="Texture2D" uid="uid://5gds2g052ywd" path="res://Assets/Images/UI/ExitButtonBase.png" id="8_6ea0t"]
+[ext_resource type="Texture2D" uid="uid://b5pjf3kfn84tb" path="res://Assets/Images/UI/ExitButtonHovered.png" id="9_n87qx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -35,74 +41,48 @@ texture = ExtResource("3_duwsb")
 expand_mode = 1
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 125)
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="StartGame" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="PaddingLeft" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="StartGame" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 80
-text = "Start Game"
-
-[node name="PaddingRight" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("4_xb4ol")
+texture_hover = ExtResource("5_1u7jv")
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Options" type="TextureButton" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
-
-[node name="PaddingLeft" type="Control" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 80
-text = "Options"
-
-[node name="PaddingRight" type="Control" parent="VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("6_g00cn")
+texture_hover = ExtResource("7_w3grw")
 
 [node name="Control3" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CloseGame" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-
-[node name="PaddingLeft" type="Control" parent="VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="CloseGame" type="Button" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 80
-text = "Close Game"
-
-[node name="PaddingRight" type="Control" parent="VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_6ea0t")
+texture_hover = ExtResource("9_n87qx")
 
 [node name="FadeTransition" parent="." instance=ExtResource("2_ruwid")]
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/StartGame" to="." method="_onStartGamePressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Options" to="." method="_onOptionsPressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer3/CloseGame" to="." method="_onCloseGamePressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_onStartGamePressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_onOptionsPressed"]
+[connection signal="pressed" from="VBoxContainer/CloseGame" to="." method="_onCloseGamePressed"]

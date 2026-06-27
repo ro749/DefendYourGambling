@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://b0wo6nh6jej87" path="res://Assets/Images/Enemies/BossEnemy.png" id="2_c2kqw"]
 
 [node name="EnemyBoss" instance=ExtResource("1_c5bd8")]
-_maxHealth = 1000.0
+_maxHealth = 5000.0
 _moveSpeed = 50.0
 _damage = 100
-Reward = 1000
+Reward = 100
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(-14, -26)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://4b8q2g1mu0iw"]
+[gd_scene load_steps=18 format=3 uid="uid://4b8q2g1mu0iw"]
 
 [ext_resource type="Script" uid="uid://cj44ailayvqbo" path="res://Scripts/Tests/TestLevel.cs" id="1_1wegt"]
+[ext_resource type="Texture2D" uid="uid://83vag8i73w4t" path="res://Assets/Images/UI/GameBackground.png" id="2_pmk55"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="2_r4ehd"]
 [ext_resource type="PackedScene" uid="uid://j8os5kv1xvsu" path="res://Scenes/UI/fade_transition.tscn" id="5_h1i30"]
 [ext_resource type="PackedScene" uid="uid://3p10dff762oj" path="res://Scenes/UI/victory_screen.tscn" id="5_j28jb"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="7_j28jb"]
 [ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="8_nd5sh"]
 [ext_resource type="Script" uid="uid://dl1bxdjhlbxjp" path="res://Scripts/PlayerState.cs" id="9_nd5sh"]
+[ext_resource type="PackedScene" uid="uid://cnovox0sidh8f" path="res://Scenes/UI/tower_slot_machine_upgrade.tscn" id="9_snl3g"]
 [ext_resource type="PackedScene" uid="uid://ctc1ylplkj422" path="res://Scenes/UI/game_interface.tscn" id="9_v3b54"]
 [ext_resource type="Script" uid="uid://cve012pe3krt3" path="res://Scripts/WaveManager.cs" id="10_r4ehd"]
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="10_snl3g"]
@@ -25,6 +27,11 @@ point_count = 11
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_1wegt")
+_initialMoney = 90
+
+[node name="GameBackground" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_pmk55")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(700, 541.99994)
@@ -43,6 +50,7 @@ shape = SubResource("RectangleShape2D_xcfig")
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="Floor" type="Node2D" parent="TileMap"]
+visible = false
 
 [node name="CasinoFloor" type="Sprite2D" parent="TileMap/Floor"]
 texture_filter = 1
@@ -377,6 +385,13 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="TowerSlotMachineUpgrade" parent="CanvasLayer" instance=ExtResource("9_snl3g")]
+offset_left = 1424.0
+offset_top = 256.0
+offset_right = 2262.0
+offset_bottom = 1107.0
+scale = Vector2(0.45, 0.45)
+
 [node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
 offset_left = 1424.0
 offset_top = 672.0
@@ -385,6 +400,7 @@ offset_bottom = 1512.0
 scale = Vector2(0.45, 0.45)
 
 [node name="TowerSlotMachine2" parent="CanvasLayer" instance=ExtResource("10_xcfig")]
+visible = false
 offset_left = 1424.0
 offset_top = 248.0
 offset_right = 2261.0

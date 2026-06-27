@@ -13,6 +13,9 @@ public partial class TestLevel : Node
     PauseScreen pauseScreen;
     GameInterface gameInterface;
 
+    private SpinToWin spinToWinMachineBasic;
+    private SpinToWin spinToWinMachineUpgrade;
+
     private WaveManager waveManager;
     private Timer waveTimer;
 
@@ -42,6 +45,43 @@ public partial class TestLevel : Node
         pauseScreen = GetNode<PauseScreen>("CanvasLayer/Menus/PauseScreen");
         pauseScreen.OnResume += OnResume;
         gameInterface = GetNode<GameInterface>("CanvasLayer/GameInterface");
+
+        spinToWinMachineBasic = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachineUpgrade/TextureButton");
+        spinToWinMachineBasic.EnemyPenalty += (int tier) =>
+        {
+            waveManager.AddEnemiesPenalty(tier);
+        };
+        spinToWinMachineBasic.KillAllEnemies += () =>
+        {
+            List<Enemy> cloneActiveEnemies = [];
+            foreach (Enemy child in activeEnemies)
+            {
+                cloneActiveEnemies.Add(child);
+            }
+            foreach (Enemy child in cloneActiveEnemies)
+            {
+                _onEnemyDied(child);
+                child.QueueFree();
+            }
+        };
+        spinToWinMachineUpgrade = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachine/TextureButton");
+        spinToWinMachineUpgrade.EnemyPenalty += (int tier) =>
+        {
+            waveManager.AddEnemiesPenalty(tier);
+        };
+        spinToWinMachineUpgrade.KillAllEnemies += () =>
+        {
+            List<Enemy> cloneActiveEnemies = [];
+            foreach (Enemy child in activeEnemies)
+            {
+                cloneActiveEnemies.Add(child);
+            }
+            foreach (Enemy child in cloneActiveEnemies)
+            {
+                _onEnemyDied(child);
+                child.QueueFree();
+            }
+        };
 
         waveManager = GetNode<WaveManager>("WaveManager");
         waveManager.CreateEnemy += CreateEnemy;

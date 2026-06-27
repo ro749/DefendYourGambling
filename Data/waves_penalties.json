@@ -55,14 +55,14 @@
 				"enemies": [
 					{
 						"count": 2,
-						"spawnInterval": 1.0,
+						"spawnInterval": 0.7,
 						"spawnDelay": 0,
 						"enemyType": "BASIC"
 					},
 					{
 						"count": 2,
-						"spawnInterval": 1.0,
-						"spawnDelay": 2.0,
+						"spawnInterval": 0.7,
+						"spawnDelay": 1.4,
 						"enemyType": "TANK"
 					}
 				]
@@ -71,14 +71,466 @@
 				"enemies": [
 					{
 						"count": 3,
-						"spawnInterval": 1.0,
+						"spawnInterval": 0.5,
 						"spawnDelay": 0,
 						"enemyType": "BASIC"
 					},
 					{
 						"count": 3,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.5,
+						"enemyType": "TANK"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 2,
+						"spawnInterval": 0.8,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 1,
 						"spawnInterval": 1.0,
+						"spawnDelay": 1.6,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 4,
+						"spawnInterval": 0.6,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 2,
+						"spawnInterval": 0.6,
+						"spawnDelay": 2.4,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 6,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 3,
+						"spawnInterval": 0.5,
 						"spawnDelay": 3.0,
+						"enemyType": "TANK"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 3,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 2,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.5,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 1,
+						"spawnInterval": 0.5,
+						"spawnDelay": 2.5,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 6,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 4,
+						"spawnInterval": 0.5,
+						"spawnDelay": 3.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 2,
+						"spawnInterval": 0.5,
+						"spawnDelay": 5.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 9,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 6,
+						"spawnInterval": 0.5,
+						"spawnDelay": 3.5,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 3,
+						"spawnInterval": 0.5,
+						"spawnDelay": 5.5,
+						"enemyType": "FAST"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 4,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 2,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0.5,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 4,
+						"spawnInterval": 0.4,
+						"spawnDelay": 1.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 8,
+						"spawnInterval": 0.4,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 4,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 8,
+						"spawnInterval": 0.3,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 12,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 6,
+						"spawnInterval": 0.5,
+						"spawnDelay": 2.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 12,
+						"spawnInterval": 0.2,
+						"spawnDelay": 3.0,
+						"enemyType": "FAST"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 4,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 6,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 8,
+						"spawnInterval": 0.4,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 8,
+						"spawnInterval": 0.4,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 12,
+						"spawnInterval": 0.4,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 16,
+						"spawnInterval": 0.3,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 12,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 18,
+						"spawnInterval": 0.3,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 24,
+						"spawnInterval": 0.2,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 15,
+						"spawnInterval": 0.2,
+						"spawnDelay": 0.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 25,
+						"spawnInterval": 0.2,
+						"spawnDelay": 0.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 40,
+						"spawnInterval": 0.2,
+						"spawnDelay": 0.0,
+						"enemyType": "FAST"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 10,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 10,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 20,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 20,
+						"spawnInterval": 0.3,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 30,
+						"spawnInterval": 0.2,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 30,
+						"spawnInterval": 0.2,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 10,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 10,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 20,
+						"spawnInterval": 0.3,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 15,
+						"spawnInterval": 0.5,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 15,
+						"spawnInterval": 0.5,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 30,
+						"spawnInterval": 0.2,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 20,
+						"spawnInterval": 0.4,
+						"spawnDelay": 0,
+						"enemyType": "BASIC"
+					},
+					{
+						"count": 20,
+						"spawnInterval": 0.4,
+						"spawnDelay": 1.0,
+						"enemyType": "TANK"
+					},
+					{
+						"count": 40,
+						"spawnInterval": 0.2,
+						"spawnDelay": 2.0,
+						"enemyType": "FAST"
+					}
+				]
+			}
+		]
+	},
+	{
+		"tiers": [
+			{
+				"enemies": [
+					{
+						"count": 30,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0.0,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 50,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0.0,
+						"enemyType": "TANK"
+					}
+				]
+			},
+			{
+				"enemies": [
+					{
+						"count": 80,
+						"spawnInterval": 0.3,
+						"spawnDelay": 0.0,
 						"enemyType": "TANK"
 					}
 				]

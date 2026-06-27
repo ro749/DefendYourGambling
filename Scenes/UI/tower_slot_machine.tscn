@@ -77,7 +77,7 @@ _data = {
 &"pull_lever": SubResource("Animation_70iir")
 }
 
-[node name="TowerSlotMachine" type="TextureRect"]
+[node name="TowerSlotMachine2" type="TextureRect"]
 texture = ExtResource("1_gonk0")
 script = ExtResource("2_p2isk")
 
@@ -90,6 +90,16 @@ offset_bottom = 316.0018
 texture_normal = ExtResource("2_5a7ln")
 script = ExtResource("4_p2isk")
 slotMachine = NodePath("../SlotMachine")
+moneyCost = 60
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 190.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 90
+text = "$60"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -122,7 +132,7 @@ offset_right = 652.0
 offset_bottom = 680.0
 script = ExtResource("5_7v8bt")
 Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw"), ExtResource("12_sljhw"), ExtResource("13_tt0ev"), ExtResource("14_kq454")])
-Probabilities = Array[int]([2, 1, 2, 1, 2, 1, 4, 4, 4])
+Probabilities = Array[int]([11, 1, 9, 1, 7, 1, 35, 35, 35])
 
 [node name="Container" type="Container" parent="SlotMachine"]
 custom_minimum_size = Vector2(120, 0)
