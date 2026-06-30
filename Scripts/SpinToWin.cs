@@ -55,7 +55,8 @@ public partial class SpinToWin : TextureButton
     {
         var v = 1;
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
-            v *= child.Roll();
+            child.HideBackgroundColor();
+            v *= child.Roll(seeRoll);
             if (!seeRoll) continue;
             await ToSignal(GetTree().CreateTimer(SecondsBetweenRolls), "timeout");
         }
@@ -83,28 +84,6 @@ public partial class SpinToWin : TextureButton
             child.canStop = true;
             await ToSignal(child, "Stoped");
         }
-
-        /*var v = 1;
-        foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
-            v *= child.Roll();
-            await ToSignal(GetTree().CreateTimer(SecondsBetweenRolls), "timeout");
-        }
-        foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
-            child.canStop = true;
-            await ToSignal(child, "Stoped");
-        }
-        if (IsFirstRoll)
-        {
-            while(v % 2 != 0)
-            {
-                v = 1;
-                foreach (Reel child in slotMachine.GetChildren().OfType<Reel>())
-                {
-                    v *= child.Roll();
-                }
-            }
-            IsFirstRoll = false;
-        }*/
 
         if (v % (int)TowerState.DESTROY_ENEMIES_1 == 0)
         {

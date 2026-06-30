@@ -22,6 +22,8 @@ public partial class Reel : Node
     [Export]
     public Control rulett;
 
+    private ColorRect rewardBackground;
+
     public int index = 0;
     public int result = 0;
     public int result_in_num = 0;
@@ -36,6 +38,9 @@ public partial class Reel : Node
     {
         Results = GetParent<SlotMachine>().Results;
         Probabilities = GetParent<SlotMachine>().Probabilities;
+        rewardBackground = GetNode<ColorRect>("RewardBackground");
+        rewardBackground.Hide();
+
         for(var i = 0; i < 4; i++)
         {
             AddSlot();
@@ -95,15 +100,17 @@ public partial class Reel : Node
         }
     }
 
-    public int Roll()
+    public int Roll(bool visualRoll)
     {
         canStop = false;
         active = true;
         activeTime = 0;
+        
         if(IsInstanceValid(reelResult))
         {
             reelResult.QueueFree();
         }
+        
         var total = 0;
         foreach (var n in Probabilities)
         {
@@ -121,13 +128,29 @@ public partial class Reel : Node
             i++;
         }
         result_in_num = i;
+
         reelResult = (ReelResult)Results[result_in_num].Instantiate();
-        AddChild(reelResult);
         reelResult.AnchorBottom = .5f;
         reelResult.AnchorTop = .5f;
         reelResult.AnchorLeft = .5f;
         reelResult.AnchorRight = .5f;
         reelResult.Modulate = new Color(1, 1, 1, 0f);
+
+        AddChild(reelResult);
+
         return reelResult.getResult();
+    }
+
+    public void SetBackgroundColor(Color bgColor)
+    {
+        if (rewardBackground == null) return;
+        rewardBackground.Show();
+        rewardBackground.Color = bgColor;
+    }
+
+    public void HideBackgroundColor()
+    {
+        if (rewardBackground == null) return;
+        rewardBackground.Hide();
     }
 }
