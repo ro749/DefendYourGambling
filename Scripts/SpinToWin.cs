@@ -7,17 +7,17 @@ public partial class SpinToWin : TextureButton
 {
     public enum TowerState
     {
-        DESTROY_ENEMIES_1 = 27, // 3^3
-        DESTROY_ENEMIES_2 = 81, // 3^4
-        DESTROY_ENEMIES_3 = 243, // 3^5
+        DESTROY_ENEMIES_1 = 125, // 5^3
+        DESTROY_ENEMIES_2 = 625, // 5^4
+        DESTROY_ENEMIES_3 = 3125, // 5^5
 
-        WIN_MONEY_1 = 125, // 5^3
-        WIN_MONEY_2 = 625, // 5^4
-        WIN_MONEY_3 = 3125, // 5^5
+        WIN_MONEY_1 = 343, // 7^3
+        WIN_MONEY_2 = 2401, // 7^4
+        WIN_MONEY_3 = 16807, // 7^5
 
-        MORE_ENEMIES_1 = 343, // 7^3
-        MORE_ENEMIES_2 = 2401, // 7^4
-        MORE_ENEMIES_3 = 16807 // 7^5
+        MORE_ENEMIES_1 = 1331, // 11^3
+        MORE_ENEMIES_2 = 14641, // 11^4
+        MORE_ENEMIES_3 = 161051 // 11^5
     }
 
     AudioManager audioManager;

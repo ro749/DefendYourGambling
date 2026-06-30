@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ft825ufce6tt" path="res://Scenes/Prefabs/Previews/preview_tower_heavy.tscn" id="4_xl4gx"]
 
 [node name="HeavyTowerResult" instance=ExtResource("1_i3w0g")]
+result = 3
 type = 4
 
 [node name="TextureButton" parent="." index="0"]

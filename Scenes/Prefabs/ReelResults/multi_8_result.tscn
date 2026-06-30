@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://elsymppiysim" path="res://Scenes/Prefabs/Previews/preview_multi8.tscn" id="3_b4ajt"]
 
 [node name="Multi8Result" instance=ExtResource("1_ui71u")]
+result = 3
 type = 6
 
 [node name="TextureButton" parent="." index="0"]

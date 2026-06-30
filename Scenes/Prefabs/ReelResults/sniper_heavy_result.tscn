@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://x2c3os8ogkm7" path="res://Scenes/Prefabs/Previews/preview_sniper_heavy.tscn" id="3_q2cxa"]
 
 [node name="SniperHeavyResult" instance=ExtResource("1_sqnkt")]
+result = 3
 type = 8
 
 [node name="TextureButton" parent="." index="0"]
