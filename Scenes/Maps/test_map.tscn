@@ -34,6 +34,7 @@ point_count = 11
 [node name="Map" type="Node2D"]
 script = ExtResource("1_i3lja")
 _victorySound = SubResource("Resource_ewx0n")
+_initialMoney = 1000000000
 
 [node name="GameBackground" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

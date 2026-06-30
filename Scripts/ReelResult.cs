@@ -17,7 +17,6 @@ public partial class ReelResult : Control
 {
     [Export] public int result = 2;
     [Export] public ReelResultType type;
-
     public int getResult()
     {
         return result;

@@ -21,8 +21,8 @@ public partial class Reel : Node
 
     [Export]
     public Control rulett;
-
-    private ColorRect rewardBackground;
+    [Export]
+    public ColorRect bg;
 
     public int index = 0;
     public int result = 0;
@@ -38,8 +38,6 @@ public partial class Reel : Node
     {
         Results = GetParent<SlotMachine>().Results;
         Probabilities = GetParent<SlotMachine>().Probabilities;
-        rewardBackground = GetNode<ColorRect>("RewardBackground");
-        rewardBackground.Hide();
 
         for(var i = 0; i < 4; i++)
         {
@@ -141,16 +139,15 @@ public partial class Reel : Node
         return reelResult.getResult();
     }
 
-    public void SetBackgroundColor(Color bgColor)
+    public void SetBackgroundColor(Color bgColor, int id)
     {
-        if (rewardBackground == null) return;
-        rewardBackground.Show();
-        rewardBackground.Color = bgColor;
+        if(bg == null || reelResult.getResult() != id) return;
+        bg.Color = new Color(bgColor);
     }
 
     public void HideBackgroundColor()
     {
-        if (rewardBackground == null) return;
-        rewardBackground.Hide();
+        if(bg == null) return;
+        bg.Color = new Color(0, 0, 0, 0);
     }
 }

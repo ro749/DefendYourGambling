@@ -124,6 +124,7 @@ script = ExtResource("4_p2isk")
 slotMachine = NodePath("../SlotMachine")
 SecondsBetweenRolls = 0.5
 moneyCost = 60
+resultColor = Color(0, 1, 0, 1)
 _startSound = SubResource("Resource_50qvs")
 _moneyRewardSounds = [SubResource("Resource_ot1d1"), SubResource("Resource_fjcor"), SubResource("Resource_vshw8")]
 _moreEnemySounds = [SubResource("Resource_qn4xl")]
@@ -172,8 +173,9 @@ script = ExtResource("5_7v8bt")
 Results = Array[Object]([ExtResource("6_dgawg"), ExtResource("7_1ucto"), ExtResource("8_lgi34"), ExtResource("9_7vfxc"), ExtResource("10_h81tp"), ExtResource("11_sljhw"), ExtResource("12_sljhw"), ExtResource("13_tt0ev"), ExtResource("14_kq454")])
 Probabilities = Array[int]([22, 2, 20, 2, 18, 2, 145, 145, 145])
 
-[node name="Control" parent="SlotMachine" instance=ExtResource("15_sljhw")]
+[node name="Control" parent="SlotMachine" node_paths=PackedStringArray("bg") instance=ExtResource("15_sljhw")]
 layout_mode = 2
+bg = NodePath("RewardBackground")
 
 [node name="RewardBackground" type="ColorRect" parent="SlotMachine/Control"]
 custom_minimum_size = Vector2(95, 100)
@@ -189,9 +191,11 @@ offset_right = 58.015
 offset_bottom = 60.950012
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Control2" parent="SlotMachine" instance=ExtResource("15_sljhw")]
+[node name="Control2" parent="SlotMachine" node_paths=PackedStringArray("bg") instance=ExtResource("15_sljhw")]
 layout_mode = 2
+bg = NodePath("RewardBackground")
 
 [node name="RewardBackground" type="ColorRect" parent="SlotMachine/Control2"]
 custom_minimum_size = Vector2(95, 100)
@@ -207,9 +211,11 @@ offset_right = 54.015
 offset_bottom = 59.950012
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Control3" parent="SlotMachine" instance=ExtResource("15_sljhw")]
+[node name="Control3" parent="SlotMachine" node_paths=PackedStringArray("bg") instance=ExtResource("15_sljhw")]
 layout_mode = 2
+bg = NodePath("RewardBackground")
 
 [node name="RewardBackground" type="ColorRect" parent="SlotMachine/Control3"]
 custom_minimum_size = Vector2(95, 100)
@@ -225,9 +231,11 @@ offset_right = 49.015015
 offset_bottom = 60.950012
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Control4" parent="SlotMachine" instance=ExtResource("15_sljhw")]
+[node name="Control4" parent="SlotMachine" node_paths=PackedStringArray("bg") instance=ExtResource("15_sljhw")]
 layout_mode = 2
+bg = NodePath("RewardBackground")
 
 [node name="RewardBackground" type="ColorRect" parent="SlotMachine/Control4"]
 custom_minimum_size = Vector2(95, 100)
@@ -243,9 +251,11 @@ offset_right = 44.015015
 offset_bottom = 60.950012
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Control5" parent="SlotMachine" instance=ExtResource("15_sljhw")]
+[node name="Control5" parent="SlotMachine" node_paths=PackedStringArray("bg") instance=ExtResource("15_sljhw")]
 layout_mode = 2
+bg = NodePath("RewardBackground")
 
 [node name="RewardBackground" type="ColorRect" parent="SlotMachine/Control5"]
 custom_minimum_size = Vector2(95, 100)
@@ -261,6 +271,7 @@ offset_right = 40.015015
 offset_bottom = 60.950012
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [connection signal="pressed" from="TextureButton" to="." method="_onTextureButtonPressed"]
 [connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

@@ -25,6 +25,7 @@ public partial class SpinToWin : TextureButton
     [Export] public BoxContainer slotMachine;
     [Export] public float SecondsBetweenRolls = 1.0f;
     [Export] public int moneyCost = 50;
+    [Export] public Color resultColor;
 
     public Action<int> KillEnemies;
     public Action<int> MoneyReward;
@@ -35,7 +36,7 @@ public partial class SpinToWin : TextureButton
     [Export] private AudioSetting[] _moreEnemySounds = [];
     [Export] private AudioSetting[] _killEnemySounds = [];
 
-
+    
     private Func<int, bool> _tryBuy;
 
     [Export]
@@ -69,7 +70,9 @@ public partial class SpinToWin : TextureButton
             return;
             
         audioManager.PlaySound(_startSound);
-
+        foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
+            child.HideBackgroundColor();
+        }
         var v = await Roll(true);
 
         if (RerollTimes > 0)
@@ -94,6 +97,7 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_killEnemySounds[soundIndex]);
             }
             KillEnemies?.Invoke(rewardIndex + 1);
+            ColorResults(resultColor,5);
         }
                 
         if (v % (int)TowerState.WIN_MONEY_1 == 0)
@@ -106,6 +110,7 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_moneyRewardSounds[soundIndex]);
             }
             MoneyReward?.Invoke(rewardIndex == 2 ? 5 * moneyCost : (rewardIndex == 1 ? 3 * moneyCost / 2 : moneyCost / 2));
+            ColorResults(resultColor,7);
         }
 
         if (v % (int)TowerState.MORE_ENEMIES_1 == 0)
@@ -117,6 +122,14 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_moreEnemySounds[soundIndex]);
             }
             EnemyPenalty?.Invoke(rewardIndex);
+            ColorResults(resultColor,11);
+        }
+    }
+
+    public void ColorResults(Color color, int id)
+    {
+        foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
+            child.SetBackgroundColor(color,id);
         }
     }
 }
