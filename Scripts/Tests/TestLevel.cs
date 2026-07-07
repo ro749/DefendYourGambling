@@ -24,6 +24,8 @@ public partial class TestLevel : Node
     private WaveManager waveManager;
     private Timer waveTimer;
 
+    private TimeMultiplier timeMultiplier;
+
     private List<Enemy> activeEnemies = new List<Enemy>();
 
     public PreviewTower towerPreview = null;
@@ -67,6 +69,7 @@ public partial class TestLevel : Node
             if (currentLives <= 0)
             {
                 GetTree().Paused = true;
+                Engine.TimeScale = 1.0;
                 loseScreen.Show();
 
                 if (towerPreview != null)
@@ -113,6 +116,12 @@ public partial class TestLevel : Node
 
         // Start the first wave for testing
         waveTimer.Start(6.0f);
+
+        timeMultiplier = GetNode<TimeMultiplier>("CanvasLayer/TimeMultiplier");
+        timeMultiplier.onMultiplierChanged += (float multiplier) =>
+        {
+            Engine.TimeScale = multiplier;
+        };
     }
     
     public override void _Process(double delta)
@@ -120,11 +129,13 @@ public partial class TestLevel : Node
         if (Input.IsActionJustPressed("pause") && GetTree().Paused)
         {
             GetTree().Paused = false;
+            Engine.TimeScale = timeMultiplier.multiplier;
             pauseScreen.Hide();
         }
         else if (Input.IsActionJustPressed("pause") && !GetTree().Paused)
         {
             GetTree().Paused = true;
+            Engine.TimeScale = 1.0;
             pauseScreen.Show();
 
             if (towerPreview != null)
@@ -140,12 +151,14 @@ public partial class TestLevel : Node
         pauseScreen.OnResume -= OnResume;
         waveManager.CreateEnemy -= CreateEnemy;
         waveTimer.Timeout -= _onWaveTimerTimeout;
+        Engine.TimeScale = 1.0;
     }
 
     private void OnResume()
     {
         GetTree().Paused = false;
         pauseScreen.Hide();
+        Engine.TimeScale = timeMultiplier.multiplier;
     }
 
     public void _onWaveTimerTimeout()
@@ -279,6 +292,7 @@ public partial class TestLevel : Node
             else
             {
                 victoryScreen.Show();
+                Engine.TimeScale = 1.0;
                 audioManager.PlaySound(_victorySound);
 
                 if (towerPreview != null)

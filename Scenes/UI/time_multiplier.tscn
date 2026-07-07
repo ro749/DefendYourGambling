@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0s7b0xomais6"]
+
+[ext_resource type="Script" uid="uid://td6c4x023rgo" path="res://Scripts/UI/TimeMultiplier.cs" id="1_liqml"]
+
+[node name="TimeMultiplier" type="Button"]
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 50
+text = "x2"
+script = ExtResource("1_liqml")
+
+[connection signal="pressed" from="." to="." method="_onPressed"]

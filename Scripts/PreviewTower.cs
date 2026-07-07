@@ -93,6 +93,8 @@ public partial class PreviewTower : Node2D
         if (!IsInstanceValid(towerButton)) return;
         
         towerButton.Modulate = new Color(1, 1, 1, 1f);
+        
+        if (!IsInstanceValid(this)) return;
         QueueFree();
     }
 }
