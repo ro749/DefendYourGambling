@@ -107,12 +107,14 @@ public partial class TestLevel : Node
         spinToWinMachineBasic.EnemyPenalty += waveManager.AddEnemiesPenalty;
         spinToWinMachineBasic.MoneyReward += playerState.AddMoney;
         spinToWinMachineBasic.KillEnemies += OnKillEnemiesReward;
+        playerState.MoneyChanged += spinToWinMachineBasic.PlayerMoneyChanged;
 
         spinToWinMachineUpgrade = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachine/TextureButton");
         spinToWinMachineUpgrade.Setup((money) => { return playerState.SpendMoney(money); });
         spinToWinMachineUpgrade.EnemyPenalty += waveManager.AddEnemiesPenalty;
         spinToWinMachineUpgrade.MoneyReward += playerState.AddMoney;
         spinToWinMachineUpgrade.KillEnemies += OnKillEnemiesReward;
+        playerState.MoneyChanged += spinToWinMachineUpgrade.PlayerMoneyChanged;
 
         // Start the first wave for testing
         waveTimer.Start(6.0f);
@@ -122,6 +124,9 @@ public partial class TestLevel : Node
         {
             Engine.TimeScale = multiplier;
         };
+
+        spinToWinMachineBasic.PlayerMoneyChanged(playerState.Money);
+        spinToWinMachineUpgrade.PlayerMoneyChanged(playerState.Money);
     }
     
     public override void _Process(double delta)

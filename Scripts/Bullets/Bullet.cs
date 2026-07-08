@@ -22,8 +22,9 @@ public partial class Bullet : Area2D
     {
     }
 
+    // TODO: USE A ShapeCast2D for better performance and accuracy
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         GlobalPosition += _direction * _speed * (float)delta;
         _currentLifetime += (float)delta;

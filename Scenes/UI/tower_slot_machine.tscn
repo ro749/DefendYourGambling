@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://1y6gy11c0w3p"]
+[gd_scene load_steps=32 format=3 uid="uid://1y6gy11c0w3p"]
 
 [ext_resource type="Texture2D" uid="uid://dsjdtqe01s0vx" path="res://Assets/Images/UI/TowerMachineBase.png" id="1_gonk0"]
 [ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="2_5a7ln"]
 [ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_p2isk"]
 [ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_p2isk"]
+[ext_resource type="Texture2D" uid="uid://i123oji17qby" path="res://Assets/Images/UI/DeactivatedTowerMachineLever.png" id="4_vh700"]
 [ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="5_7v8bt"]
 [ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="5_w1tvh"]
 [ext_resource type="PackedScene" uid="uid://b6q5vy6p6n4to" path="res://Scenes/Prefabs/ReelResults/basic_tower_result.tscn" id="6_dgawg"]
@@ -103,23 +104,55 @@ tracks/1/keys = {
 "values": [-0.80808747, 0.80808747, -0.80808747]
 }
 
+[sub_resource type="Animation" id="Animation_w1tvh"]
+resource_name = "roll_call"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [128.0, 192.0, 128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.80808747, -0.5777039824101234, -0.80808747]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhs2e"]
 _data = {
 &"RESET": SubResource("Animation_01hbv"),
+&"pull_call": SubResource("Animation_w1tvh"),
 &"pull_lever": SubResource("Animation_70iir")
 }
 
 [node name="TowerSlotMachine2" type="TextureRect"]
 texture = ExtResource("1_gonk0")
 script = ExtResource("2_p2isk")
+_startCallAnimationOnReady = true
 
 [node name="TextureButton" type="TextureButton" parent="." node_paths=PackedStringArray("slotMachine")]
 layout_mode = 0
 offset_left = 864.0
 offset_top = 128.0
 offset_right = 1078.0
-offset_bottom = 316.0018
+offset_bottom = 316.00214
 texture_normal = ExtResource("2_5a7ln")
+texture_disabled = ExtResource("4_vh700")
 script = ExtResource("4_p2isk")
 slotMachine = NodePath("../SlotMachine")
 SecondsBetweenRolls = 0.5

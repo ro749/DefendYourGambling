@@ -52,6 +52,11 @@ public partial class SpinToWin : TextureButton
         _tryBuy = canBuy;
     }
 
+    public void PlayerMoneyChanged(int money)
+    {
+        Disabled = money < moneyCost;
+    }
+
     private async Task<int> Roll(bool seeRoll)
     {
         var v = 1;

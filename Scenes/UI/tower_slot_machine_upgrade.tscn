@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://dcsr3oqsifvff"]
+[gd_scene load_steps=32 format=3 uid="uid://dcsr3oqsifvff"]
 
 [ext_resource type="Texture2D" uid="uid://djni2ofo5da6p" path="res://Assets/Images/UI/UpgradeTowerMachineBase.png" id="1_138dk"]
 [ext_resource type="Script" uid="uid://xkfa4y1cy6iw" path="res://Scripts/TowerSlotMachine.cs" id="2_wwrry"]
 [ext_resource type="Texture2D" uid="uid://cd2yjmvhlov21" path="res://Assets/Images/UI/TowerMachineLever.png" id="3_u2t5e"]
 [ext_resource type="Script" uid="uid://c54dnam5i5o6t" path="res://Scripts/SpinToWin.cs" id="4_7pshy"]
+[ext_resource type="Texture2D" uid="uid://i123oji17qby" path="res://Assets/Images/UI/DeactivatedTowerMachineLever.png" id="4_8qiy3"]
 [ext_resource type="Script" uid="uid://c0faesek01hs6" path="res://Scripts/SlotMachine.cs" id="5_s2j8n"]
 [ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="5_wisaq"]
 [ext_resource type="AudioStream" uid="uid://jmam27l8b3m3" path="res://Assets/Sounds/Rewards/SlotMachineStart.wav" id="6_8qiy3"]
@@ -103,9 +104,39 @@ tracks/1/keys = {
 "values": [-0.80808747, 0.80808747, -0.80808747]
 }
 
+[sub_resource type="Animation" id="Animation_wisaq"]
+resource_name = "pull_call"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [128.0, 192.0, 128.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.80808747, -0.5777039824101234, -0.80808747]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhs2e"]
 _data = {
 &"RESET": SubResource("Animation_01hbv"),
+&"pull_call": SubResource("Animation_wisaq"),
 &"pull_lever": SubResource("Animation_70iir")
 }
 
@@ -118,8 +149,9 @@ layout_mode = 0
 offset_left = 864.0
 offset_top = 128.0
 offset_right = 1078.0
-offset_bottom = 316.0018
+offset_bottom = 316.00146
 texture_normal = ExtResource("3_u2t5e")
+texture_disabled = ExtResource("4_8qiy3")
 script = ExtResource("4_7pshy")
 slotMachine = NodePath("../SlotMachine")
 SecondsBetweenRolls = 0.5
