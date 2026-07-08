@@ -3,10 +3,12 @@ using System;
 
 public partial class PreviewTower : Node2D
 {
-    [Export] public Sprite2D sprite;
+    [Export] public Texture2D texture;
+    [Export] public PackedScene spritesScene;
     [Export] public Area2D area;
 	[Export] public Data.TowerType towerType;
     private Path2D path;
+    public TextureRect sprite;
 
     public TowerButton towerButton;
     public override void _Ready()
@@ -14,6 +16,10 @@ public partial class PreviewTower : Node2D
         GlobalPosition = GetViewport().GetMousePosition();
         path = GetTree().Root.GetNode<Path2D>("Map/Path2D");
         GetTree().Root.GetNode<TestLevel>("Map").towerPreview = this;
+        sprite = spritesScene.Instantiate<TextureRect>();
+        GetTree().Root.GetNode("Map/CanvasLayer").AddChild(sprite);
+        sprite.Texture = texture;
+        sprite.GlobalPosition = GlobalPosition-new Vector2(sprite.Size.X/2, sprite.Size.X/2);
     }
 
     public override void _Process(double delta)
@@ -23,6 +29,7 @@ public partial class PreviewTower : Node2D
         {
             towerButton.Modulate = new Color(1, 1, 1, 1f);
             QueueFree();
+            sprite.QueueFree();
         }
     }
 
@@ -52,6 +59,7 @@ public partial class PreviewTower : Node2D
         if (@event is InputEventMouseMotion motion)
         {
             GlobalPosition = motion.Position;
+            sprite.GlobalPosition = motion.Position-new Vector2(sprite.Size.X/2, sprite.Size.Y/2);;
         }
         
         if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left && !mb.Pressed)
@@ -86,6 +94,7 @@ public partial class PreviewTower : Node2D
         }
         towerButton.QueueFree();
         QueueFree();
+        sprite.QueueFree();
     }
 
     public void Cancel()
@@ -96,5 +105,6 @@ public partial class PreviewTower : Node2D
         
         if (!IsInstanceValid(this)) return;
         QueueFree();
+        sprite.QueueFree();
     }
 }

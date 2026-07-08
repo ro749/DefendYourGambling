@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw8hgvhgtydsq"]
+[gd_scene load_steps=5 format=3 uid="uid://dw8hgvhgtydsq"]
 
 [ext_resource type="Script" uid="uid://bq5nntqdlkymo" path="res://Scripts/PreviewTower.cs" id="1_wl057"]
 [ext_resource type="Script" uid="uid://c32wawjmd05uu" path="res://Scripts/RadiusPreview.cs" id="2_vvuxt"]
+[ext_resource type="PackedScene" uid="uid://cgxiv4dxfco3" path="res://Scenes/UI/preview_tower_ui.tscn" id="2_y2pxx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3vij"]
 radius = 33.734257
 
-[node name="PreviewTowerBaisc" type="Node2D" node_paths=PackedStringArray("sprite", "area")]
+[node name="PreviewTowerBaisc" type="Node2D" node_paths=PackedStringArray("area")]
+z_index = 999
 script = ExtResource("1_wl057")
-sprite = NodePath("Sprite2D")
+spritesScene = ExtResource("2_y2pxx")
 area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 999
 scale = Vector2(0.167, 0.167)
 
 [node name="Area2D" type="Area2D" parent="."]

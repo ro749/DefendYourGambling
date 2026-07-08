@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/Images/Towers/BasicTowerBase.png" id="2_kiuke"]
 
 [node name="PreviewTowerBasic" instance=ExtResource("1_qfqwj")]
+texture = ExtResource("2_kiuke")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_kiuke")

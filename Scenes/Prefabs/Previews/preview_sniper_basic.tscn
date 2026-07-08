@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://csa46d5ss83ab" path="res://Assets/Images/Towers/SniperTowerBase.png" id="2_1d77a"]
 
 [node name="PreviewSniperBasic" instance=ExtResource("1_2jjai")]
+texture = ExtResource("2_1d77a")
 towerType = 5
 
 [node name="Sprite2D" parent="." index="0"]

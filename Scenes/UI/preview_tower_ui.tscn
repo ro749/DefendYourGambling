@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgxiv4dxfco3"]
+
+[ext_resource type="Texture2D" uid="uid://bypa7u6ptlxj4" path="res://Assets/Images/Towers/BasicTowerBase.png" id="1_iou0s"]
+
+[node name="PreviewTowerUi" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iou0s")
+expand_mode = 1

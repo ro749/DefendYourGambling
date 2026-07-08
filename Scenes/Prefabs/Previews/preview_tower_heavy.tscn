@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="2_nddkb"]
 
 [node name="PreviewTowerHeavy" instance=ExtResource("1_dgh12")]
+texture = ExtResource("2_nddkb")
 towerType = 1
 
 [node name="Sprite2D" parent="." index="0"]

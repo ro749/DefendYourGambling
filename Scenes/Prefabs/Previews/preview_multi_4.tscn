@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2dnlj73sk3qm" path="res://Assets/Images/Towers/Multi4TowerBase.png" id="2_06yoc"]
 
 [node name="PreviewMulti4" instance=ExtResource("1_vhpvg")]
+texture = ExtResource("2_06yoc")
 towerType = 3
 
 [node name="Sprite2D" parent="." index="0"]
