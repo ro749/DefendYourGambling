@@ -56,23 +56,13 @@ public partial class Enemy : Area2D
         Health = _maxHealth * maxHealthMultiply;
     }
 
-    public void _OnAreaEntered(Area2D area)
+    public void TakeDamage(double damage)
     {
-        if (area is Bullet bullet)
+        Health -= damage;
+        Damaged?.Invoke(this);
+        if (Health <= 0)
         {
-            if (Health <= 0 || bullet.EnemiesHit.Contains(this) || bullet.EnemiesHit.Count >= bullet.MaxPenetration)
-            {
-                return; // This bullet has already hit max enemies, ignore it.
-            }
-            Health -= bullet.Damage;
-
-            bullet.HitEnemy(this);
-            Damaged?.Invoke(this);
-            
-            if (Health <= 0)
-            {
-                Die();
-            }
+            Die();
         }
     }
 

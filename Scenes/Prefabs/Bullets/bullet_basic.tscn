@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt6ncoc8hnc2x"]
+
+[ext_resource type="PackedScene" uid="uid://bvh2lk0kw278c" path="res://Scenes/Prefabs/Bullets/bullet.tscn" id="1_aqbrf"]
+[ext_resource type="Texture2D" uid="uid://b7v66xv70xhjj" path="res://Assets/Bullet.png" id="2_b25hv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aqbrf"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b25hv"]
+radius = 6.0
+
+[node name="BulletBasic" instance=ExtResource("1_aqbrf")]
+MaxPenetration = 1
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_b25hv")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_aqbrf")
+
+[node name="ShapeCast2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_b25hv")
+target_position = Vector2(0, 12)
+collide_with_areas = true
+collide_with_bodies = false

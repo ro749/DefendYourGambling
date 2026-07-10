@@ -11,7 +11,6 @@ size = Vector2(64, 64)
 radius = 256.12497
 
 [node name="TowerHeavy" instance=ExtResource("1_dvdqr")]
-bulletType = 1
 shootSpeed = 1.2
 bulletSpeed = 1200.0
 bulletDamage = 30.0

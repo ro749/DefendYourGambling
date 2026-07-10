@@ -15,7 +15,7 @@ public struct TowerStats
 #nullable enable
 public partial class Data : Node
 {
-	public enum BulletType { SINGLE, HEAVY };
+	public enum BulletType { BASIC };
 
 	public enum TowerType { BASIC, HEAVY, PIERCING,
 	                        MULTI_4, MULTI_8,
@@ -28,8 +28,7 @@ public partial class Data : Node
 	
 	public static Dictionary<BulletType, BulletStats> bulletStats = new Dictionary<BulletType, BulletStats>()
 	{
-		{ BulletType.SINGLE, new BulletStats { bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_single.tscn") } },
-		{ BulletType.HEAVY, new BulletStats { bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_heavy.tscn") } },
+		{ BulletType.BASIC, new BulletStats { bulletScene = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/bullet_basic.tscn") } },
 	};
 
 	public static Dictionary<TowerType, TowerStats> towerStats = new Dictionary<TowerType, TowerStats>()

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvh2lk0kw278c"]
+
+[ext_resource type="Script" uid="uid://cugbltdedk77x" path="res://Scripts/Bullets/Bullet.cs" id="1_8k71x"]
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("_shapeCast")]
+script = ExtResource("1_8k71x")
+_shapeCast = NodePath("ShapeCast2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]

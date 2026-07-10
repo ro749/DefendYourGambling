@@ -386,6 +386,20 @@ polygon = PackedVector2Array(80, 136, 80, 1000, 848, 1000, 848, 712, 464, 712, 4
 
 [node name="GameInterface" parent="CanvasLayer" instance=ExtResource("8_vu4kc")]
 
+[node name="TowerSlotMachineUpgrade" parent="CanvasLayer" instance=ExtResource("12_f6s5d")]
+offset_left = 1424.0
+offset_top = 256.0
+offset_right = 2262.0
+offset_bottom = 1107.0
+scale = Vector2(0.45, 0.45)
+
+[node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("13_v05bk")]
+offset_left = 1424.0
+offset_top = 672.0
+offset_right = 2261.0
+offset_bottom = 1512.0
+scale = Vector2(0.45, 0.45)
+
 [node name="Menus" type="CenterContainer" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -401,20 +415,6 @@ layout_mode = 2
 [node name="PauseScreen" parent="CanvasLayer/Menus" instance=ExtResource("11_fdakd")]
 visible = false
 layout_mode = 2
-
-[node name="TowerSlotMachineUpgrade" parent="CanvasLayer" instance=ExtResource("12_f6s5d")]
-offset_left = 1424.0
-offset_top = 256.0
-offset_right = 2262.0
-offset_bottom = 1107.0
-scale = Vector2(0.45, 0.45)
-
-[node name="TowerSlotMachine" parent="CanvasLayer" instance=ExtResource("13_v05bk")]
-offset_left = 1424.0
-offset_top = 672.0
-offset_right = 2261.0
-offset_bottom = 1512.0
-scale = Vector2(0.45, 0.45)
 
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("14_2rv46")]
 visible = false

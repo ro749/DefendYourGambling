@@ -22,7 +22,7 @@ public partial class Tower : Area2D
     protected List<Enemy> _nearbyEnemies = new List<Enemy>();
 
     [Export]
-    public Data.BulletType bulletType = Data.BulletType.SINGLE;
+    public Data.BulletType bulletType = Data.BulletType.BASIC;
     [Export]
     public int bulletsCount = 1;
     [Export]
