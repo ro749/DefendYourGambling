@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://x2c3os8ogkm7"]
+[gd_scene load_steps=4 format=3 uid="uid://x2c3os8ogkm7"]
 
 [ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_lt787"]
 [ext_resource type="Texture2D" uid="uid://cbmikt7t4pfwd" path="res://Assets/Images/Towers/SniperHeavyTowerBase.png" id="2_aj4kq"]
+[ext_resource type="Script" uid="uid://boq0a5g8jrl3l" path="res://Scripts/UpgradePreview.cs" id="2_ameue"]
 
 [node name="PreviewSniperHeavy" instance=ExtResource("1_lt787")]
+script = ExtResource("2_ameue")
 texture = ExtResource("2_aj4kq")
 towerType = 6
 
