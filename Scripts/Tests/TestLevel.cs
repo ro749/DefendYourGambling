@@ -24,7 +24,7 @@ public partial class TestLevel : Node
     private WaveManager waveManager;
     private Timer waveTimer;
 
-    private TimeMultiplier timeMultiplier;
+    private WaveTimeController timeMultiplier;
 
     private List<Enemy> activeEnemies = new List<Enemy>();
 
@@ -119,7 +119,7 @@ public partial class TestLevel : Node
         // Start the first wave for testing
         waveTimer.Start(6.0f);
 
-        timeMultiplier = GetNode<TimeMultiplier>("CanvasLayer/TimeMultiplier");
+        timeMultiplier = GetNode<WaveTimeController>("CanvasLayer/GameInterface/WaveTimeController");
         timeMultiplier.onMultiplierChanged += (float multiplier) =>
         {
             Engine.TimeScale = multiplier;
