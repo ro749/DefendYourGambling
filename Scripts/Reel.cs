@@ -89,7 +89,7 @@ public partial class Reel : Node
         }
         foreach (Slot child in rulett.GetChildren().OfType<Slot>())
         {
-            child.Position += Vector2.Down * (float)delta * Speed * 216.0f;
+            child.Position += Vector2.Down * (float)delta * Speed * 216.0f * GameState.WaveTimeMultiplier;
             if(child.Position.Y < -123)
             {
                 child.QueueFree();

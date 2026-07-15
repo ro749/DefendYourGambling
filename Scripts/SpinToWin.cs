@@ -64,7 +64,7 @@ public partial class SpinToWin : TextureButton
             child.HideBackgroundColor();
             v *= child.Roll(seeRoll);
             if (!seeRoll) continue;
-            await ToSignal(GetTree().CreateTimer(SecondsBetweenRolls), "timeout");
+            await ToSignal(GetTree().CreateTimer(SecondsBetweenRolls/GameState.WaveTimeMultiplier), "timeout");
         }
         return v;
     }
