@@ -47,7 +47,15 @@ public partial class Bullet : Area2D
         if (_isFinishing)
             return;
 
-        Vector2 motion = _direction * _speed * (float)delta;
+        _lifetime -= (float)delta * GameState.WaveTimeMultiplier;
+
+        if (_lifetime <= 0)
+        {
+            QueueFree();
+            return;
+        }
+
+        Vector2 motion = _direction * _speed * (float)delta * GameState.WaveTimeMultiplier;
 
         if (motion.IsZeroApprox())
             return;

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://y3fmanc58dq3" path="res://Scripts/Resources/AudioSetting.cs" id="2_udsps"]
 [ext_resource type="AudioStream" uid="uid://cfyt3lws7esj6" path="res://Assets/Sounds/Victory Sound.wav" id="3_xosb5"]
 [ext_resource type="Texture2D" uid="uid://83vag8i73w4t" path="res://Assets/Images/UI/GameBackground.png" id="4_54pvn"]
-[ext_resource type="Script" uid="uid://g20s7qn2y120" path="res://Scripts/GameStatus.cs" id="4_xosb5"]
+[ext_resource type="Script" uid="uid://g20s7qn2y120" path="res://Scripts/GameState.cs" id="4_xosb5"]
 [ext_resource type="Texture2D" uid="uid://bl6q8oxxypf6j" path="res://Assets/Images/background.png" id="5_otpcx"]
 [ext_resource type="Texture2D" uid="uid://dwcpsecojq1gm" path="res://Assets/CasinoFloor.png" id="6_m0d5v"]
 [ext_resource type="Texture2D" uid="uid://byhyum7n0qu2c" path="res://Assets/CasinoPath.png" id="7_mppu7"]
@@ -36,7 +36,7 @@ point_count = 11
 script = ExtResource("1_i3lja")
 _victorySound = SubResource("Resource_ewx0n")
 
-[node name="GameStatus" type="Node2D" parent="."]
+[node name="GameState" type="Node2D" parent="."]
 script = ExtResource("4_xosb5")
 
 [node name="WaveManager" type="Node2D" parent="."]

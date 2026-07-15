@@ -122,7 +122,8 @@ public partial class TestLevel : Node
         timeMultiplier = GetNode<WaveTimeController>("CanvasLayer/GameInterface/WaveTimeController");
         timeMultiplier.onMultiplierChanged += (float multiplier) =>
         {
-            Engine.TimeScale = multiplier;
+            GameState.WaveTimeMultiplier = multiplier;
+            //Engine.TimeScale = multiplier;
         };
 
         spinToWinMachineBasic.PlayerMoneyChanged(playerState.Money);
