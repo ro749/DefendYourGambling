@@ -419,5 +419,3 @@ layout_mode = 2
 [node name="FadeTransition" parent="CanvasLayer" instance=ExtResource("14_2rv46")]
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
-
-[node name="WaveTimer" type="Timer" parent="."]

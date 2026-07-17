@@ -17,7 +17,6 @@ public partial class Tower : Area2D
     private ColorRect? SelectedMenu;
 
     private Node2D? turretNode;
-    //private Timer? _reloadTimer;
     private float _reloadTimer = 0.0f;
     
     protected List<Enemy> _nearbyEnemies = new List<Enemy>();
@@ -61,9 +60,6 @@ public partial class Tower : Area2D
         turretNode = GetNode<Node2D>("Turret");
         SelectedMenu = GetNode<ColorRect>("SelectedMenu");
         DetectionVisibleArea = GetNode<Node2D>("EnemyDetectionArea/VisibleArea");
-
-        //_reloadTimer = GetNode<Timer>("ReloadTimer");
-        //_reloadTimer.Timeout += _OnReloadTimerTimeout;
     }
 
     public override void _Process(double delta)
@@ -119,11 +115,6 @@ public partial class Tower : Area2D
         }
         _reloadTimer = shootSpeed;
     }
-    
-    /*private void _OnReloadTimerTimeout()
-    {
-        _reloadTimer?.Stop();
-    }*/
 
     private void _onEnemyDetectionAreaAreaEntered(Area2D area)
     {

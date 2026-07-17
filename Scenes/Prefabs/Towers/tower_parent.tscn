@@ -41,9 +41,6 @@ visible = false
 scale = Vector2(0.001, 0.001)
 texture = SubResource("GradientTexture2D_v8m12")
 
-[node name="ReloadTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="SelectedMenu" type="ColorRect" parent="."]
 visible = false
 offset_right = 88.0

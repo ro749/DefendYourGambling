@@ -22,7 +22,8 @@ public partial class TestLevel : Node
 
     private bool _wavesStarted = false;
     private WaveManager waveManager;
-    private Timer waveTimer;
+    private float waveTimer;
+    
 
     private WaveTimeController timeMultiplier;
 
@@ -98,9 +99,6 @@ public partial class TestLevel : Node
         };
         gameInterface.ChangeWaveText(1, waveManager.TotalWaves);
 
-        waveTimer = GetNode<Timer>("WaveTimer");
-        waveTimer.Timeout += _onWaveTimerTimeout;
-
 
         spinToWinMachineBasic = GetNode<SpinToWin>("CanvasLayer/TowerSlotMachineUpgrade/TextureButton");
         spinToWinMachineBasic.Setup((money) => { return playerState.SpendMoney(money); });
@@ -117,7 +115,7 @@ public partial class TestLevel : Node
         playerState.MoneyChanged += spinToWinMachineUpgrade.PlayerMoneyChanged;
 
         // Start the first wave for testing
-        waveTimer.Start(6.0f);
+        waveTimer = 6.0f;
 
         timeMultiplier = GetNode<WaveTimeController>("CanvasLayer/GameInterface/WaveTimeController");
         timeMultiplier.onMultiplierChanged += (float multiplier) =>
@@ -135,13 +133,13 @@ public partial class TestLevel : Node
         if (Input.IsActionJustPressed("pause") && GetTree().Paused)
         {
             GetTree().Paused = false;
-            Engine.TimeScale = timeMultiplier.multiplier;
+            //Engine.TimeScale = timeMultiplier.multiplier;
             pauseScreen.Hide();
         }
         else if (Input.IsActionJustPressed("pause") && !GetTree().Paused)
         {
             GetTree().Paused = true;
-            Engine.TimeScale = 1.0;
+            //Engine.TimeScale = 1.0;
             pauseScreen.Show();
 
             if (towerPreview != null)
@@ -150,26 +148,33 @@ public partial class TestLevel : Node
             }
         }
         
+        if (waveTimer > 0.0f)
+        {
+            waveTimer -= (float)delta * GameState.WaveTimeMultiplier;
+            if (waveTimer <= 0.0f)
+            {
+                _onWaveTimerTimeout();
+            }
+        }
     }
 
     public override void _ExitTree()
     {
         pauseScreen.OnResume -= OnResume;
         waveManager.CreateEnemy -= CreateEnemy;
-        waveTimer.Timeout -= _onWaveTimerTimeout;
-        Engine.TimeScale = 1.0;
+        //Engine.TimeScale = 1.0;
     }
 
     private void OnResume()
     {
         GetTree().Paused = false;
         pauseScreen.Hide();
-        Engine.TimeScale = timeMultiplier.multiplier;
+        //Engine.TimeScale = timeMultiplier.multiplier;
     }
 
     public void _onWaveTimerTimeout()
     {
-        waveTimer.Stop();
+        waveTimer = 0.0f;
         if (!_wavesStarted)
         {
             _wavesStarted = true;
@@ -293,7 +298,7 @@ public partial class TestLevel : Node
         {
             if (waveManager.HasMoreWaves())
             {
-                waveTimer.Start(5.0f); // Start a timer to trigger the next wave after 2 seconds
+                waveTimer = 5.0f; // Start a timer to trigger the next wave after 5 seconds
             }
             else
             {
