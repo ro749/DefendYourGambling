@@ -1,13 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0s7b0xomais6"]
+[gd_scene load_steps=3 format=3 uid="uid://c0s7b0xomais6"]
 
 [ext_resource type="Script" uid="uid://td6c4x023rgo" path="res://Scripts/UI/WaveTimeController.cs" id="1_f65uo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f65uo"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="WaveTimeController" type="Button"]
-offset_right = 128.0
+offset_right = 160.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 50
-text = "x1
+text = "Start
 "
 script = ExtResource("1_f65uo")
+
+[node name="TimerBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 64.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_f65uo")
+show_percentage = false
 
 [connection signal="pressed" from="." to="." method="_onPressed"]

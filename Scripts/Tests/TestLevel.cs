@@ -22,10 +22,9 @@ public partial class TestLevel : Node
 
     private bool _wavesStarted = false;
     private WaveManager waveManager;
-    private float waveTimer;
     
 
-    private WaveTimeController timeMultiplier;
+    private WaveTimeController waveTimeController;
 
     private List<Enemy> activeEnemies = new List<Enemy>();
 
@@ -114,14 +113,15 @@ public partial class TestLevel : Node
         spinToWinMachineUpgrade.KillEnemies += OnKillEnemiesReward;
         playerState.MoneyChanged += spinToWinMachineUpgrade.PlayerMoneyChanged;
 
-        // Start the first wave for testing
-        waveTimer = 6.0f;
-
-        timeMultiplier = GetNode<WaveTimeController>("CanvasLayer/GameInterface/WaveTimeController");
-        timeMultiplier.onMultiplierChanged += (float multiplier) =>
+        waveTimeController = GetNode<WaveTimeController>("CanvasLayer/GameInterface/WaveTimeController");
+        waveTimeController.onMultiplierChanged += (float multiplier) =>
         {
             GameState.WaveTimeMultiplier = multiplier;
-            //Engine.TimeScale = multiplier;
+        };
+        waveTimeController.onWaveStarted += () =>
+        {
+            GameState.WaveTimer = 0.5f;
+            waveTimeController.SetWaveActive(true);
         };
 
         spinToWinMachineBasic.PlayerMoneyChanged(playerState.Money);
@@ -133,13 +133,11 @@ public partial class TestLevel : Node
         if (Input.IsActionJustPressed("pause") && GetTree().Paused)
         {
             GetTree().Paused = false;
-            //Engine.TimeScale = timeMultiplier.multiplier;
             pauseScreen.Hide();
         }
         else if (Input.IsActionJustPressed("pause") && !GetTree().Paused)
         {
             GetTree().Paused = true;
-            //Engine.TimeScale = 1.0;
             pauseScreen.Show();
 
             if (towerPreview != null)
@@ -148,10 +146,10 @@ public partial class TestLevel : Node
             }
         }
         
-        if (waveTimer > 0.0f)
+        if (GameState.WaveTimer > 0.0f)
         {
-            waveTimer -= (float)delta * GameState.WaveTimeMultiplier;
-            if (waveTimer <= 0.0f)
+            GameState.WaveTimer -= (float)delta;
+            if (GameState.WaveTimer <= 0.0f)
             {
                 _onWaveTimerTimeout();
             }
@@ -162,19 +160,19 @@ public partial class TestLevel : Node
     {
         pauseScreen.OnResume -= OnResume;
         waveManager.CreateEnemy -= CreateEnemy;
-        //Engine.TimeScale = 1.0;
     }
 
     private void OnResume()
     {
         GetTree().Paused = false;
         pauseScreen.Hide();
-        //Engine.TimeScale = timeMultiplier.multiplier;
     }
 
     public void _onWaveTimerTimeout()
     {
-        waveTimer = 0.0f;
+        waveTimeController.SetWaveActive(true);
+
+        GameState.WaveTimer = 0.0f;
         if (!_wavesStarted)
         {
             _wavesStarted = true;
@@ -182,14 +180,7 @@ public partial class TestLevel : Node
             return;
         }
 
-        if (waveManager.StartNextWave())
-        {
-            GD.Print("Starting next wave: " + waveManager.CurrentWave);
-        }
-        else
-        {
-            GD.Print("No more waves to start.");
-        }
+        waveManager.StartNextWave();
     }
 
     public void CreateTower(Data.TowerType towerEnum, Vector2 position)
@@ -294,25 +285,25 @@ public partial class TestLevel : Node
 
     private void CheckForNewWave()
     {
-        if (activeEnemies.Count == 0 && waveManager.IsWaveActive == false)
+        if (activeEnemies.Count != 0 || waveManager.IsWaveActive) return;
+
+        if (waveManager.HasMoreWaves())
         {
-            if (waveManager.HasMoreWaves())
-            {
-                waveTimer = 5.0f; // Start a timer to trigger the next wave after 5 seconds
-            }
-            else
-            {
-                victoryScreen.Show();
-                Engine.TimeScale = 1.0;
-                audioManager.PlaySound(_victorySound);
+            GameState.WaveTimer = GameState.TimeBetweenWaves; // Start a timer to trigger the next wave after 5 seconds
+            waveTimeController.SetWaveActive(false);
+        }
+        else
+        {
+            victoryScreen.Show();
+            Engine.TimeScale = 1.0;
+            audioManager.PlaySound(_victorySound);
 
-                if (towerPreview != null)
-                {
-                    towerPreview.Cancel();
-                }
-
-                GetTree().Paused = true;
+            if (towerPreview != null)
+            {
+                towerPreview.Cancel();
             }
+
+            GetTree().Paused = true;
         }
     }
 

@@ -118,7 +118,7 @@ vertical_alignment = 1
 
 [node name="WaveTimeController" parent="." instance=ExtResource("6_2ygsd")]
 layout_mode = 0
-offset_left = 40.0
+offset_left = 16.0
 offset_top = 160.0
-offset_right = 168.0
+offset_right = 176.0
 offset_bottom = 224.0
