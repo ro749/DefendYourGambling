@@ -35,6 +35,7 @@ point_count = 11
 [node name="Map" type="Node2D"]
 script = ExtResource("1_i3lja")
 _victorySound = SubResource("Resource_ewx0n")
+_initialMoney = 100000
 
 [node name="GameState" type="Node2D" parent="."]
 script = ExtResource("4_xosb5")

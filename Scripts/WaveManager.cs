@@ -52,7 +52,7 @@ public partial class WaveManager : Node
         if (!IsWaveActive && addingPenaltyIndex != null) return;
 
         // For testing purposes, you can trigger the next wave with a key press
-        waveTimer += delta;
+        waveTimer += delta * GameState.WaveTimeMultiplier;
 
         for (int i = 0; i < waves[CurrentWave].waveEnemies.Count; ++i)
         {
@@ -249,7 +249,6 @@ public partial class WaveManager : Node
         return CurrentWave < TotalWaves - 1;
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
     public bool StartNextWave()
     {
         if (!HasMoreWaves())

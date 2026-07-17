@@ -41,7 +41,7 @@ public partial class Enemy : Area2D
     {
         if (PathFollow == null) return;
 
-        PathFollow.Progress += (float)(_moveSpeed * delta);
+        PathFollow.Progress += (float)(_moveSpeed * delta * GameState.WaveTimeMultiplier);
         if (PathFollow.ProgressRatio < _lastProgressRatio)  
         {
             DoDamageToPlayer?.Invoke(this, _damage);

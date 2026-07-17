@@ -17,7 +17,8 @@ public partial class Tower : Area2D
     private ColorRect? SelectedMenu;
 
     private Node2D? turretNode;
-    private Timer? _reloadTimer;
+    //private Timer? _reloadTimer;
+    private float _reloadTimer = 0.0f;
     
     protected List<Enemy> _nearbyEnemies = new List<Enemy>();
 
@@ -61,8 +62,8 @@ public partial class Tower : Area2D
         SelectedMenu = GetNode<ColorRect>("SelectedMenu");
         DetectionVisibleArea = GetNode<Node2D>("EnemyDetectionArea/VisibleArea");
 
-        _reloadTimer = GetNode<Timer>("ReloadTimer");
-        _reloadTimer.Timeout += _OnReloadTimerTimeout;
+        //_reloadTimer = GetNode<Timer>("ReloadTimer");
+        //_reloadTimer.Timeout += _OnReloadTimerTimeout;
     }
 
     public override void _Process(double delta)
@@ -87,28 +88,42 @@ public partial class Tower : Area2D
             return;
         }
 
-        if (_nearbyEnemies.Count == 0) return;
+        if (_reloadTimer <= 0.0f && _nearbyEnemies.Count > 0)
+        {
+            _seekEnemy();
+            _shootBullets();
+        }
+        else
+        {
+            _reloadTimer -= (float)delta * GameState.WaveTimeMultiplier;
+        }
+    }
+
+    private void _seekEnemy()
+    {
         if (towerSeekFunction != Data.TowerSeekFnc.NONE)
         {
             Enemy? selectedEnemy = Data.SelectEnemy(_nearbyEnemies, towerSeekFunction);
             if (selectedEnemy == null) return;
             turretNode?.LookAt(selectedEnemy.GlobalPosition);
         }
+    }
 
-        if (!(_reloadTimer?.IsStopped()?? false)) return;
+    private void _shootBullets()
+    {
         for (int i = 0; i < bulletsCount; ++i)
         {
             float angleOffset = ((1 - bulletsCount) / 2.0f + i) * bulletsAngle + bulletsAngleOffset;
             angleOffset = angleOffset * Mathf.Pi / 180.0f;
             EmitSignal("Shoot", GlobalPosition, (turretNode?.Rotation?? 0.0f) + angleOffset, bulletSpeed, bulletDamage, bulletMaxPenetration, (int)bulletType);
         }
-        _reloadTimer.Start(shootSpeed);
+        _reloadTimer = shootSpeed;
     }
     
-    private void _OnReloadTimerTimeout()
+    /*private void _OnReloadTimerTimeout()
     {
         _reloadTimer?.Stop();
-    }
+    }*/
 
     private void _onEnemyDetectionAreaAreaEntered(Area2D area)
     {
