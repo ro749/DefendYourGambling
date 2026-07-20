@@ -5,6 +5,7 @@ using System.Linq;
 
 public partial class Reel : Node
 {
+    enum ReelState { Idle, Rolling, Stopping }
     public ReelResult reelResult;
 
     public Array<PackedScene> Results;
@@ -27,9 +28,11 @@ public partial class Reel : Node
     public int index = 0;
     public int result = 0;
     public int result_in_num = 0;
-    public bool active = false;
     private float activeTime = 0;
     public bool canStop = false;
+    private float stopingTime = 0;
+
+    private ReelState state = ReelState.Idle;
 
     [Signal]
     public delegate void StopedEventHandler();
@@ -57,13 +60,13 @@ public partial class Reel : Node
         return newSlot;
     }
 
-    public void Align()
+    public void Align(float delta = 0)
     {
         var i = 0;
         foreach(Control child in rulett.GetChildren())
         {
             if(child.IsQueuedForDeletion()) continue;
-            child.Position = new Vector2(0, i * 123);
+            child.Position = new Vector2(0, i * 123+delta);
             i++;
         }
     }
@@ -71,20 +74,34 @@ public partial class Reel : Node
 
     public override void _Process(double delta)
     {
-        if (!active) return;
-        activeTime += (float)delta;
+        switch (state)
+        {
+            case ReelState.Idle:
+                break;
+            case ReelState.Rolling:
+                Rolling((float)delta);
+                break;
+            case ReelState.Stopping:
+                Stopping((float)delta);
+                break;
+        }
+        
+    }
 
+    private void Rolling(float delta)
+    {
+        activeTime += delta;
         if(
             canStop &&
             rulett.GetChild<Slot>(2).Position.Y < 159 && 
             rulett.GetChild<Slot>(2).Position.Y > 87 &&
             rulett.GetChild<Slot>(2).resultType == reelResult.type
         ){
-            active = false;
-            reelResult.Modulate = new Color(1, 1, 1, 1f);
+            state = ReelState.Stopping;
             rulett.GetChild<Slot>(0).QueueFree();
-            AddSlot();
-            EmitSignal("Stoped");
+            Align();
+            
+            stopingTime = 0;
             return;
         }
         foreach (Slot child in rulett.GetChildren().OfType<Slot>())
@@ -98,10 +115,34 @@ public partial class Reel : Node
         }
     }
 
+    private void Stopping(float delta)
+    {
+        stopingTime += delta*6f;
+        float t = 0;
+        if (stopingTime < 1f)
+        {
+            CubicBezier bezier = new CubicBezier(0, 0, .58, 1);
+            t = (float)bezier.Solve(stopingTime);
+        }
+        else
+        {
+            CubicBezier bezier = new CubicBezier(.42, 0, .58, 1);
+            t = (float)bezier.Solve(2f-stopingTime);
+        }
+        Align(-t*36f);
+        if(stopingTime > 2f)
+        {
+            state = ReelState.Idle;
+            reelResult.Modulate = new Color(1, 1, 1, 1f);
+            AddSlot();
+            EmitSignal("Stoped");
+        }
+    }
+
     public int Roll(bool visualRoll)
     {
         canStop = false;
-        active = true;
+        state = ReelState.Rolling;
         activeTime = 0;
         
         if(IsInstanceValid(reelResult))
@@ -135,6 +176,7 @@ public partial class Reel : Node
         reelResult.Modulate = new Color(1, 1, 1, 0f);
 
         AddChild(reelResult);
+
 
         return reelResult.getResult();
     }
