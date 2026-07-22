@@ -25,7 +25,9 @@ public partial class SpinToWin : TextureButton
     [Export] public BoxContainer slotMachine;
     [Export] public float SecondsBetweenRolls = 1.0f;
     [Export] public int moneyCost = 50;
-    [Export] public Color resultColor;
+    [Export] public Color destroyEnemiesColor;
+    [Export] public Color winMoneyColor;
+    [Export] public Color moreEnemiesColor;
 
     public Action<int> KillEnemies;
     public Action<int> MoneyReward;
@@ -41,6 +43,8 @@ public partial class SpinToWin : TextureButton
 
     [Export]
     private int RerollTimes = 0;
+
+    private bool disabled = false;
 
     public override void _Ready()
     {
@@ -71,9 +75,9 @@ public partial class SpinToWin : TextureButton
 
     public async void _on_pressed()
     {
-        if (_tryBuy == null || !_tryBuy(moneyCost))
+        if (_tryBuy == null || !_tryBuy(moneyCost) || disabled)
             return;
-            
+        disabled = true;
         audioManager.PlaySound(_startSound);
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
             child.HideBackgroundColor();
@@ -91,8 +95,9 @@ public partial class SpinToWin : TextureButton
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
             child.canStop = true;
             await ToSignal(child, "Stoped");
+            
         }
-
+        disabled = false;
         if (v % (int)TowerState.DESTROY_ENEMIES_1 == 0)
         {
             int rewardIndex = v % (int)TowerState.DESTROY_ENEMIES_3 == 0 ? 2 : (v % (int)TowerState.DESTROY_ENEMIES_2 == 0 ? 1 : 0);
@@ -102,7 +107,7 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_killEnemySounds[soundIndex]);
             }
             KillEnemies?.Invoke(rewardIndex + 1);
-            ColorResults(resultColor,5);
+            ColorResults(destroyEnemiesColor,5);
         }
                 
         if (v % (int)TowerState.WIN_MONEY_1 == 0)
@@ -115,7 +120,7 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_moneyRewardSounds[soundIndex]);
             }
             MoneyReward?.Invoke(rewardIndex == 2 ? 5 * moneyCost : (rewardIndex == 1 ? 3 * moneyCost / 2 : moneyCost / 2));
-            ColorResults(resultColor,7);
+            ColorResults(winMoneyColor,7);
         }
 
         if (v % (int)TowerState.MORE_ENEMIES_1 == 0)
@@ -127,7 +132,7 @@ public partial class SpinToWin : TextureButton
                 audioManager.PlaySound(_moreEnemySounds[soundIndex]);
             }
             EnemyPenalty?.Invoke(rewardIndex);
-            ColorResults(resultColor,11);
+            ColorResults(moreEnemiesColor,11);
         }
     }
 
