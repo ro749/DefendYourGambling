@@ -95,7 +95,6 @@ public partial class SpinToWin : TextureButton
         foreach (Reel child in slotMachine.GetChildren().OfType<Reel>()) {
             child.canStop = true;
             await ToSignal(child, "Stoped");
-            
         }
         disabled = false;
         if (v % (int)TowerState.DESTROY_ENEMIES_1 == 0)
