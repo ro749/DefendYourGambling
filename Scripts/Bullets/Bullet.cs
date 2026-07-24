@@ -20,7 +20,7 @@ public partial class Bullet : Area2D
 
     private float _lifetime = 2.0f;
     private float _currentLifetime = 0.0f;
-
+    private int _remainingHits;
     public List<Enemy> EnemiesHit { get; private set; } = new List<Enemy>();
 
     // Called when the node enters the scene tree for the first time.
@@ -28,6 +28,7 @@ public partial class Bullet : Area2D
     {
         // We update it manually before moving.
         _shapeCast.Enabled = false;
+        _remainingHits = MaxPenetration;
     }
 
     public void Setup(Vector2 pos, float direction, float newSpeed, float newDamage, int newMaxPenetration, Data.BulletType bulletEnum)
@@ -76,9 +77,7 @@ public partial class Bullet : Area2D
         Vector2 globalDestination = GlobalPosition + motion;
         _shapeCast.TargetPosition = _shapeCast.ToLocal(globalDestination);
 
-        int remainingHits = MaxPenetration;
-
-        while (remainingHits > 0)
+        while (_remainingHits > 0)
         {
             _shapeCast.ForceShapecastUpdate();
 
@@ -95,7 +94,7 @@ public partial class Bullet : Area2D
             hit.Enemy.TakeDamage(Damage);
 
             _damagedEnemyIds.Add(hit.Enemy.GetInstanceId());
-            remainingHits--;
+            _remainingHits--;
 
             /*
              * Exclude it before repeating the cast. The next update will
@@ -103,7 +102,7 @@ public partial class Bullet : Area2D
              */
             _shapeCast.AddException(hit.Collider);
 
-            if (remainingHits == 0)
+            if (_remainingHits == 0)
             {
                 FinishAtImpact(hit.Point);
                 return;
