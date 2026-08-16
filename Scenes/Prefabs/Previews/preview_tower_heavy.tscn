@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ft825ufce6tt"]
+[gd_scene load_steps=4 format=3 uid="uid://ft825ufce6tt"]
 
 [ext_resource type="PackedScene" uid="uid://dw8hgvhgtydsq" path="res://Scenes/Prefabs/Previews/preview_tower.tscn" id="1_dgh12"]
 [ext_resource type="Texture2D" uid="uid://bir3ab14bvwhv" path="res://Assets/Images/Towers/HeavyTowerBase.png" id="2_nddkb"]
+[ext_resource type="Script" uid="uid://boq0a5g8jrl3l" path="res://Scripts/UpgradePreview.cs" id="2_tx183"]
 
 [node name="PreviewTowerHeavy" instance=ExtResource("1_dgh12")]
+script = ExtResource("2_tx183")
 texture = ExtResource("2_nddkb")
 towerType = 1
 

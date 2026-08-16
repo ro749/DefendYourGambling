@@ -15,7 +15,6 @@ public partial class UpgradePreview : PreviewTower
             {
                 tower.Modulate = new Color(0.5f, 0.5f, 0.5f, 1f);
             }
-            
         }
     }
 
