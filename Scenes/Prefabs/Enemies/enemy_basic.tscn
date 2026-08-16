@@ -5,7 +5,7 @@
 
 [node name="EnemyBasic" instance=ExtResource("1_v5ntw")]
 _moveSpeed = 80.0
-Reward = 4
+Reward = 3
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)

@@ -94,7 +94,7 @@ public partial class TestLevel : Node
 
             float alpha = currentWave / (float)(waveManager.TotalWaves - 1);
             _moneyMultiply = Mathf.Lerp(1.0f, _maxMoneyMultiply, alpha);
-            _enemyLifeMultiply = Mathf.Lerp(1.0f, _maxEnemyLifeMultiply, alpha);
+            _enemyLifeMultiply = Mathf.Lerp(1.2666f, _maxEnemyLifeMultiply, alpha);
         };
         gameInterface.ChangeWaveText(1, waveManager.TotalWaves);
 
@@ -126,6 +126,22 @@ public partial class TestLevel : Node
 
         spinToWinMachineBasic.PlayerMoneyChanged(playerState.Money);
         spinToWinMachineUpgrade.PlayerMoneyChanged(playerState.Money);
+
+        CreateTower(Data.TowerType.BASIC, new Vector2(610, 860));
+        CreateTower(Data.TowerType.BASIC, new Vector2(300, 780));
+        CreateTower(Data.TowerType.BASIC, new Vector2(432, 840));
+        CreateTower(Data.TowerType.BASIC, new Vector2(576, 600));
+        //CreateTower(Data.TowerType.BASIC, new Vector2(1072, 296));
+        //CreateTower(Data.TowerType.MULTI_4, new Vector2(672, 856));
+        //CreateTower(Data.TowerType.MULTI_4, new Vector2(600, 856));
+        //CreateTower(Data.TowerType.MULTI_4, new Vector2(528, 856));
+        //CreateTower(Data.TowerType.MULTI_4, new Vector2(1136, 280));
+        //CreateTower(Data.TowerType.MULTI_4, new Vector2(1064, 280));
+        CreateTower(Data.TowerType.SNIPER, new Vector2(712, 576));
+        CreateTower(Data.TowerType.SNIPER, new Vector2(648, 576));
+        CreateTower(Data.TowerType.SNIPER, new Vector2(776, 576));
+        CreateTower(Data.TowerType.SNIPER, new Vector2(680, 480));
+        //CreateTower(Data.TowerType.SNIPER, new Vector2(744, 480));
     }
     
     public override void _Process(double delta)
@@ -240,6 +256,8 @@ public partial class TestLevel : Node
     private void _onEnemyDied(Enemy enemy)
     {
         audioManager.PlayNormalEnemyDeadSound();
+
+        GD.Print($"Enemy {enemy.Type} died, reward: {enemy.Reward}, multiply: {_moneyMultiply}, final reward: {Mathf.Max(Mathf.RoundToInt(enemy.Reward * _moneyMultiply), 1)}");
         
         playerState.AddMoney(Mathf.Max(Mathf.RoundToInt(enemy.Reward * _moneyMultiply), 1));
 
@@ -289,6 +307,7 @@ public partial class TestLevel : Node
 
         if (waveManager.HasMoreWaves())
         {
+            playerState.AddMoney(Mathf.RoundToInt(40 + 5 * waveManager.CurrentWave)); // Reward player for clearing the wave
             GameState.WaveTimer = GameState.TimeBetweenWaves; // Start a timer to trigger the next wave after 5 seconds
             waveTimeController.SetWaveActive(false);
         }

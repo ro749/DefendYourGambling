@@ -8,7 +8,7 @@ Type = 1
 _maxHealth = 100.0
 _moveSpeed = 60.0
 _damage = 2
-Reward = 7
+Reward = 5
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)

@@ -12,6 +12,7 @@ radius = 128.0
 [node name="TowerMulti4" instance=ExtResource("1_1gmp1")]
 bulletsCount = 4
 bulletsAngle = 90.0
+shootSpeed = 1.2
 bulletSpeed = 500.0
 bulletDamage = 17.0
 towerSeekFunction = 0
@@ -32,7 +33,7 @@ shape = SubResource("CircleShape2D_1gmp1")
 [node name="VisibleArea" parent="EnemyDetectionArea" index="1"]
 scale = Vector2(256, 256)
 
-[node name="SelectedMenu" parent="." index="5"]
+[node name="SelectedMenu" parent="." index="4"]
 offset_left = -44.0
 offset_top = -128.0
 offset_right = 44.0

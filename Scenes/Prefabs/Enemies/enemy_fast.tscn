@@ -5,9 +5,9 @@
 
 [node name="EnemyFast" instance=ExtResource("1_xsg1w")]
 Type = 2
-_maxHealth = 40.0
+_maxHealth = 24.0
 _moveSpeed = 120.0
-Reward = 5
+Reward = 2
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)

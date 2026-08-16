@@ -41,6 +41,8 @@ public partial class SpinToWin : TextureButton
 
     [Export]
     private int RerollTimes = 0;
+    [Export]
+    private int RerollFactor = 2;
 
     public override void _Ready()
     {
@@ -82,7 +84,7 @@ public partial class SpinToWin : TextureButton
 
         if (RerollTimes > 0)
         {
-            while(v % 2 != 0)
+            while(v % RerollFactor != 0)
             {
                 v = await Roll(false);
             }
