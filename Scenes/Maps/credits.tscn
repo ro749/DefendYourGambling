@@ -80,7 +80,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.76723474, 0.7780561, 0.88029605, 1)
 theme_override_fonts/font = ExtResource("3_jglaw")
 theme_override_font_sizes/font_size = 50
-text = "Dalia Castellanos
+text = "Mara Castellanos
 Beard"
 horizontal_alignment = 1
 
@@ -137,5 +137,9 @@ texture_hover = ExtResource("6_tqq8t")
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="BackButton" to="." method="_onBackButtonPressed"]

@@ -1,0 +1,150 @@
+[
+	{
+		"enemies": [
+			{
+				"count": 10,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 15,
+				"spawnInterval": 0.5,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			},
+			{
+				"count": 15,
+				"spawnInterval": 0.7,
+				"spawnDelay": 3.0,
+				"enemyType": "TANK"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 20,
+				"spawnInterval": 0.7,
+				"spawnDelay": 0.0,
+				"enemyType": "TANK"
+			},
+			{
+				"count": 20,
+				"spawnInterval": 0.5,
+				"spawnDelay": 4.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 25,
+				"spawnInterval": 0.7,
+				"spawnDelay": 0.0,
+				"enemyType": "TANK"
+			},
+			{
+				"count": 25,
+				"spawnInterval": 0.5,
+				"spawnDelay": 4.0,
+				"enemyType": "BASIC"
+			},
+			{
+				"count": 25,
+				"spawnInterval": 0.2,
+				"spawnDelay": 27.0,
+				"enemyType": "FAST"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 25,
+				"spawnInterval": 0.7,
+				"spawnDelay": 0.0,
+				"enemyType": "TANK"
+			},
+			{
+				"count": 25,
+				"spawnInterval": 0.5,
+				"spawnDelay": 4.0,
+				"enemyType": "BASIC"
+			},
+			{
+				"count": 50,
+				"spawnInterval": 0.2,
+				"spawnDelay": 30.0,
+				"enemyType": "FAST"
+			},
+			{
+				"count": 20,
+				"spawnInterval": 0.7,
+				"spawnDelay": 25.0,
+				"enemyType": "TANK"
+			},
+			{
+				"count": 20,
+				"spawnInterval": 0.5,
+				"spawnDelay": 30.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	},
+	{
+		"enemies": [
+			{
+				"count": 1,
+				"spawnInterval": 1.0,
+				"spawnDelay": 0.0,
+				"enemyType": "BASIC"
+			}
+		]
+	}
+]
