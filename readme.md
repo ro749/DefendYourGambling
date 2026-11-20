@@ -1,6 +1,6 @@
 A Tower Defense game made for "The Very Serious Juniper Dev Game Jam".
 
-![Gameplay Snipet](https://github.com/ro749/DefendYourGambling/blob/main/Evidence/MainScreen.mp4)
+![Gameplay Snipet](https://github.com/ro749/DefendYourGambling/blob/main/Evidence/MainScreen.png)
 
 It mixes the basic mechanics of a tower defense game, with tower placing and shooting, and waves of enemies that follow a path until the end where they do damage to you.
 The main difference is the "Spin to Win" theme of the Jam, that we interpreted as a slot machine, so you need to bet on these machines to get the towers that you need to defend your base.
